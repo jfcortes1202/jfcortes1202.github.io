@@ -3,11 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Over-Terrain Vehicle" description="Magnetic detection subsystem for an autonomous over-terrain vehicle." currentPage="/projects">
-  <section class="hero">
+  <section style="padding:calc(var(--nav-height) + var(--space-12)) 0 var(--space-8);">
     <div class="container">
-      <p class="hero__eyebrow">Course Project · ENES100</p>
-      <h1 class="hero__title">Over-Terrain Vehicle</h1>
-      <p class="hero__subtitle">
+      <a href="/#projects" style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.1em;">← Back to projects</a>
+      <span class="section-label" style="margin-top:var(--space-6);">Course Project · ENES100</span>
+      <h1 style="margin-top:var(--space-2);">Over-Terrain Vehicle</h1>
+      <p style="font-size:var(--text-lg); color:var(--text-secondary); max-width:640px; margin-top:var(--space-4);">
         Designed the magnetic-puck detection subsystem — from Faraday induction modeling
         to Hall-effect sensor implementation.
       </p>
@@ -16,45 +17,39 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <section class="section" style="padding-top:0;">
     <div class="container">
-      <div class="card fade-in" style="border-left:4px solid var(--accent); margin-bottom:2.5rem;">
-        <p style="margin-bottom:0.25rem;"><strong>Course:</strong> ENES100 — Introduction to Engineering Design</p>
-        <p style="margin-bottom:0.25rem;"><strong>Team project</strong></p>
+      <div class="card card--featured reveal" data-reveal style="margin-bottom:var(--space-10);">
+        <p style="margin-bottom:var(--space-2);"><strong>Course:</strong> ENES100 — Introduction to Engineering Design</p>
+        <p style="margin-bottom:var(--space-2);"><strong>Team project</strong></p>
         <p style="margin-bottom:0;"><strong>My role:</strong> Magnetic detection subsystem design and electronics</p>
       </div>
 
-      <img src="/images/placeholder.png" alt="Over-terrain vehicle" class="fade-in" style="width:100%; height:auto; border-radius:var(--radius-sm); margin-bottom:2rem; max-height:400px; object-fit:cover;" />
+      <img src="/images/placeholder.png" alt="Over-terrain vehicle" style="width:100%; height:auto; border-radius:var(--radius-md); margin-bottom:var(--space-8); max-height:400px; object-fit:cover; border:1px solid var(--border);" />
 
-      <div class="fade-in">
+      <div class="reveal" data-reveal>
         <h2>Problem</h2>
         <p>
-          Build an autonomous vehicle capable of navigating over rough terrain and detecting
-          a hidden magnetic puck. The detection subsystem needed to reliably identify the
-          puck's location as the vehicle traversed the course.
+          Build an autonomous vehicle capable of navigating rough terrain and detecting
+          a hidden magnetic puck.
         </p>
 
         <h2>Approach</h2>
         <p>
-          I initially modeled a <strong>Faraday induction coil</strong> approach, analyzing
-          the induced EMF as the vehicle passed over the magnetic puck. After evaluating
-          signal-to-noise characteristics, I pivoted to a <strong>Hall-effect sensor</strong>
-          for more reliable detection at the speeds and distances involved.
-        </p>
-        <p>
-          I co-wired the Arduino electronics, integrating the Hall-effect sensor with the
-          vehicle's main control board and writing the detection threshold logic.
+          Initially modeled a <strong>Faraday induction coil</strong> approach, then pivoted
+          to a <strong>Hall-effect sensor</strong> for more reliable detection. Co-wired the
+          Arduino electronics and wrote the detection threshold logic.
         </p>
 
         <h2>Tools</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">
-          <span class="card__tag">Arduino</span>
-          <span class="card__tag">Hall-Effect Sensor</span>
-          <span class="card__tag">Electronics</span>
-          <span class="card__tag">Breadboarding</span>
+        <div style="display:flex; flex-wrap:wrap; gap:var(--space-2); margin-top:var(--space-3);">
+          <span class="chip">Arduino</span>
+          <span class="chip">Hall-Effect Sensor</span>
+          <span class="chip">Electronics</span>
+          <span class="chip">Breadboarding</span>
         </div>
       </div>
 
-      <div style="margin-top:3rem;">
-        <a href="/projects" class="btn btn--outline">← All Projects</a>
+      <div style="margin-top:var(--space-12);">
+        <a href="/#projects" class="btn btn--outline">← All Projects</a>
       </div>
     </div>
   </section>

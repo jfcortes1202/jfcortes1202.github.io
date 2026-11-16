@@ -3,11 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="I-Beam Optimization" description="Stress analysis and Python optimization of an asymmetric wooden I-beam." currentPage="/projects">
-  <section class="hero">
+  <section style="padding:calc(var(--nav-height) + var(--space-12)) 0 var(--space-8);">
     <div class="container">
-      <p class="hero__eyebrow">Course Project · ENES220</p>
-      <h1 class="hero__title">Wooden I-Beam Design &amp; Optimization</h1>
-      <p class="hero__subtitle">
+      <a href="/#projects" style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.1em;">← Back to projects</a>
+      <span class="section-label" style="margin-top:var(--space-6);">Course Project · ENES220</span>
+      <h1 style="margin-top:var(--space-2);">Wooden I-Beam Design &amp; Optimization</h1>
+      <p style="font-size:var(--text-lg); color:var(--text-secondary); max-width:640px; margin-top:var(--space-4);">
         Derived failure-load equations and built a Python optimizer to balance three
         failure modes for an asymmetric pine I-beam.
       </p>
@@ -16,49 +17,45 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   <section class="section" style="padding-top:0;">
     <div class="container">
-      <div class="card fade-in" style="border-left:4px solid var(--accent); margin-bottom:2.5rem;">
-        <p style="margin-bottom:0.25rem;"><strong>Course:</strong> ENES220 — Mechanics of Materials</p>
-        <p style="margin-bottom:0.25rem;"><strong>Team:</strong> 6 members</p>
+      <div class="card card--featured reveal" data-reveal style="margin-bottom:var(--space-10);">
+        <p style="margin-bottom:var(--space-2);"><strong>Course:</strong> ENES220 — Mechanics of Materials</p>
+        <p style="margin-bottom:var(--space-2);"><strong>Team:</strong> 6 members</p>
         <p style="margin-bottom:0;"><strong>My role:</strong> Derived the governing equations and wrote the optimization code</p>
       </div>
 
-      <img src="/images/placeholder.png" alt="I-beam design render" class="fade-in" style="width:100%; height:auto; border-radius:var(--radius-sm); margin-bottom:2rem; max-height:400px; object-fit:cover;" />
+      <img src="/images/placeholder.png" alt="I-beam design render" style="width:100%; height:auto; border-radius:var(--radius-md); margin-bottom:var(--space-8); max-height:400px; object-fit:cover; border:1px solid var(--border);" />
 
-      <div class="fade-in">
+      <div class="reveal" data-reveal>
         <h2>Problem</h2>
         <p>
           Design an I-beam cross-section from pine lumber and wood glue that maximizes
-          load-carrying capacity. The beam has an asymmetric cross-section and can fail
-          through three distinct mechanisms: flexural failure (bending stress), wood shear
-          failure, and glue-joint shear failure.
+          load-carrying capacity. The beam can fail through three mechanisms: flexural failure,
+          wood shear failure, and glue-joint shear failure.
         </p>
 
         <h2>Approach</h2>
         <p>
           I derived the stress and failure-load equations for all three failure modes from
-          first principles (neutral axis location, moment of inertia, shear flow). The key
-          insight was that the optimal beam should have all three failure loads as close to
-          each other as possible — if one mode is much weaker than the others, material is
-          wasted reinforcing modes that won't govern.
+          first principles. The key insight: the optimal beam should have all three failure
+          loads as close to each other as possible.
         </p>
         <p>
           I wrote a <strong>Python optimizer</strong> that parameterized the cross-section
-          dimensions and iteratively searched for a geometry where the three failure loads
-          were balanced within 20% of each other. The team then built the beam and tested
-          it to failure in the lab.
+          dimensions and searched for a geometry where the three failure loads balanced
+          within 20% of each other. The team then built the beam and tested it to failure.
         </p>
 
         <h2>Tools</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">
-          <span class="card__tag">Python</span>
-          <span class="card__tag">Mechanics of Materials</span>
-          <span class="card__tag">Structural Analysis</span>
-          <span class="card__tag">Lab Testing</span>
+        <div style="display:flex; flex-wrap:wrap; gap:var(--space-2); margin-top:var(--space-3);">
+          <span class="chip">Python</span>
+          <span class="chip">Mechanics of Materials</span>
+          <span class="chip">Structural Analysis</span>
+          <span class="chip">Lab Testing</span>
         </div>
       </div>
 
-      <div style="margin-top:3rem;">
-        <a href="/projects" class="btn btn--outline">← All Projects</a>
+      <div style="margin-top:var(--space-12);">
+        <a href="/#projects" class="btn btn--outline">← All Projects</a>
       </div>
     </div>
   </section>

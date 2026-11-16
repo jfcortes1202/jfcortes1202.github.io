@@ -3,45 +3,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Bat-Wing FSI Simulation" description="Computational fluid-structure interaction simulation of bat flight with membrane perforations." currentPage="/projects">
-  <section class="hero">
+  <section style="padding:calc(var(--nav-height) + var(--space-12)) 0 var(--space-8); background:var(--bg-primary);">
     <div class="container">
-      <p class="hero__eyebrow">Flagship Research Project</p>
-      <h1 class="hero__title">Computational FSI Simulation of Bat Flight</h1>
-      <p class="hero__subtitle">
+      <a href="/#projects" style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.1em;">← Back to projects</a>
+      <span class="section-label" style="margin-top:var(--space-6);">Flagship Research Project</span>
+      <h1 style="font-size:var(--text-4xl); margin-top:var(--space-2);">Computational FSI Simulation of Bat Flight</h1>
+      <p style="font-size:var(--text-lg); color:var(--text-secondary); max-width:640px; margin-top:var(--space-4);">
         Investigating how membrane perforations affect aerodynamic performance through
-        fluid-structure interaction modeling at the University of Tennessee Space Institute.
+        fluid-structure interaction modeling at UTSI.
       </p>
     </div>
   </section>
 
-  <!-- Hero visual -->
-  <section style="padding:0 0 2rem;">
+  <section style="padding:0 0 var(--space-8);">
     <div class="container--wide">
-      <img src="/images/placeholder.png" alt="Bat-wing FSI flow field visualization" class="fade-in" style="width:100%; height:auto; border-radius:var(--radius-md); object-fit:cover; max-height:500px;" />
+      <img src="/images/placeholder.png" alt="Bat-wing FSI flow field visualization" style="width:100%; height:auto; border-radius:var(--radius-md); object-fit:cover; max-height:500px; border:1px solid var(--border);" />
     </div>
   </section>
 
   <section class="section" style="padding-top:0;">
     <div class="container">
-      <!-- Quick summary for recruiters -->
-      <div class="card fade-in" style="border-left:4px solid var(--accent); margin-bottom:2.5rem;">
-        <h3 style="margin-top:0; font-size:1rem; color:var(--steel-blue);">At a Glance</h3>
-        <p style="margin-bottom:0.5rem;">
-          <strong>Role:</strong> Research Intern · Extended and validated an existing FSI codebase
-        </p>
-        <p style="margin-bottom:0.5rem;">
-          <strong>Advisor:</strong> Dr. Esteban Cisneros-Garibay, UTSI
-        </p>
-        <p style="margin-bottom:0.5rem;">
-          <strong>Duration:</strong> June 2026 – present
-        </p>
-        <p style="margin-bottom:0;">
-          <strong>Stack:</strong> Firedrake, PETSc, Python, Gmsh, VisIt, Slurm/HPC, Git
-        </p>
+      <!-- At a Glance -->
+      <div class="card card--featured reveal" data-reveal style="margin-bottom:var(--space-10);">
+        <h3 style="margin-top:0; font-size:var(--text-base); color:var(--accent);">At a Glance</h3>
+        <p style="margin-bottom:var(--space-2);"><strong>Role:</strong> Research Intern · Extended and validated an existing FSI codebase</p>
+        <p style="margin-bottom:var(--space-2);"><strong>Advisor:</strong> Dr. Esteban Cisneros-Garibay, UTSI</p>
+        <p style="margin-bottom:var(--space-2);"><strong>Duration:</strong> June 2026 – present</p>
+        <p style="margin-bottom:0;"><strong>Stack:</strong> Firedrake, PETSc, Python, Gmsh, VisIt, Slurm/HPC, Git</p>
       </div>
 
-      <!-- Problem statement -->
-      <div class="fade-in">
+      <div class="reveal" data-reveal>
         <h2>Problem Statement</h2>
         <p>
           Bat wings are thin, flexible membranes that frequently sustain tears and perforations
@@ -56,21 +47,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </p>
       </div>
 
-      <!-- Methodology -->
-      <div class="fade-in">
+      <div class="reveal" data-reveal>
         <h2>Methodology</h2>
         <p>
-          The simulation framework uses the finite element method via
-          <strong>Firedrake</strong> (built on <strong>PETSc</strong>) for spatial
-          discretization. The approach evolved through several stages:
+          The simulation framework uses the finite element method via <strong>Firedrake</strong>
+          (built on <strong>PETSc</strong>) for spatial discretization. The approach evolved through several stages:
         </p>
 
         <h3>2D Model → 3D Extension</h3>
         <p>
           Initial work used a 2D flow field coupled with a 1D elastic filament to understand
           the basic coupling mechanics. This was then extended to 3D flapping bat-wing
-          geometries with membrane perforations — a significant step up in computational
-          complexity.
+          geometries with membrane perforations.
         </p>
 
         <h3>Mesh Generation</h3>
@@ -79,89 +67,64 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           accurate models, I extracted wing-boundary coordinates directly from a bat photograph
           and used them to construct the computational mesh.
         </p>
-
-        <!-- Mesh visual -->
-        <img src="/images/placeholder.png" alt="Mesh visualization — wing geometry with perforation regions" class="fade-in" style="width:100%; height:auto; border-radius:var(--radius-sm); margin:1.5rem 0; max-height:400px; object-fit:cover;" />
+        <img src="/images/placeholder.png" alt="Mesh visualization — wing geometry" style="width:100%; height:auto; border-radius:var(--radius-md); margin:var(--space-6) 0; max-height:400px; object-fit:cover; border:1px solid var(--border);" />
 
         <h3>Numerical Methods</h3>
         <p>
           The linear systems are solved using Krylov subspace methods (GMRES) with
-          preconditioning, including algebraic multigrid where appropriate. Key numerical
-          fixes I implemented:
+          preconditioning, including algebraic multigrid where appropriate. Key numerical fixes:
         </p>
-        <ul style="padding-left:1.25rem; color:var(--text-secondary); line-height:1.8;">
-          <li>Fixed a one-sided traction integral to a two-sided formulation for correct force coupling across the membrane</li>
-          <li>Added a Gaussian envelope function to suppress non-physical oscillations at wing tips</li>
-          <li>Debugged mesh inversion issues that arose during large membrane deformations</li>
+        <ul style="padding-left:var(--space-5); color:var(--text-secondary); line-height:1.8;">
+          <li>Fixed a one-sided traction integral to a two-sided formulation for correct force coupling</li>
+          <li>Added a Gaussian envelope to suppress non-physical oscillations at wing tips</li>
+          <li>Debugged mesh inversion during large membrane deformations</li>
         </ul>
 
         <h3>Validation</h3>
         <p>
           The solver was validated against the <strong>Blasius flat-plate solution</strong> —
-          an analytical benchmark for boundary layer flow over a flat surface. This confirmed
-          that the velocity profiles and skin friction coefficients matched theory to within
-          acceptable tolerances.
+          confirming velocity profiles and skin friction matched theory within acceptable tolerances.
         </p>
-
-        <!-- Validation plot -->
-        <img src="/images/placeholder.png" alt="Validation plot — computed vs. Blasius analytical solution" class="fade-in" style="width:100%; height:auto; border-radius:var(--radius-sm); margin:1.5rem 0; max-height:400px; object-fit:cover;" />
+        <img src="/images/placeholder.png" alt="Validation plot — computed vs. Blasius" style="width:100%; height:auto; border-radius:var(--radius-md); margin:var(--space-6) 0; max-height:400px; object-fit:cover; border:1px solid var(--border);" />
       </div>
 
-      <!-- Energy model -->
-      <div class="fade-in">
+      <div class="reveal" data-reveal>
         <h2>Energy-Expenditure Model</h2>
         <p>
           Beyond the fluid-structure coupling, I integrated an energy-expenditure model
           that accounts for flow temperature, thermal balance, and mechanical power output.
-          This allows parametric studies connecting perforation geometry to the total
-          energetic cost of flight.
         </p>
       </div>
 
-      <!-- Current & future -->
-      <div class="fade-in">
+      <div class="reveal" data-reveal>
         <h2>Current &amp; Future Work</h2>
-        <ul style="padding-left:1.25rem; color:var(--text-secondary); line-height:1.8;">
+        <ul style="padding-left:var(--space-5); color:var(--text-secondary); line-height:1.8;">
           <li><strong>Two-way FSI coupling:</strong> Full bidirectional feedback between fluid forces and membrane deformation</li>
           <li><strong>Leaky-filament conditions:</strong> Modeling flow through perforations with varying sizes and locations</li>
-          <li><strong>Parametric studies:</strong> Systematic investigation of how perforation geometry maps to aerodynamic degradation</li>
+          <li><strong>Parametric studies:</strong> Systematic investigation of perforation geometry vs. aerodynamic degradation</li>
         </ul>
       </div>
 
-      <!-- Media gallery -->
-      <div class="fade-in" style="margin-top:2.5rem;">
+      <div class="reveal" data-reveal style="margin-top:var(--space-10);">
         <h2>Simulation Gallery</h2>
-        <p style="color:var(--text-secondary); margin-bottom:1rem;">
-          Simulation snapshots, flow visualizations, and result comparisons.
-        </p>
-        <div class="project-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-          <img src="/images/placeholder.png" alt="Flow field visualization" style="width:100%; height:180px; object-fit:cover; border-radius:var(--radius-sm);" />
-          <img src="/images/placeholder.png" alt="Mesh detail around perforation" style="width:100%; height:180px; object-fit:cover; border-radius:var(--radius-sm);" />
-          <img src="/images/placeholder.png" alt="Pressure contour results" style="width:100%; height:180px; object-fit:cover; border-radius:var(--radius-sm);" />
+        <div class="project-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); margin-top:var(--space-4);">
+          <img src="/images/placeholder.png" alt="Flow field visualization" style="width:100%; height:180px; object-fit:cover; border-radius:var(--radius-md); border:1px solid var(--border);" />
+          <img src="/images/placeholder.png" alt="Mesh detail" style="width:100%; height:180px; object-fit:cover; border-radius:var(--radius-md); border:1px solid var(--border);" />
+          <img src="/images/placeholder.png" alt="Pressure contours" style="width:100%; height:180px; object-fit:cover; border-radius:var(--radius-md); border:1px solid var(--border);" />
         </div>
       </div>
 
-      <!-- Tech tags -->
-      <div class="fade-in" style="margin-top:2.5rem;">
+      <div class="reveal" data-reveal style="margin-top:var(--space-10);">
         <h2>Tools &amp; Technologies</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem;">
-          <span class="card__tag">Firedrake</span>
-          <span class="card__tag">PETSc</span>
-          <span class="card__tag">Python</span>
-          <span class="card__tag">Finite Element Method</span>
-          <span class="card__tag">Gmsh</span>
-          <span class="card__tag">VisIt</span>
-          <span class="card__tag">Slurm</span>
-          <span class="card__tag">HPC</span>
-          <span class="card__tag">Git / GitHub</span>
-          <span class="card__tag">GMRES / Krylov</span>
-          <span class="card__tag">LaTeX / Beamer</span>
+        <div style="display:flex; flex-wrap:wrap; gap:var(--space-2); margin-top:var(--space-3);">
+          {["Firedrake", "PETSc", "Python", "Finite Element Method", "Gmsh", "VisIt", "Slurm", "HPC", "Git / GitHub", "GMRES / Krylov", "LaTeX / Beamer"].map(t => (
+            <span class="chip">{t}</span>
+          ))}
         </div>
       </div>
 
-      <!-- Back link -->
-      <div style="margin-top:3rem;">
-        <a href="/projects" class="btn btn--outline">← All Projects</a>
+      <div style="margin-top:var(--space-12);">
+        <a href="/#projects" class="btn btn--outline">← All Projects</a>
       </div>
     </div>
   </section>
