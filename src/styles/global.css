@@ -3,8 +3,7 @@
    Academic Refined · Navy / Amber
    ═══════════════════════════════════════════════════════════════ */
 
-/* --- Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+/* --- Fonts (loaded via <link> in BaseLayout.astro <head>) --- */
 
 /* --- Color Tokens --- */
 :root {
@@ -62,11 +61,11 @@ h3 { font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5r
 p  { margin-bottom: 1rem; }
 
 a {
-  color: var(--accent);
+  color: var(--steel-blue);
   text-decoration: none;
   transition: color 0.2s ease;
 }
-a:hover { color: var(--accent-hover); }
+a:hover { color: var(--navy); }
 
 code {
   font-family: var(--font-mono);
@@ -249,7 +248,7 @@ pre code { background: none; padding: 0; }
   padding: 1.5rem;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.card:hover {
+a.card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
 }

@@ -34,27 +34,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               and preliminary parametric results.
             </p>
             <div style="display:flex; gap:0.75rem; margin-top:1rem; flex-wrap:wrap;">
-              <a href="#" class="btn btn--outline" style="font-size:0.85rem; padding:0.5rem 1rem;">
-                <!-- Replace href with actual PDF path: /cv/bat-flight-presentation.pdf -->
+              <a href="/cv/bat-flight-presentation.pdf" class="btn btn--outline" style="font-size:0.85rem; padding:0.5rem 1rem;" download>
                 Download Slides (PDF)
               </a>
             </div>
           </div>
           <div style="width:200px; flex-shrink:0;">
-            <div class="placeholder" style="min-height:130px; font-size:0.8rem;">
-              <!-- Replace with: presentation thumbnail or key slide image -->
-              <span>Slide thumbnail</span>
-            </div>
+            <img src="/images/placeholder.png" alt="Bat flight presentation slide" style="width:100%; height:130px; object-fit:cover; border-radius:var(--radius-sm);" />
           </div>
         </div>
       </div>
 
-      <!-- Future entries note -->
-      <div class="fade-in" style="margin-top:2rem; padding:1.5rem; border:1px dashed var(--border); border-radius:var(--radius-md); text-align:center; color:var(--text-tertiary);">
-        <p style="margin:0;">
-          Additional presentations and conference talks will be listed here as research progresses.
-        </p>
-      </div>
     </div>
   </section>
 </BaseLayout>
