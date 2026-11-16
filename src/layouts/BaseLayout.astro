@@ -1,0 +1,105 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  currentPage?: string;
+}
+
+const { title, description = "Juan Cortés — Mechanical Engineering & Physics at UMD. CFD research, aerospace engineering, and computational modeling.", currentPage = "" } = Astro.props;
+const year = new Date().getFullYear();
+
+const navLinks = [
+  { href: "/about", label: "About" },
+  { href: "/research", label: "Research" },
+  { href: "/projects", label: "Projects" },
+  { href: "/experience", label: "Experience" },
+  { href: "/cv", label: "CV" },
+  { href: "/contact", label: "Contact" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} | Juan Cortés</title>
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__name">Juan Cortés</a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" role="list">
+        {navLinks.map(link => (
+          <li>
+            <a href={link.href} aria-current={currentPage === link.href ? "page" : undefined}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__info">
+        <h3>Juan Cortés</h3>
+        <p>B.S. Mechanical Engineering &amp; B.S. Physics</p>
+        <p>University of Maryland, College Park</p>
+        <p>UTSI Research Intern — Computational Fluid Dynamics</p>
+      </div>
+      <ul class="footer__links" role="list">
+        <li><a href="https://github.com/jfcortes1202" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/jcortes2" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:juanfelipecortes1202@gmail.com">Email</a></li>
+      </ul>
+      <p class="footer__copy">&copy; {year} Juan Cortés. Built with Astro.</p>
+    </div>
+  </footer>
+
+  <style>
+    @import '../styles/global.css';
+  </style>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav__toggle');
+    const links = document.querySelector('.nav__links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    }
+
+    // Scroll fade-in
+    const faders = document.querySelectorAll('.fade-in');
+    if (faders.length && 'IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      faders.forEach(el => obs.observe(el));
+    } else {
+      faders.forEach(el => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>

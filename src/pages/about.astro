@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About" description="About Juan Cortés — mechanical engineering and physics student, CFD researcher, and aspiring aerospace engineer." currentPage="/about">
+  <section class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">About</p>
+      <h1 class="hero__title">Juan Cortés</h1>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:1fr 280px; gap:3rem; align-items:start;" class="about-grid">
+        <!-- Bio -->
+        <div class="fade-in">
+          <p>
+            I'm a junior at the University of Maryland, College Park, double-majoring
+            in Mechanical Engineering and Physics. My research sits at the intersection
+            of computational fluid dynamics, aerospace engineering, and applied mathematics —
+            I'm currently working on fluid-structure interaction simulations of bat flight
+            at the University of Tennessee Space Institute.
+          </p>
+          <p>
+            Beyond research, I co-lead the mechanical subteam of UMD's Accessible Prosthetics
+            Initiative, where we're developing a myoelectric prosthetic hand. I also tutor
+            undergraduate students in physics and engineering courses.
+          </p>
+          <p>
+            Long-term, I'm aiming for a career in defense and aerospace engineering, with a
+            master's degree planned. I'm driven by curiosity — whether it's modeling turbulent
+            flows, understanding quantum mechanics, or designing mechanisms that solve real
+            problems.
+          </p>
+        </div>
+
+        <!-- Headshot -->
+        <div class="fade-in">
+          <div class="placeholder" style="min-height:350px; border-radius:var(--radius-md);">
+            <!-- Replace with: professional headshot -->
+            <span>Headshot photo<br />(400×500 recommended)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="fade-in" style="margin-top:3rem;">
+        <h2>Education</h2>
+        <div class="card" style="margin-top:1rem;">
+          <h3 style="margin-top:0;">University of Maryland, College Park</h3>
+          <p class="meta" style="color:var(--text-tertiary); font-size:0.9rem;">
+            B.S. Mechanical Engineering &amp; B.S. Physics · August 2024 – May 2028 (expected)
+          </p>
+          <p style="margin-bottom:0.5rem;"><strong>GPA:</strong> 3.97 / 4.00 · Dean's List every semester</p>
+          <p style="margin-bottom:0.5rem;"><strong>AP Credits:</strong> 42 credits (Calc BC, Physics C: Mechanics, Chemistry, Spanish Lit — all 5s)</p>
+
+          <h3 style="font-size:1rem; margin-top:1.25rem;">Relevant Coursework</h3>
+          <p style="color:var(--text-secondary); font-size:0.9rem;">
+            <strong>Completed:</strong> Multivariable Calculus · Linear Algebra · Differential Equations I–II (Honors) ·
+            Mechanics I–II · Thermodynamics · Introduction to CAD · Computational Fundamentals · E&amp;M I–II ·
+            Modern Physics · Quantum Physics I · Experimental Physics I · Technical Writing
+          </p>
+          <p style="color:var(--text-secondary); font-size:0.9rem;">
+            <strong>In Progress:</strong> Dynamics · Classical Mechanics · Quantum Physics II ·
+            Electronics &amp; Instrumentation I · Experimental Physics III · Statistical Methods
+          </p>
+        </div>
+      </div>
+
+      <!-- Awards -->
+      <div class="fade-in" style="margin-top:2.5rem;">
+        <h2>Scholarships &amp; Awards</h2>
+        <ul style="list-style:none; padding:0; margin-top:1rem;">
+          <li class="card" style="margin-bottom:0.75rem; padding:1rem 1.5rem;">
+            Professor William M. MacDonald Physics Endowed Scholarship
+          </li>
+          <li class="card" style="margin-bottom:0.75rem; padding:1rem 1.5rem;">
+            CMNS Undergraduate Scholarship Fund
+          </li>
+          <li class="card" style="margin-bottom:0.75rem; padding:1rem 1.5rem;">
+            Maria and Michael Korsnick Nuclear Engineering Innovation Award
+          </li>
+          <li class="card" style="margin-bottom:0.75rem; padding:1rem 1.5rem;">
+            Angelo Bardasis Fellowship
+          </li>
+        </ul>
+      </div>
+
+      <!-- Skills -->
+      <div class="fade-in" style="margin-top:2.5rem;">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="card">
+            <h3>Programming</h3>
+            <ul>
+              <li>Python</li>
+              <li>MATLAB</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Simulation &amp; FEA</h3>
+            <ul>
+              <li>Firedrake &amp; PETSc</li>
+              <li>Finite Element Method</li>
+              <li>Gmsh · VisIt · EES</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>CAD &amp; Design</h3>
+            <ul>
+              <li>SolidWorks</li>
+              <li>Parts, assemblies, drawings</li>
+              <li>Static FEA</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>DevOps &amp; HPC</h3>
+            <ul>
+              <li>Git / GitHub</li>
+              <li>HPC with Slurm</li>
+              <li>Linux CLI</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Hardware</h3>
+            <ul>
+              <li>Arduino</li>
+              <li>Breadboarding</li>
+              <li>Oscilloscope &amp; multimeter</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Documentation</h3>
+            <ul>
+              <li>LaTeX / Overleaf / Beamer</li>
+              <li>Technical writing</li>
+              <li>Excel</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

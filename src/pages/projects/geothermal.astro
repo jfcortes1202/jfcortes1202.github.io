@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Geothermal Heat Pump" description="Thermodynamic modeling of a year-round geothermal heat pump cycle." currentPage="/projects">
+  <section class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">Course Project · Thermodynamics</p>
+      <h1 class="hero__title">Geothermal Heat Pump Design</h1>
+      <p class="hero__subtitle">
+        Selected a refrigerant and modeled a year-round geothermal cycle in EES for a
+        12.3 kW thermal load.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="card fade-in" style="border-left:4px solid var(--accent); margin-bottom:2.5rem;">
+        <p style="margin-bottom:0.25rem;"><strong>Course:</strong> Thermodynamics</p>
+        <p style="margin-bottom:0.25rem;"><strong>Type:</strong> Individual project</p>
+        <p style="margin-bottom:0;"><strong>Tool:</strong> Engineering Equation Solver (EES)</p>
+      </div>
+
+      <div class="placeholder fade-in" style="margin-bottom:2rem;">
+        <!-- Replace with: cycle diagram, EES screenshot, or schematic -->
+        <span>Cycle diagram or EES model screenshot (800×400)</span>
+      </div>
+
+      <div class="fade-in">
+        <h2>Problem</h2>
+        <p>
+          Design a geothermal heat pump system capable of providing both heating and cooling
+          for a 12.3 kW thermal load throughout the year. Select an appropriate refrigerant
+          and model the full thermodynamic cycle.
+        </p>
+
+        <h2>Approach</h2>
+        <p>
+          I evaluated five candidate refrigerants on thermodynamic performance, environmental
+          impact (GWP, ODP), and safety classification. <strong>R-32</strong> was selected for
+          its favorable balance of high COP, low GWP, and good volumetric capacity.
+        </p>
+        <p>
+          The full vapor-compression cycle was modeled in <strong>EES</strong> (Engineering
+          Equation Solver) with realistic component efficiencies and ground-source temperature
+          profiles for year-round operation.
+        </p>
+
+        <h2>Results</h2>
+        <ul style="padding-left:1.25rem; color:var(--text-secondary); line-height:1.8;">
+          <li><strong>Heating COP:</strong> 4.30</li>
+          <li><strong>Cooling COP:</strong> 1.83</li>
+          <li><strong>Design load:</strong> 12.3 kW</li>
+        </ul>
+
+        <h2>Tools</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">
+          <span class="card__tag">EES</span>
+          <span class="card__tag">Thermodynamics</span>
+          <span class="card__tag">Refrigerant Selection</span>
+          <span class="card__tag">Energy Systems</span>
+        </div>
+      </div>
+
+      <div style="margin-top:3rem;">
+        <a href="/projects" class="btn btn--outline">← All Projects</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

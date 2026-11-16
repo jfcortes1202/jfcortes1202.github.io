@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="I-Beam Optimization" description="Stress analysis and Python optimization of an asymmetric wooden I-beam." currentPage="/projects">
+  <section class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">Course Project · ENES220</p>
+      <h1 class="hero__title">Wooden I-Beam Design &amp; Optimization</h1>
+      <p class="hero__subtitle">
+        Derived failure-load equations and built a Python optimizer to balance three
+        failure modes for an asymmetric pine I-beam.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="card fade-in" style="border-left:4px solid var(--accent); margin-bottom:2.5rem;">
+        <p style="margin-bottom:0.25rem;"><strong>Course:</strong> ENES220 — Mechanics of Materials</p>
+        <p style="margin-bottom:0.25rem;"><strong>Team:</strong> 6 members</p>
+        <p style="margin-bottom:0;"><strong>My role:</strong> Derived the governing equations and wrote the optimization code</p>
+      </div>
+
+      <div class="placeholder fade-in" style="margin-bottom:2rem;">
+        <!-- Replace with: I-beam photo, CAD, or test setup -->
+        <span>I-beam photo or CAD render (800×400)</span>
+      </div>
+
+      <div class="fade-in">
+        <h2>Problem</h2>
+        <p>
+          Design an I-beam cross-section from pine lumber and wood glue that maximizes
+          load-carrying capacity. The beam has an asymmetric cross-section and can fail
+          through three distinct mechanisms: flexural failure (bending stress), wood shear
+          failure, and glue-joint shear failure.
+        </p>
+
+        <h2>Approach</h2>
+        <p>
+          I derived the stress and failure-load equations for all three failure modes from
+          first principles (neutral axis location, moment of inertia, shear flow). The key
+          insight was that the optimal beam should have all three failure loads as close to
+          each other as possible — if one mode is much weaker than the others, material is
+          wasted reinforcing modes that won't govern.
+        </p>
+        <p>
+          I wrote a <strong>Python optimizer</strong> that parameterized the cross-section
+          dimensions and iteratively searched for a geometry where the three failure loads
+          were balanced within 20% of each other. The team then built the beam and tested
+          it to failure in the lab.
+        </p>
+
+        <h2>Tools</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem;">
+          <span class="card__tag">Python</span>
+          <span class="card__tag">Mechanics of Materials</span>
+          <span class="card__tag">Structural Analysis</span>
+          <span class="card__tag">Lab Testing</span>
+        </div>
+      </div>
+
+      <div style="margin-top:3rem;">
+        <a href="/projects" class="btn btn--outline">← All Projects</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

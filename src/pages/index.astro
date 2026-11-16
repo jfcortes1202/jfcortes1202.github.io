@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Home" currentPage="/">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">Mechanical Engineering · Physics · CFD Research</p>
+      <h1 class="hero__title">Juan Cortés</h1>
+      <p class="hero__subtitle">
+        Undergraduate researcher in computational fluid dynamics at the University of Tennessee Space Institute.
+        Double-majoring in Mechanical Engineering and Physics at the University of Maryland.
+      </p>
+      <div class="hero__actions">
+        <a href="/projects" class="btn btn--primary">View Projects</a>
+        <a href="/cv" class="btn btn--outline">Download Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured visual -->
+  <section class="section">
+    <div class="container--wide">
+      <div class="placeholder placeholder--hero fade-in">
+        <!-- Replace with: bat-wing simulation video or hero image -->
+        <div>
+          <strong>Hero Simulation Visual</strong><br />
+          Replace with bat-wing FSI flow visualization<br />
+          <em>Recommended: 1200×500 image or 15-30s looping video (MP4/WebM)</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick nav cards -->
+  <section class="section section--alt">
+    <div class="container--wide">
+      <h2 style="text-align:center; margin-bottom:2rem;">What I Do</h2>
+      <div class="project-grid">
+        <a href="/research" class="card fade-in" style="text-decoration:none;">
+          <h3 style="color:var(--steel-blue); margin-top:0;">Research</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">
+            Computational fluid-structure interaction simulation of bat flight with membrane perforations,
+            using Firedrake and PETSc on HPC clusters.
+          </p>
+        </a>
+        <a href="/projects" class="card fade-in" style="text-decoration:none;">
+          <h3 style="color:var(--steel-blue); margin-top:0;">Projects</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">
+            Engineering projects spanning structural optimization, thermodynamic modeling,
+            embedded systems, and prosthetic device development.
+          </p>
+        </a>
+        <a href="/experience" class="card fade-in" style="text-decoration:none;">
+          <h3 style="color:var(--steel-blue); margin-top:0;">Experience</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">
+            Research intern at UTSI, mechanical team co-lead for the Accessible Prosthetics Initiative,
+            and STEM tutor in physics and engineering.
+          </p>
+        </a>
+        <a href="/contact" class="card fade-in" style="text-decoration:none;">
+          <h3 style="color:var(--steel-blue); margin-top:0;">Contact</h3>
+          <p style="color:var(--text-secondary); font-size:0.95rem;">
+            Interested in aerospace, defense, energy, or computational modeling?
+            Let's connect.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured project -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in">
+        <h2>Featured Research</h2>
+        <div class="card" style="margin-top:1rem;">
+          <div class="placeholder" style="min-height:180px; margin-bottom:1rem;">
+            <!-- Replace with: bat-wing simulation thumbnail -->
+            <span>Bat-wing flow visualization thumbnail (600×300)</span>
+          </div>
+          <span class="card__tag">Firedrake</span>
+          <span class="card__tag">PETSc</span>
+          <span class="card__tag">FSI</span>
+          <span class="card__tag">HPC</span>
+          <h3 style="margin-top:0.75rem;">Computational FSI Simulation of Bat Flight</h3>
+          <p style="color:var(--text-secondary);">
+            Investigating how membrane perforations in bat wings affect flight performance
+            through fluid-structure interaction modeling. Extended and validated an existing
+            FSI codebase at UTSI under Dr. Esteban Cisneros-Garibay.
+          </p>
+          <a href="/projects/bat-wing-fsi" class="btn btn--outline" style="margin-top:0.5rem;">
+            View Full Project →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

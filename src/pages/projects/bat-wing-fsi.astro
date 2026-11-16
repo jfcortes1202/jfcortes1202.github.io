@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Bat-Wing FSI Simulation" description="Computational fluid-structure interaction simulation of bat flight with membrane perforations." currentPage="/projects">
+  <section class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">Flagship Research Project</p>
+      <h1 class="hero__title">Computational FSI Simulation of Bat Flight</h1>
+      <p class="hero__subtitle">
+        Investigating how membrane perforations affect aerodynamic performance through
+        fluid-structure interaction modeling at the University of Tennessee Space Institute.
+      </p>
+    </div>
+  </section>
+
+  <!-- Hero visual -->
+  <section style="padding:0 0 2rem;">
+    <div class="container--wide">
+      <div class="placeholder placeholder--hero fade-in">
+        <!-- Replace with: hero simulation video or key result visualization -->
+        <div>
+          <strong>Hero Visual — Bat-Wing Flow Field</strong><br />
+          Replace with simulation video (MP4/WebM) or high-res flow visualization<br />
+          <em>Recommended: 1200×500, looping video with controls</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <!-- Quick summary for recruiters -->
+      <div class="card fade-in" style="border-left:4px solid var(--accent); margin-bottom:2.5rem;">
+        <h3 style="margin-top:0; font-size:1rem; color:var(--steel-blue);">At a Glance</h3>
+        <p style="margin-bottom:0.5rem;">
+          <strong>Role:</strong> Research Intern · Extended and validated an existing FSI codebase
+        </p>
+        <p style="margin-bottom:0.5rem;">
+          <strong>Advisor:</strong> Dr. Esteban Cisneros-Garibay, UTSI
+        </p>
+        <p style="margin-bottom:0.5rem;">
+          <strong>Duration:</strong> June 2026 – present
+        </p>
+        <p style="margin-bottom:0;">
+          <strong>Stack:</strong> Firedrake, PETSc, Python, Gmsh, VisIt, Slurm/HPC, Git
+        </p>
+      </div>
+
+      <!-- Problem statement -->
+      <div class="fade-in">
+        <h2>Problem Statement</h2>
+        <p>
+          Bat wings are thin, flexible membranes that frequently sustain tears and perforations
+          from encounters with vegetation, predators, or disease (such as white-nose syndrome).
+          Despite these injuries, bats often continue flying — suggesting their flight mechanics
+          are somewhat tolerant to membrane damage.
+        </p>
+        <p>
+          Understanding exactly how perforations affect lift, drag, and energy expenditure
+          requires high-fidelity computational models that couple the fluid flow with the
+          structural response of the membrane — a fluid-structure interaction (FSI) problem.
+        </p>
+      </div>
+
+      <!-- Methodology -->
+      <div class="fade-in">
+        <h2>Methodology</h2>
+        <p>
+          The simulation framework uses the finite element method via
+          <strong>Firedrake</strong> (built on <strong>PETSc</strong>) for spatial
+          discretization. The approach evolved through several stages:
+        </p>
+
+        <h3>2D Model → 3D Extension</h3>
+        <p>
+          Initial work used a 2D flow field coupled with a 1D elastic filament to understand
+          the basic coupling mechanics. This was then extended to 3D flapping bat-wing
+          geometries with membrane perforations — a significant step up in computational
+          complexity.
+        </p>
+
+        <h3>Mesh Generation</h3>
+        <p>
+          Wing geometries are meshed in <strong>Gmsh</strong>. To create anatomically
+          accurate models, I extracted wing-boundary coordinates directly from a bat photograph
+          and used them to construct the computational mesh.
+        </p>
+
+        <!-- Mesh visual -->
+        <div class="placeholder fade-in" style="margin:1.5rem 0;">
+          <!-- Replace with: mesh visualization image -->
+          <span>Mesh visualization — wing geometry with perforation regions (800×400)</span>
+        </div>
+
+        <h3>Numerical Methods</h3>
+        <p>
+          The linear systems are solved using Krylov subspace methods (GMRES) with
+          preconditioning, including algebraic multigrid where appropriate. Key numerical
+          fixes I implemented:
+        </p>
+        <ul style="padding-left:1.25rem; color:var(--text-secondary); line-height:1.8;">
+          <li>Fixed a one-sided traction integral to a two-sided formulation for correct force coupling across the membrane</li>
+          <li>Added a Gaussian envelope function to suppress non-physical oscillations at wing tips</li>
+          <li>Debugged mesh inversion issues that arose during large membrane deformations</li>
+        </ul>
+
+        <h3>Validation</h3>
+        <p>
+          The solver was validated against the <strong>Blasius flat-plate solution</strong> —
+          an analytical benchmark for boundary layer flow over a flat surface. This confirmed
+          that the velocity profiles and skin friction coefficients matched theory to within
+          acceptable tolerances.
+        </p>
+
+        <!-- Validation plot -->
+        <div class="placeholder fade-in" style="margin:1.5rem 0;">
+          <!-- Replace with: Blasius validation comparison plot -->
+          <span>Validation plot — computed vs. Blasius analytical solution (800×400)</span>
+        </div>
+      </div>
+
+      <!-- Energy model -->
+      <div class="fade-in">
+        <h2>Energy-Expenditure Model</h2>
+        <p>
+          Beyond the fluid-structure coupling, I integrated an energy-expenditure model
+          that accounts for flow temperature, thermal balance, and mechanical power output.
+          This allows parametric studies connecting perforation geometry to the total
+          energetic cost of flight.
+        </p>
+      </div>
+
+      <!-- Current & future -->
+      <div class="fade-in">
+        <h2>Current &amp; Future Work</h2>
+        <ul style="padding-left:1.25rem; color:var(--text-secondary); line-height:1.8;">
+          <li><strong>Two-way FSI coupling:</strong> Full bidirectional feedback between fluid forces and membrane deformation</li>
+          <li><strong>Leaky-filament conditions:</strong> Modeling flow through perforations with varying sizes and locations</li>
+          <li><strong>Parametric studies:</strong> Systematic investigation of how perforation geometry maps to aerodynamic degradation</li>
+        </ul>
+      </div>
+
+      <!-- Media gallery -->
+      <div class="fade-in" style="margin-top:2.5rem;">
+        <h2>Simulation Gallery</h2>
+        <p style="color:var(--text-secondary); margin-bottom:1rem;">
+          Simulation snapshots, flow visualizations, and result comparisons.
+        </p>
+        <div class="project-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+          <div class="placeholder" style="min-height:180px;">
+            <!-- Replace with: simulation video or image -->
+            <span>Flow field visualization<br />(video or image)</span>
+          </div>
+          <div class="placeholder" style="min-height:180px;">
+            <!-- Replace with: mesh close-up -->
+            <span>Mesh detail around perforation<br />(image)</span>
+          </div>
+          <div class="placeholder" style="min-height:180px;">
+            <!-- Replace with: pressure contour or comparison plot -->
+            <span>Pressure contour / results<br />(image or video)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech tags -->
+      <div class="fade-in" style="margin-top:2.5rem;">
+        <h2>Tools &amp; Technologies</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem;">
+          <span class="card__tag">Firedrake</span>
+          <span class="card__tag">PETSc</span>
+          <span class="card__tag">Python</span>
+          <span class="card__tag">Finite Element Method</span>
+          <span class="card__tag">Gmsh</span>
+          <span class="card__tag">VisIt</span>
+          <span class="card__tag">Slurm</span>
+          <span class="card__tag">HPC</span>
+          <span class="card__tag">Git / GitHub</span>
+          <span class="card__tag">GMRES / Krylov</span>
+          <span class="card__tag">LaTeX / Beamer</span>
+        </div>
+      </div>
+
+      <!-- Back link -->
+      <div style="margin-top:3rem;">
+        <a href="/projects" class="btn btn--outline">← All Projects</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
