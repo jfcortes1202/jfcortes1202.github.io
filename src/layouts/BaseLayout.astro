@@ -2,11 +2,18 @@
 interface Props {
   title: string;
   description?: string;
-  currentPage?: string;
+  ogImage?: string;
 }
 
-const { title, description = "Juan Cortés — Mechanical Engineering & Physics at UMD. CFD research, aerospace engineering, and computational modeling.", currentPage = "" } = Astro.props;
+const site = "https://jfcortes1202.github.io";
+const {
+  title,
+  description = "Juan Cortés — Mechanical Engineering and Physics at the University of Maryland. Computational fluid-structure interaction research, mechanical design, and engineering projects.",
+  ogImage = "/images/placeholder.png",
+} = Astro.props;
 const year = new Date().getFullYear();
+const canonical = new URL(Astro.url.pathname, site).href;
+const fullTitle = title === "Juan Cortés" ? title : `${title} | Juan Cortés`;
 
 const navLinks = [
   { href: "/#about", label: "About" },
@@ -14,6 +21,7 @@ const navLinks = [
   { href: "/#experience", label: "Experience" },
   { href: "/#projects", label: "Projects" },
   { href: "/#skills", label: "Skills" },
+  { href: "/#education", label: "Education" },
   { href: "/#contact", label: "Contact" },
 ];
 ---
@@ -23,25 +31,36 @@ const navLinks = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{fullTitle}</title>
   <meta name="description" content={description} />
-  <title>{title} | Juan Cortés</title>
+  <link rel="canonical" href={canonical} />
   <link rel="sitemap" href="/sitemap-index.xml" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <!-- Open Graph -->
-  <meta property="og:title" content={`${title} | Juan Cortés`} />
-  <meta property="og:description" content={description} />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={new URL(Astro.url.pathname, "https://jfcortes1202.github.io").href} />
-  <meta property="og:image" content="https://jfcortes1202.github.io/images/placeholder.png" />
-  <!-- Theme: prevent flash -->
+  <meta property="og:site_name" content="Juan Cortés" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={new URL(ogImage, site).href} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(ogImage, site).href} />
+  <!-- Theme + motion flags, before first paint -->
   <script is:inline>
-    (function() {
-      const saved = localStorage.getItem('theme');
-      if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'dark' || saved === 'light') {
+          document.documentElement.setAttribute('data-theme', saved);
+        }
+      } catch (e) {}
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('js-motion');
       }
     })();
   </script>
@@ -49,42 +68,35 @@ const navLinks = [
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- Navigation -->
-  <nav class="nav" aria-label="Primary navigation">
+  <nav class="nav" aria-label="Primary">
     <div class="nav__inner">
-      <a href="/" class="nav__name">JC</a>
-      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__links" role="list">
-        {navLinks.map(link => (
-          <li>
-            <a href={link.href}>
-              {link.label}
-            </a>
-          </li>
+      <a href="/" class="nav__name" aria-label="Juan Cortés — home">JC</a>
+      <ul class="nav__links" id="nav-links">
+        {navLinks.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
         ))}
       </ul>
       <div class="nav__right">
-        <button class="theme-toggle" aria-label="Toggle dark/light theme" type="button">
-          <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+          <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
-          <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="display:none;">
+          <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none;">
             <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
           </svg>
         </button>
-        <a href="/#contact" class="nav__cta">Resume</a>
+        <a href="/cv/resume.pdf" class="nav__cta" download>Resume</a>
+        <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </nav>
 
-  <!-- Main Content -->
   <main id="main">
     <slot />
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__info">
@@ -92,15 +104,15 @@ const navLinks = [
         <p>B.S. Mechanical Engineering &amp; B.S. Physics</p>
         <p>University of Maryland, College Park</p>
       </div>
-      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:var(--space-4);">
-        <ul class="footer__links" role="list">
+      <div class="footer__right">
+        <ul class="footer__links">
           <li><a href="https://github.com/jfcortes1202" target="_blank" rel="noopener">GitHub</a></li>
           <li><a href="https://linkedin.com/in/jcortes2" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><a href="mailto:juanfelipecortes1202@gmail.com">Email</a></li>
         </ul>
-        <a href="#" class="footer__back-top">↑ Back to top</a>
+        <a href="#main" class="footer__back-top">↑ Back to top</a>
       </div>
-      <p class="footer__copy">&copy; {year} Juan Cortés. Built with Astro.</p>
+      <p class="footer__copy">&copy; {year} Juan Cortés</p>
     </div>
   </footer>
 
@@ -109,90 +121,64 @@ const navLinks = [
   </style>
 
   <script>
-    // --- Theme toggle ---
-    const themeBtn = document.querySelector('.theme-toggle');
-    const sunIcon = document.querySelector('.theme-toggle__sun') as HTMLElement;
-    const moonIcon = document.querySelector('.theme-toggle__moon') as HTMLElement;
+    import '../scripts/motion';
 
-    function getEffectiveTheme(): string {
-      const saved = localStorage.getItem('theme');
-      if (saved) return saved;
+    // --- Theme toggle ---
+    const themeBtn = document.querySelector<HTMLButtonElement>('.theme-toggle');
+    const sunIcon = document.querySelector<HTMLElement>('.theme-toggle__sun');
+    const moonIcon = document.querySelector<HTMLElement>('.theme-toggle__moon');
+
+    function effectiveTheme(): 'dark' | 'light' {
+      const attr = document.documentElement.getAttribute('data-theme');
+      if (attr === 'dark' || attr === 'light') return attr;
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
-    function applyThemeIcons() {
-      const theme = getEffectiveTheme();
+    function syncToggle() {
+      const theme = effectiveTheme();
       if (sunIcon && moonIcon) {
-        sunIcon.style.display = theme === 'dark' ? 'none' : 'block';
-        moonIcon.style.display = theme === 'dark' ? 'block' : 'none';
+        sunIcon.style.display = theme === 'dark' ? 'block' : 'none';
+        moonIcon.style.display = theme === 'dark' ? 'none' : 'block';
       }
+      themeBtn?.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+      themeBtn?.setAttribute('aria-pressed', String(theme === 'dark'));
     }
+    syncToggle();
 
-    applyThemeIcons();
+    themeBtn?.addEventListener('click', () => {
+      const next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      syncToggle();
+    });
 
-    if (themeBtn) {
-      themeBtn.addEventListener('click', () => {
-        const current = getEffectiveTheme();
-        const next = current === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        try { localStorage.setItem('theme', next); } catch(e) {}
-        applyThemeIcons();
-      });
-    }
-
-    // --- Mobile nav toggle ---
-    const toggle = document.querySelector('.nav__toggle');
-    const links = document.querySelector('.nav__links');
+    // --- Mobile nav ---
+    const toggle = document.querySelector<HTMLButtonElement>('.nav__toggle');
+    const links = document.querySelector<HTMLElement>('.nav__links');
     if (toggle && links) {
-      toggle.addEventListener('click', () => {
-        const open = links.classList.toggle('open');
+      const setOpen = (open: boolean) => {
+        links.classList.toggle('open', open);
         toggle.setAttribute('aria-expanded', String(open));
-      });
-      // Close on link click
-      links.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          links.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
-        });
-      });
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      };
+      toggle.addEventListener('click', () => setOpen(!links.classList.contains('open')));
+      links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
     }
 
-    // --- Scroll reveal ---
-    const reveals = document.querySelectorAll('[data-reveal]');
-    if (reveals.length && 'IntersectionObserver' in window) {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            obs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-      reveals.forEach(el => obs.observe(el));
-    } else {
-      reveals.forEach(el => el.classList.add('visible'));
+    // --- Active section in nav ---
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('main section[id]'));
+    const navAnchors = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav__links a'));
+    if (sections.length && navAnchors.length) {
+      const highlight = () => {
+        const y = window.scrollY + window.innerHeight * 0.35;
+        let current = '';
+        for (const s of sections) if (s.offsetTop <= y) current = s.id;
+        navAnchors.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '/#' + current));
+      };
+      window.addEventListener('scroll', highlight, { passive: true });
+      highlight();
     }
-
-    // --- Active nav highlighting on scroll ---
-    const sections = document.querySelectorAll('section[id]');
-    const navAnchors = document.querySelectorAll('.nav__links a');
-
-    function highlightNav() {
-      const scrollY = window.scrollY + 120;
-      let currentId = '';
-      sections.forEach(section => {
-        const el = section as HTMLElement;
-        if (el.offsetTop <= scrollY) {
-          currentId = el.id;
-        }
-      });
-      navAnchors.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '/#' + currentId);
-      });
-    }
-
-    window.addEventListener('scroll', highlightNav, { passive: true });
-    highlightNav();
   </script>
 </body>
 </html>

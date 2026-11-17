@@ -1,55 +1,54 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
 ---
 
-<BaseLayout title="Over-Terrain Vehicle" description="Magnetic detection subsystem for an autonomous over-terrain vehicle." currentPage="/projects">
-  <section style="padding:calc(var(--nav-height) + var(--space-12)) 0 var(--space-8);">
-    <div class="container">
-      <a href="/#projects" style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.1em;">← Back to projects</a>
-      <span class="section-label" style="margin-top:var(--space-6);">Course Project · ENES100</span>
-      <h1 style="margin-top:var(--space-2);">Over-Terrain Vehicle</h1>
-      <p style="font-size:var(--text-lg); color:var(--text-secondary); max-width:640px; margin-top:var(--space-4);">
-        Designed the magnetic-puck detection subsystem — from Faraday induction modeling
-        to Hall-effect sensor implementation.
-      </p>
-    </div>
-  </section>
+<BaseLayout title="Over-Terrain Vehicle" description="Magnetic-puck detection subsystem for an over-terrain vehicle, ENES100 Introduction to Engineering Design.">
+  <ProjectHeader
+    kicker="Course project · ENES100 — Introduction to Engineering Design"
+    title="Over-terrain vehicle"
+    lead="Designed the magnetic-puck detection subsystem, from Faraday-induction modeling to a Hall-effect sensor, and co-wired the Arduino electronics."
+    facts={[
+      { k: 'Course', v: 'ENES100 — Introduction to Engineering Design' },
+      { k: 'Type', v: 'Team project' },
+      { k: 'My role', v: 'Magnetic detection subsystem and electronics' },
+      { k: 'Result', v: 'Faraday coil modeled, iterated to Hall-effect sensor' },
+    ]}
+  />
 
-  <section class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="card card--featured reveal" data-reveal style="margin-bottom:var(--space-10);">
-        <p style="margin-bottom:var(--space-2);"><strong>Course:</strong> ENES100 — Introduction to Engineering Design</p>
-        <p style="margin-bottom:var(--space-2);"><strong>Team project</strong></p>
-        <p style="margin-bottom:0;"><strong>My role:</strong> Magnetic detection subsystem design and electronics</p>
-      </div>
+  <section class="section">
+    <div class="container prose">
+      <MediaPlaceholder kind="Photo" label="The vehicle, or the detection subsystem on the breadboard" ratio="16 / 9" />
 
-      <img src="/images/placeholder.png" alt="Over-terrain vehicle" style="width:100%; height:auto; border-radius:var(--radius-md); margin-bottom:var(--space-8); max-height:400px; object-fit:cover; border:1px solid var(--border);" />
-
-      <div class="reveal" data-reveal>
+      <div data-reveal>
         <h2>Problem</h2>
         <p>
-          Build an autonomous vehicle capable of navigating rough terrain and detecting
-          a hidden magnetic puck.
+          Build a vehicle able to navigate rough terrain and detect a hidden magnetic puck.
         </p>
 
         <h2>Approach</h2>
         <p>
-          Initially modeled a <strong>Faraday induction coil</strong> approach, then pivoted
-          to a <strong>Hall-effect sensor</strong> for more reliable detection. Co-wired the
-          Arduino electronics and wrote the detection threshold logic.
+          I first modeled a Faraday induction coil for detection, then pivoted to a
+          Hall-effect sensor as the more practical option. I co-wired the Arduino electronics
+          and wrote the detection threshold logic.
         </p>
 
-        <h2>Tools</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:var(--space-2); margin-top:var(--space-3);">
-          <span class="chip">Arduino</span>
-          <span class="chip">Hall-Effect Sensor</span>
-          <span class="chip">Electronics</span>
-          <span class="chip">Breadboarding</span>
+        <h2>Media</h2>
+        <p class="text-secondary">Photos and diagrams will be added here.</p>
+        <div class="gallery">
+          <MediaPlaceholder kind="Figure" label="Coil model / sensor schematic" />
+          <MediaPlaceholder kind="Photo" label="Team and vehicle" />
         </div>
+
+        <h2>Tools</h2>
+        <ul class="chips">
+          {['Arduino', 'Hall-effect sensor', 'Electronics', 'Breadboarding'].map((t) => <li><span class="chip">{t}</span></li>)}
+        </ul>
       </div>
 
-      <div style="margin-top:var(--space-12);">
-        <a href="/#projects" class="btn btn--outline">← All Projects</a>
+      <div class="page-foot">
+        <a href="/#projects" class="btn btn--outline">← All projects</a>
       </div>
     </div>
   </section>

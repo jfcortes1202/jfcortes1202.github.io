@@ -2,101 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="CV & Resume" description="Academic CV and industry resume — Juan Cortés." currentPage="/cv">
-  <section style="padding:calc(var(--nav-height) + var(--space-12)) 0 var(--space-8);">
+<BaseLayout title="Resume & CV" description="Download Juan Cortés' one-page resume or full academic CV.">
+  <header class="page-head" style="border-bottom:none;">
     <div class="container">
-      <a href="/" style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.1em;">← Home</a>
-      <span class="section-label" style="margin-top:var(--space-6);">CV &amp; Resume</span>
-      <h1 style="margin-top:var(--space-2);">Curriculum Vitae</h1>
-      <div style="display:flex; gap:var(--space-4); flex-wrap:wrap; margin-top:var(--space-6);">
-        <a href="/cv/resume.pdf" class="btn btn--primary" download>↓ Download Resume (1 page)</a>
-        <a href="/cv/cv-full.pdf" class="btn btn--outline" download>↓ Download Full CV</a>
+      <a href="/" class="page-head__back">← Home</a>
+      <p class="page-head__kicker">Downloads</p>
+      <h1>Resume &amp; CV</h1>
+      <p class="lead">The one-page resume is for applications; the full CV has the complete academic record.</p>
+      <div class="downloads" style="margin-top:var(--space-8);">
+        <a href="/cv/resume.pdf" class="btn btn--primary" download>Resume (1 page) ↓</a>
+        <a href="/cv/cv-full.pdf" class="btn btn--outline" download>Full CV ↓</a>
       </div>
-      <p style="color:var(--text-tertiary); font-family:var(--font-mono); font-size:var(--text-xs); margin-top:var(--space-4);">
-        Last updated: November 2026
-      </p>
+      <p class="meta" style="margin-top:var(--space-6);">Everything in the CV is also on the <a href="/">main page</a>.</p>
     </div>
-  </section>
-
-  <section class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="reveal" data-reveal>
-        <h2>Education</h2>
-        <h3 style="margin-bottom:var(--space-1);">University of Maryland, College Park</h3>
-        <p style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary);">
-          B.S. Mechanical Engineering &amp; B.S. Physics · August 2024 – May 2028 (expected)
-        </p>
-        <p><strong>GPA:</strong> 3.97 / 4.00 · Dean's List (Fall 2024 – present)</p>
-      </div>
-
-      <div class="reveal" data-reveal>
-        <h2>Research Experience</h2>
-        <h3 style="margin-bottom:var(--space-1);">Research Intern</h3>
-        <p style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary);">
-          University of Tennessee Space Institute · June 2026 – Present
-        </p>
-        <p>
-          Advisor: Dr. Esteban Cisneros-Garibay. Computational FSI simulation of bat flight.
-          Extended existing codebase from 2D to 3D flapping models with membrane perforations.
-          Firedrake/PETSc, Gmsh, HPC with Slurm.
-        </p>
-      </div>
-
-      <div class="reveal" data-reveal>
-        <h2>Leadership</h2>
-        <h3 style="margin-bottom:var(--space-1);">Co-Lead, Myoelectric Mechanical Team</h3>
-        <p style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary);">
-          Accessible Prosthetics Initiative, UMD · Fall 2025 – Present (Co-Lead since Fall 2026)
-        </p>
-        <p>Leading ~6-person subteam designing a myoelectric prosthetic hand. SolidWorks design of housing and two-joint thumb mechanism.</p>
-      </div>
-
-      <div class="reveal" data-reveal>
-        <h2>Teaching</h2>
-        <h3 style="margin-bottom:var(--space-1);">STEM Tutor</h3>
-        <p style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary);">
-          ClubZ In-Home Tutoring · May 2025 – Present
-        </p>
-        <p>One-on-one tutoring: AP Physics 1, Differential Equations, Statics for Engineers.</p>
-      </div>
-
-      <div class="reveal" data-reveal>
-        <h2>Scholarships &amp; Awards</h2>
-        <ul style="padding-left:var(--space-5); line-height:1.8; color:var(--text-secondary);">
-          <li>Professor William M. MacDonald Physics Endowed Scholarship</li>
-          <li>CMNS Undergraduate Scholarship Fund</li>
-          <li>Maria and Michael Korsnick Nuclear Engineering Innovation Award</li>
-          <li>Angelo Bardasis Fellowship</li>
-        </ul>
-      </div>
-
-      <div class="reveal" data-reveal>
-        <h2>Technical Skills</h2>
-        <p>
-          <strong>Programming:</strong> Python, MATLAB<br />
-          <strong>Simulation:</strong> Firedrake, PETSc, FEM, Gmsh, VisIt, EES<br />
-          <strong>CAD:</strong> SolidWorks (parts, assemblies, drawings, static FEA)<br />
-          <strong>DevOps:</strong> Git/GitHub, HPC with Slurm, Linux CLI<br />
-          <strong>Hardware:</strong> Arduino, breadboarding, oscilloscope, multimeter<br />
-          <strong>Documentation:</strong> LaTeX/Overleaf/Beamer, technical writing, Excel
-        </p>
-      </div>
-
-      <div class="reveal" data-reveal>
-        <h2>Relevant Coursework</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:var(--space-2);">
-          {["Multivariable Calculus", "Linear Algebra", "Diff Eq I–II (Honors)", "Mechanics I–II", "Thermodynamics", "Dynamics", "Classical Mechanics", "E&M I–II", "Modern Physics", "Quantum Physics I–II", "Experimental Physics I & III", "Electronics & Instrumentation", "Computational Fundamentals", "CAD", "Statistical Methods", "Technical Writing"].map(c => (
-            <span class="chip" style="color:var(--text-secondary); background:var(--bg-surface-alt); border:1px solid var(--border);">{c}</span>
-          ))}
-        </div>
-      </div>
-
-      <div class="reveal" data-reveal style="margin-top:var(--space-12); text-align:center;">
-        <div style="display:flex; gap:var(--space-4); justify-content:center; flex-wrap:wrap;">
-          <a href="/cv/resume.pdf" class="btn btn--primary" download>↓ Resume (1 page)</a>
-          <a href="/cv/cv-full.pdf" class="btn btn--outline" download>↓ Full CV</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  </header>
 </BaseLayout>

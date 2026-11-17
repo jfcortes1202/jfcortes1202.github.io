@@ -1,130 +1,133 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
 ---
 
-<BaseLayout title="Bat-Wing FSI Simulation" description="Computational fluid-structure interaction simulation of bat flight with membrane perforations." currentPage="/projects">
-  <section style="padding:calc(var(--nav-height) + var(--space-12)) 0 var(--space-8); background:var(--bg-primary);">
-    <div class="container">
-      <a href="/#projects" style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.1em;">← Back to projects</a>
-      <span class="section-label" style="margin-top:var(--space-6);">Flagship Research Project</span>
-      <h1 style="font-size:var(--text-4xl); margin-top:var(--space-2);">Computational FSI Simulation of Bat Flight</h1>
-      <p style="font-size:var(--text-lg); color:var(--text-secondary); max-width:640px; margin-top:var(--space-4);">
-        Investigating how membrane perforations affect aerodynamic performance through
-        fluid-structure interaction modeling at UTSI.
-      </p>
-    </div>
-  </section>
+<BaseLayout title="Computational FSI Simulation of Bat Flight" description="Fluid-structure interaction simulation of bat flight with membrane perforations, at the University of Tennessee Space Institute.">
+  <ProjectHeader
+    kicker="Primary research · University of Tennessee Space Institute"
+    title="Computational FSI simulation of bat flight"
+    lead="How wing-membrane perforations change aerodynamic performance, and how a bat's motion can adapt to them, simulated with fluid-structure interaction."
+    backHref="/#research"
+    backLabel="← Back to research"
+    facts={[
+      { k: 'Role', v: 'Research intern — extended and validated an existing FSI codebase' },
+      { k: 'Advisor', v: 'Dr. Esteban Cisneros-Garibay, UTSI' },
+      { k: 'Duration', v: 'June 2026 – present (remote during the semester)' },
+      { k: 'Stack', v: 'Firedrake, PETSc, Python, Gmsh, VisIt, Slurm/HPC, Git' },
+    ]}
+  />
 
-  <section style="padding:0 0 var(--space-8);">
-    <div class="container--wide">
-      <img src="/images/placeholder.png" alt="Bat-wing FSI flow field visualization" style="width:100%; height:auto; border-radius:var(--radius-md); object-fit:cover; max-height:500px; border:1px solid var(--border);" />
-    </div>
-  </section>
+  <section class="section">
+    <div class="container prose">
+      <MediaPlaceholder kind="Video / GIF" label="Hero simulation — 3D flapping bat wing with membrane perforations" ratio="16 / 9" />
 
-  <section class="section" style="padding-top:0;">
-    <div class="container">
-      <!-- At a Glance -->
-      <div class="card card--featured reveal" data-reveal style="margin-bottom:var(--space-10);">
-        <h3 style="margin-top:0; font-size:var(--text-base); color:var(--accent);">At a Glance</h3>
-        <p style="margin-bottom:var(--space-2);"><strong>Role:</strong> Research Intern · Extended and validated an existing FSI codebase</p>
-        <p style="margin-bottom:var(--space-2);"><strong>Advisor:</strong> Dr. Esteban Cisneros-Garibay, UTSI</p>
-        <p style="margin-bottom:var(--space-2);"><strong>Duration:</strong> June 2026 – present</p>
-        <p style="margin-bottom:0;"><strong>Stack:</strong> Firedrake, PETSc, Python, Gmsh, VisIt, Slurm/HPC, Git</p>
-      </div>
-
-      <div class="reveal" data-reveal>
-        <h2>Problem Statement</h2>
+      <div data-reveal>
+        <h2>Why injured bat flight</h2>
         <p>
-          Bat wings are thin, flexible membranes that frequently sustain tears and perforations
-          from encounters with vegetation, predators, or disease (such as white-nose syndrome).
-          Despite these injuries, bats often continue flying — suggesting their flight mechanics
-          are somewhat tolerant to membrane damage.
+          Bats are the only mammals capable of powered flight. Their wings are thin membranes,
+          and membrane damage — tears and perforations — is common in wild populations, caused
+          by injuries or by diseases. Despite that, little is known about how bats fly with
+          damaged wings.
         </p>
         <p>
-          Understanding exactly how perforations affect lift, drag, and energy expenditure
-          requires high-fidelity computational models that couple the fluid flow with the
-          structural response of the membrane — a fluid-structure interaction (FSI) problem.
+          The question has two halves. First, how do perforations of different sizes and
+          locations affect aerodynamic performance? Second, how do the motion patterns a bat
+          prefers reduce or mitigate that damage? Understanding how bats adapt their motion
+          could inspire resilient, bio-inspired flight systems.
         </p>
       </div>
 
-      <div class="reveal" data-reveal>
-        <h2>Methodology</h2>
-        <p>
-          The simulation framework uses the finite element method via <strong>Firedrake</strong>
-          (built on <strong>PETSc</strong>) for spatial discretization. The approach evolved through several stages:
-        </p>
+      <div data-reveal>
+        <h2>What I did</h2>
+        <ul>
+          <li>Extended and validated an existing FSI codebase, progressing from a 2D flow model with a 1D filament to 3D flapping bat-wing models with membrane perforations</li>
+          <li>Derived mathematical formulations and implemented them in the code</li>
+          <li>Ran parametric studies</li>
+          <li>Ran simulations on an HPC cluster</li>
+          <li>Debugged mesh inversion in deforming geometries</li>
+          <li>Fixed a one-sided traction integral to a two-sided formulation</li>
+          <li>Implemented a Gaussian envelope for tip-oscillation suppression</li>
+          <li>Validated the solver against the Blasius flat-plate analytical solution</li>
+          <li>Integrated an energy-expenditure model</li>
+          <li>Extracted the wing boundary from a bat photograph for anatomically faithful meshes</li>
+        </ul>
+      </div>
 
-        <h3>2D Model → 3D Extension</h3>
+      <div data-reveal>
+        <h2>Methods</h2>
+        <h3>From 2D to 3D</h3>
         <p>
-          Initial work used a 2D flow field coupled with a 1D elastic filament to understand
-          the basic coupling mechanics. This was then extended to 3D flapping bat-wing
+          The framework uses the finite element method through Firedrake, built on PETSc.
+          Early work used a 2D flow field coupled with a 1D elastic filament to understand the
+          coupling mechanics; from there the model was extended to 3D flapping bat-wing
           geometries with membrane perforations.
         </p>
 
-        <h3>Mesh Generation</h3>
+        <h3>Mesh generation</h3>
         <p>
-          Wing geometries are meshed in <strong>Gmsh</strong>. To create anatomically
-          accurate models, I extracted wing-boundary coordinates directly from a bat photograph
-          and used them to construct the computational mesh.
+          Wing geometries are meshed in Gmsh. To make the models anatomically faithful, I
+          extracted the wing-boundary coordinates directly from a bat photograph and used
+          them to construct the computational mesh.
         </p>
-        <img src="/images/placeholder.png" alt="Mesh visualization — wing geometry" style="width:100%; height:auto; border-radius:var(--radius-md); margin:var(--space-6) 0; max-height:400px; object-fit:cover; border:1px solid var(--border);" />
+        <MediaPlaceholder kind="Figure" label="Mesh — wing geometry extracted from photograph" ratio="16 / 9" />
 
-        <h3>Numerical Methods</h3>
+        <h3>Numerics</h3>
         <p>
-          The linear systems are solved using Krylov subspace methods (GMRES) with
-          preconditioning, including algebraic multigrid where appropriate. Key numerical fixes:
+          Linear systems are solved with Krylov subspace methods (GMRES) and preconditioning,
+          including algebraic multigrid where appropriate. Along the way I fixed a one-sided
+          traction integral to a two-sided formulation for correct force coupling, added a
+          Gaussian envelope to suppress non-physical oscillations at the wing tip, and
+          debugged mesh inversion during large membrane deformations.
         </p>
-        <ul style="padding-left:var(--space-5); color:var(--text-secondary); line-height:1.8;">
-          <li>Fixed a one-sided traction integral to a two-sided formulation for correct force coupling</li>
-          <li>Added a Gaussian envelope to suppress non-physical oscillations at wing tips</li>
-          <li>Debugged mesh inversion during large membrane deformations</li>
-        </ul>
 
         <h3>Validation</h3>
         <p>
-          The solver was validated against the <strong>Blasius flat-plate solution</strong> —
-          confirming velocity profiles and skin friction matched theory within acceptable tolerances.
+          The solver was validated against the Blasius flat-plate solution, comparing
+          computed velocity profiles with theory.
         </p>
-        <img src="/images/placeholder.png" alt="Validation plot — computed vs. Blasius" style="width:100%; height:auto; border-radius:var(--radius-md); margin:var(--space-6) 0; max-height:400px; object-fit:cover; border:1px solid var(--border);" />
-      </div>
+        <MediaPlaceholder kind="Figure" label="Validation plot — computed vs. Blasius flat-plate solution" ratio="16 / 9" />
 
-      <div class="reveal" data-reveal>
-        <h2>Energy-Expenditure Model</h2>
+        <h3>Energy expenditure</h3>
         <p>
-          Beyond the fluid-structure coupling, I integrated an energy-expenditure model
-          that accounts for flow temperature, thermal balance, and mechanical power output.
+          Beyond the fluid-structure coupling, I integrated an energy-expenditure model so
+          that the cost of flight can be compared across wing conditions and motion patterns.
         </p>
       </div>
 
-      <div class="reveal" data-reveal>
-        <h2>Current &amp; Future Work</h2>
-        <ul style="padding-left:var(--space-5); color:var(--text-secondary); line-height:1.8;">
-          <li><strong>Two-way FSI coupling:</strong> Full bidirectional feedback between fluid forces and membrane deformation</li>
-          <li><strong>Leaky-filament conditions:</strong> Modeling flow through perforations with varying sizes and locations</li>
-          <li><strong>Parametric studies:</strong> Systematic investigation of perforation geometry vs. aerodynamic degradation</li>
+      <div data-reveal>
+        <h2>Current work</h2>
+        <p>
+          Implementing the elastic side of two-way FSI coupling and validating the approach.
+        </p>
+      </div>
+
+      <div data-reveal>
+        <h2>Simulation gallery</h2>
+        <p class="text-secondary">Videos, plots and the presentation will go here as they're ready.</p>
+        <div class="gallery">
+          <MediaPlaceholder kind="Video" label="Flow field around the flapping wing" />
+          <MediaPlaceholder kind="Figure" label="Pressure contours" />
+          <MediaPlaceholder kind="Figure" label="Mesh detail at a perforation" />
+        </div>
+        <div style="margin-top:var(--space-6);">
+          <a href="/cv/bat-flight-presentation.pdf" class="btn btn--outline" download>Download presentation (PDF) ↓</a>
+        </div>
+      </div>
+
+      <div data-reveal>
+        <h2>Tools</h2>
+        <ul class="chips">
+          {['Firedrake', 'PETSc', 'Python', 'Finite element method', 'Gmsh', 'VisIt', 'Slurm / HPC', 'Git / GitHub', 'GMRES / Krylov', 'LaTeX / Beamer'].map((t) => (
+            <li><span class="chip">{t}</span></li>
+          ))}
         </ul>
       </div>
 
-      <div class="reveal" data-reveal style="margin-top:var(--space-10);">
-        <h2>Simulation Gallery</h2>
-        <div class="project-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); margin-top:var(--space-4);">
-          <img src="/images/placeholder.png" alt="Flow field visualization" style="width:100%; height:180px; object-fit:cover; border-radius:var(--radius-md); border:1px solid var(--border);" />
-          <img src="/images/placeholder.png" alt="Mesh detail" style="width:100%; height:180px; object-fit:cover; border-radius:var(--radius-md); border:1px solid var(--border);" />
-          <img src="/images/placeholder.png" alt="Pressure contours" style="width:100%; height:180px; object-fit:cover; border-radius:var(--radius-md); border:1px solid var(--border);" />
-        </div>
-      </div>
-
-      <div class="reveal" data-reveal style="margin-top:var(--space-10);">
-        <h2>Tools &amp; Technologies</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:var(--space-2); margin-top:var(--space-3);">
-          {["Firedrake", "PETSc", "Python", "Finite Element Method", "Gmsh", "VisIt", "Slurm", "HPC", "Git / GitHub", "GMRES / Krylov", "LaTeX / Beamer"].map(t => (
-            <span class="chip">{t}</span>
-          ))}
-        </div>
-      </div>
-
-      <div style="margin-top:var(--space-12);">
-        <a href="/#projects" class="btn btn--outline">← All Projects</a>
+      <div class="page-foot">
+        <a href="/#research" class="btn btn--outline">← Back to research</a>
+        <a href="/#projects" class="btn btn--outline">All projects</a>
       </div>
     </div>
   </section>

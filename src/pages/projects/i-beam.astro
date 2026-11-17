@@ -1,61 +1,61 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
 ---
 
-<BaseLayout title="I-Beam Optimization" description="Stress analysis and Python optimization of an asymmetric wooden I-beam." currentPage="/projects">
-  <section style="padding:calc(var(--nav-height) + var(--space-12)) 0 var(--space-8);">
-    <div class="container">
-      <a href="/#projects" style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.1em;">← Back to projects</a>
-      <span class="section-label" style="margin-top:var(--space-6);">Course Project · ENES220</span>
-      <h1 style="margin-top:var(--space-2);">Wooden I-Beam Design &amp; Optimization</h1>
-      <p style="font-size:var(--text-lg); color:var(--text-secondary); max-width:640px; margin-top:var(--space-4);">
-        Derived failure-load equations and built a Python optimizer to balance three
-        failure modes for an asymmetric pine I-beam.
-      </p>
-    </div>
-  </section>
+<BaseLayout title="Wooden I-Beam Optimization" description="Stress analysis and optimization of an asymmetric wooden I-beam for ENES220, Mechanics of Materials.">
+  <ProjectHeader
+    kicker="Course project · ENES220 — Mechanics of Materials"
+    title="Wooden I-beam design and optimization"
+    lead="Derived failure-load equations for an asymmetric pine I-beam, then worked with a Python optimizer to balance three failure modes within 20% of each other."
+    facts={[
+      { k: 'Course', v: 'ENES220 — Mechanics of Materials' },
+      { k: 'Team', v: '6 members' },
+      { k: 'My role', v: 'Derived the governing equations; worked with a Python optimizer' },
+      { k: 'Result', v: 'Three failure modes balanced within 20%' },
+    ]}
+  />
 
-  <section class="section" style="padding-top:0;">
-    <div class="container">
-      <div class="card card--featured reveal" data-reveal style="margin-bottom:var(--space-10);">
-        <p style="margin-bottom:var(--space-2);"><strong>Course:</strong> ENES220 — Mechanics of Materials</p>
-        <p style="margin-bottom:var(--space-2);"><strong>Team:</strong> 6 members</p>
-        <p style="margin-bottom:0;"><strong>My role:</strong> Derived the governing equations and wrote the optimization code</p>
-      </div>
+  <section class="section">
+    <div class="container prose">
+      <MediaPlaceholder kind="Photo / Figure" label="I-beam cross-section or the built beam under test" ratio="16 / 9" />
 
-      <img src="/images/placeholder.png" alt="I-beam design render" style="width:100%; height:auto; border-radius:var(--radius-md); margin-bottom:var(--space-8); max-height:400px; object-fit:cover; border:1px solid var(--border);" />
-
-      <div class="reveal" data-reveal>
+      <div data-reveal>
         <h2>Problem</h2>
         <p>
           Design an I-beam cross-section from pine lumber and wood glue that maximizes
-          load-carrying capacity. The beam can fail through three mechanisms: flexural failure,
-          wood shear failure, and glue-joint shear failure.
+          load-carrying capacity. The beam can fail three ways: flexural failure, wood shear
+          failure, and glue-joint shear failure.
         </p>
 
         <h2>Approach</h2>
         <p>
-          I derived the stress and failure-load equations for all three failure modes from
-          first principles. The key insight: the optimal beam should have all three failure
-          loads as close to each other as possible.
+          I derived the stress and failure-load equations for all three modes from first
+          principles. The key idea: the best beam has all three failure loads as close to
+          each other as possible, so no single mode is over-designed.
         </p>
         <p>
-          I wrote a <strong>Python optimizer</strong> that parameterized the cross-section
-          dimensions and searched for a geometry where the three failure loads balanced
-          within 20% of each other. The team then built the beam and tested it to failure.
+          I then worked with a Python optimizer that parameterized the cross-section
+          dimensions and searched for a geometry where the three failure loads fell within
+          20% of each other. The team built the beam and tested it to failure.
         </p>
 
-        <h2>Tools</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:var(--space-2); margin-top:var(--space-3);">
-          <span class="chip">Python</span>
-          <span class="chip">Mechanics of Materials</span>
-          <span class="chip">Structural Analysis</span>
-          <span class="chip">Lab Testing</span>
+        <h2>Report and results</h2>
+        <p class="text-secondary">Report, derivations and test data will be added here.</p>
+        <div class="gallery">
+          <MediaPlaceholder kind="PDF" label="Project report" />
+          <MediaPlaceholder kind="Figure" label="Failure-load balance plot" />
         </div>
+
+        <h2>Tools</h2>
+        <ul class="chips">
+          {['Python', 'Mechanics of Materials', 'Structural analysis', 'Lab testing'].map((t) => <li><span class="chip">{t}</span></li>)}
+        </ul>
       </div>
 
-      <div style="margin-top:var(--space-12);">
-        <a href="/#projects" class="btn btn--outline">← All Projects</a>
+      <div class="page-foot">
+        <a href="/#projects" class="btn btn--outline">← All projects</a>
       </div>
     </div>
   </section>

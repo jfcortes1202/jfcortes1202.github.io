@@ -1,0 +1,26 @@
+---
+interface Fact { k: string; v: string }
+interface Props {
+  kicker: string;
+  title: string;
+  lead: string;
+  facts: Fact[];
+  backHref?: string;
+  backLabel?: string;
+}
+const { kicker, title, lead, facts, backHref = '/#projects', backLabel = '← Back to projects' } = Astro.props;
+---
+
+<header class="page-head">
+  <div class="container">
+    <a href={backHref} class="page-head__back">{backLabel}</a>
+    <p class="page-head__kicker">{kicker}</p>
+    <h1>{title}</h1>
+    <p class="lead">{lead}</p>
+    <ul class="facts">
+      {facts.map((fct) => (
+        <li><span class="k">{fct.k}</span><span class="v">{fct.v}</span></li>
+      ))}
+    </ul>
+  </div>
+</header>

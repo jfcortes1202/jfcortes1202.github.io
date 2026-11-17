@@ -1,0 +1,24 @@
+---
+/**
+ * Labeled placeholder for media Juan has not supplied yet.
+ * `kind` is what goes here (Photo, Video, Figure, PDF…); `label` says which one.
+ */
+interface Props {
+  kind: string;
+  label: string;
+  ratio?: string; // CSS aspect-ratio, e.g. "16 / 9"
+  class?: string;
+}
+const { kind, label, ratio = '16 / 10', class: className = '' } = Astro.props;
+---
+
+<div class={`placeholder ${className}`} style={`aspect-ratio:${ratio};`} role="img" aria-label={`${kind} placeholder: ${label}`}>
+  <span class="placeholder__corner"></span>
+  <span class="placeholder__corner"></span>
+  <span class="placeholder__corner"></span>
+  <span class="placeholder__corner"></span>
+  <div class="placeholder__body">
+    <div class="placeholder__kind">{kind}</div>
+    <p class="placeholder__label">{label}</p>
+  </div>
+</div>
