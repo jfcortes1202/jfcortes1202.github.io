@@ -85,7 +85,7 @@ const awards = [
       <figure class="hero__figure">
         <HeroIllustration />
         <figcaption class="hero__figcaption">
-          <span>Fig. 01 — single-spool gas turbine, section through axis</span>
+          <span>Fig. 01 — gas turbine, section view · SolidWorks model</span>
           <span>not to scale</span>
         </figcaption>
       </figure>
@@ -287,9 +287,9 @@ const awards = [
             <ul>{s.items.map((i) => <li><span>{i}</span></li>)}</ul>
           </div>
         ))}
-        <div class="skill-card">
+        <div class="skill-card skill-card--stacked">
           <h3>Languages</h3>
-          <ul>{languages.map((l) => <li><span>{l.name}</span><span>{l.level}</span></li>)}</ul>
+          <ul>{languages.map((l) => <li><span>{l.name}</span><span class="skill-card__note">{l.level}</span></li>)}</ul>
         </div>
       </div>
     </div>
@@ -322,7 +322,7 @@ const awards = [
         <h3 style="margin-top:var(--space-10);">Scholarships &amp; awards</h3>
         <ul class="awards">
           {awards.map((a) => (
-            <li><span>{a.name}</span>{a.note && <span>{a.note}</span>}</li>
+            <li><span>{a.name}</span>{a.note && <span class="awards__note">{a.note}</span>}</li>
           ))}
         </ul>
       </div>
@@ -346,7 +346,7 @@ const awards = [
           <li><span class="k">Email</span><span class="v"><a href="mailto:juanfelipecortes1202@gmail.com">juanfelipecortes1202@gmail.com</a></span></li>
           <li><span class="k">LinkedIn</span><span class="v"><a href="https://linkedin.com/in/jcortes2" target="_blank" rel="noopener">linkedin.com/in/jcortes2</a></span></li>
           <li><span class="k">GitHub</span><span class="v"><a href="https://github.com/jfcortes1202" target="_blank" rel="noopener">github.com/jfcortes1202</a></span></li>
-          <li><span class="k">Institution</span><span class="v">University of Maryland, College Park<small>A. James Clark School of Engineering</small></span></li>
+          <li><span class="k">Institution</span><span class="v">University of Maryland, College Park<small>A. James Clark School of Engineering</small><small>College of Computer, Mathematical, and Natural Sciences</small></span></li>
         </ul>
       </div>
     </div>

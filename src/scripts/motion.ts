@@ -62,15 +62,19 @@ function heroSequence() {
   ill.style.opacity = '1';
 
   const tl = createTimeline({ defaults: { ease: 'inOutSine' } });
+  // Only add a step when its group has members (the drawing's groups vary).
+  const draw = (els: SVGElement[], params: Record<string, unknown>, at: number) => {
+    if (els.length) tl.add(svg.createDrawable(els), { draw: '0 1', ...params }, at);
+  };
 
   if (axisClip) tl.add(axisClip, { width: [0, width], duration: 800, ease: 'inOutQuad' }, 0);
-  tl.add(svg.createDrawable(profile), { draw: '0 1', duration: 1100, delay: stagger(120) }, 250)
-    .add(svg.createDrawable(blades), { draw: '0 1', duration: 420, delay: stagger(9), ease: 'outQuad' }, 700)
-    .add(svg.createDrawable(internals), { draw: '0 1', duration: 700, delay: stagger(40) }, 1000)
-    .add(svg.createDrawable(outline), { draw: '0 1', duration: 900 }, 1150);
-  if (flowClip) tl.add(flowClip, { width: [0, width], duration: 1000, ease: 'outSine' }, 1500);
-  tl.add(svg.createDrawable(dims), { draw: '0 1', duration: 500, delay: stagger(40), ease: 'outQuad' }, 1700)
-    .add(labels, { opacity: 1, translateY: 0, duration: 450, delay: stagger(40), ease: 'outQuad' }, 1950);
+  draw(profile, { duration: 900, delay: stagger(6) }, 250);
+  draw(internals, { duration: 600, delay: stagger(3) }, 800);
+  draw(blades, { duration: 380, delay: stagger(5), ease: 'outQuad' }, 1100);
+  draw(outline, { duration: 900 }, 1150);
+  if (flowClip) tl.add(flowClip, { width: [0, width], duration: 1000, ease: 'outSine' }, 1600);
+  draw(dims, { duration: 500, delay: stagger(40), ease: 'outQuad' }, 1800);
+  if (labels.length) tl.add(labels, { opacity: 1, translateY: 0, duration: 450, delay: stagger(40), ease: 'outQuad' }, 2050);
 
   // Copy enters in parallel with the drawing, not after it.
   tl.add(copy, { opacity: 1, translateY: 0, duration: 650, delay: stagger(90), ease: 'outCubic' }, 300);

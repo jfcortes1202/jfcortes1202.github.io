@@ -708,7 +708,9 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   justify-content: space-between;
   gap: var(--space-3);
 }
-.skill-card li span:last-child { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); }
+.skill-card__note { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); }
+.skill-card--stacked li { flex-direction: column; gap: 0; margin-bottom: var(--space-3); }
+.skill-card--stacked li span:first-child { color: var(--text-primary); }
 
 /* ---------- Education ---------- */
 .edu-head { display: flex; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; align-items: baseline; }
@@ -738,7 +740,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   margin: 0;
   font-size: var(--text-base);
 }
-.awards li span:last-child { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); white-space: nowrap; }
+.awards__note { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); white-space: nowrap; }
 
 /* ---------- Contact ---------- */
 .contact-grid {

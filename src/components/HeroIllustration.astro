@@ -1,118 +1,76 @@
 ---
 /**
- * Original technical illustration: section through the axis of a generic
- * single-spool axial gas turbine. Upper half is the section (blades, combustor,
- * shaft, bearings); lower half is the outline only — the usual drawing convention.
+ * Hero illustration: section view of Juan's gas-turbine SolidWorks model,
+ * traced from a screenshot into stroke polylines (qa/trace-section.cjs →
+ * src/data/engine-section.json) and rendered in the site's drawing style.
  *
- * Geometry is generated here at build time so blade rows, profiles and
- * dimension lines are exact. Every stroke carries a `data-ill` role that the
- * motion script uses to trace the drawing in on load. With JS off or reduced
- * motion, the finished drawing is what renders.
- *
+ * Every stroke carries a `data-ill` role the motion script uses to trace the
+ * drawing in on load. With JS off or reduced motion the finished drawing renders.
  * Drawn for the always-dark hero: colours are fixed slate/sky values.
  */
+import section from '../data/engine-section.json';
 
 const W = 740;
 const H = 440;
-const CY = 230; // engine axis
 
-type Pt = [number, number]; // [x, radius]
-
-// Outer casing radius along x (upper half, section side)
-const casing: Pt[] = [
-  [60, 150], [78, 153], [120, 150], [190, 146], [240, 134], [300, 118], [330, 110],
-  [346, 110], [358, 126], [470, 126], [484, 112], [540, 108], [584, 104],
-  [604, 102], [640, 92], [690, 72],
-];
-// Hub / inner flowpath radius along x
-const hub: Pt[] = [
-  [92, 0], [110, 18], [132, 32], [190, 44], [240, 52], [300, 60], [330, 64],
-  [346, 64], [358, 52], [470, 52], [484, 60], [540, 58], [584, 56],
-  [604, 54], [622, 50], [660, 30], [700, 0],
-];
-
-const interp = (pts: Pt[], x: number): number => {
-  if (x <= pts[0][0]) return pts[0][1];
-  for (let i = 1; i < pts.length; i++) {
-    const [x0, r0] = pts[i - 1];
-    const [x1, r1] = pts[i];
-    if (x <= x1) return r0 + ((x - x0) / (x1 - x0)) * (r1 - r0);
-  }
-  return pts[pts.length - 1][1];
-};
-
+// Fit the traced drawing (section.width × section.height) into the viewBox.
+const S = 640 / section.width;
+const OX = 50;
+const OY = (H - section.height * S) / 2;
 const f = (n: number) => Math.round(n * 10) / 10;
-const polyline = (pts: Pt[], sign: 1 | -1) =>
-  pts.map(([x, r], i) => `${i ? 'L' : 'M'}${f(x)} ${f(CY - sign * r)}`).join(' ');
+const tx = (x: number) => f(OX + x * S);
+const ty = (y: number) => f(OY + y * S);
 
-// ---- Blades ------------------------------------------------------------
-interface Blade { x: number; lean: number; w: number; kind: 'rotor' | 'stator'; clear?: number }
-const blades: Blade[] = [];
+// Engine axis (vertical centre of the inlet bell) in source coordinates.
+const AXIS_SRC = 112;
+const CY = ty(AXIS_SRC);
 
-// Fan (one wide rotor + outlet guide vane)
-blades.push({ x: 160, lean: 7, w: 3, kind: 'rotor' });
-blades.push({ x: 184, lean: -5, w: 1.6, kind: 'stator' });
+type Line = number[][];
+const lines = section.lines as Line[];
+const length = (l: Line) => l.reduce((a, p, i) => (i ? a + Math.hypot(p[0] - l[i - 1][0], p[1] - l[i - 1][1]) : 0), 0);
+const bbox = (l: Line) => {
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (const [x, y] of l) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+  return { x0, y0, x1, y1 };
+};
+const inside = (b: ReturnType<typeof bbox>, r: number[]) => b.x0 >= r[0] && b.x1 <= r[2] && b.y0 >= r[1] && b.y1 <= r[3];
 
-// Compressor: 8 stages, rotor + stator each
-for (let i = 0; i < 8; i++) {
-  const x = 200 + i * 16;
-  blades.push({ x, lean: 3.5, w: 2, kind: 'rotor' });
-  blades.push({ x: x + 8, lean: -3.5, w: 1.3, kind: 'stator' });
-}
+// Blade regions in source coordinates (compressor stages, turbine stages).
+const BLADE_REGIONS = [[145, 50, 262, 150], [318, 38, 412, 172]];
 
-// Turbine: nozzle guide vane + 2 stages
-blades.push({ x: 494, lean: -6, w: 1.8, kind: 'stator' });
-blades.push({ x: 510, lean: 6, w: 2.6, kind: 'rotor' });
-blades.push({ x: 530, lean: -6, w: 1.8, kind: 'stator' });
-blades.push({ x: 546, lean: 6, w: 2.6, kind: 'rotor' });
-blades.push({ x: 566, lean: -5, w: 1.6, kind: 'stator' });
-
-const bladePath = (b: Blade) => {
-  const clear = b.clear ?? 3.5;
-  const rh = interp(hub, b.x) + 1;
-  const rt = interp(casing, b.x) - clear;
-  return `M${f(b.x)} ${f(CY - rh)} L${f(b.x + b.lean)} ${f(CY - rt)}`;
+type Role = 'profile' | 'internal' | 'blade';
+const classify = (l: Line): Role => {
+  const len = length(l);
+  const b = bbox(l);
+  if (len < 32 && BLADE_REGIONS.some((r) => inside(b, r))) return 'blade';
+  return len >= 70 ? 'profile' : 'internal';
 };
 
-// ---- Combustor --------------------------------------------------------
-const comb = { x0: 364, x1: 462, rIn: 64, rOut: 116 };
-const combY0 = CY - comb.rOut;
-const combY1 = CY - comb.rIn;
-const combHoles = [386, 406, 426, 446];
+const d = (l: Line) => l.map(([x, y], i) => `${i ? 'L' : 'M'}${tx(x)} ${ty(y)}`).join(' ');
+const strokes = lines.map((l) => ({ d: d(l), role: classify(l) }));
 
-// ---- Shaft & bearings -------------------------------------------------
-const shaft = { x0: 134, x1: 616, r: 15 };
-const bearings = [150, 600];
-
-// ---- Dimension helpers ------------------------------------------------
-const tick = (x: number, y: number) => `M${f(x - 3)} ${f(y + 3)} L${f(x + 3)} ${f(y - 3)}`; // oblique
-const hdim = (x1: number, x2: number, y: number) =>
-  `M${f(x1)} ${f(y)} L${f(x2)} ${f(y)} ${tick(x1, y)} ${tick(x2, y)}`;
+// ---- Dimensions & labels (source x-ranges of the engine sections) ------
+const tick = (x: number, y: number) => `M${f(x - 3)} ${f(y + 3)} L${f(x + 3)} ${f(y - 3)}`;
+const hdim = (x1: number, x2: number, y: number) => `M${f(x1)} ${f(y)} L${f(x2)} ${f(y)} ${tick(x1, y)} ${tick(x2, y)}`;
 const ext = (x: number, y1: number, y2: number) => `M${f(x)} ${f(y1)} L${f(x)} ${f(y2)}`;
 
-const topDimY = CY - 182;
+const topDimY = ty(-16);
 const sections = [
-  { label: 'fan', x1: 150, x2: 192 },
-  { label: 'compressor', x1: 198, x2: 334 },
-  { label: 'combustor', x1: 350, x2: 474 },
-  { label: 'turbine', x1: 488, x2: 586 },
-  { label: 'nozzle', x1: 600, x2: 690 },
+  { label: 'inlet', x1: 0, x2: 104, top: 10 },
+  { label: 'compressor', x1: 120, x2: 262, top: 44 },
+  { label: 'combustor · turbine', x1: 288, x2: 416, top: 4 },
+  { label: 'exhaust', x1: 418, x2: 532, top: 56 },
 ];
+const botDimY = ty(section.height + 18);
+const rDimX = OX - 18;
+const inletTop = ty(14);
 
-const botDimY = CY + 182;
-const stations = [
-  { n: '2', x: 150 }, { n: '3', x: 340 }, { n: '4', x: 486 }, { n: '5', x: 588 }, { n: '8', x: 690 },
-];
-
-// Radius dimension at inlet
-const rDimX = 36;
-
-// ---- Streamlines ------------------------------------------------------
+// Streamlines: into the bellmouth; out of the angled exhaust face.
 const flows = [
-  `M0 ${f(CY - 122)} C 24 ${f(CY - 122)}, 42 ${f(CY - 116)}, 64 ${f(CY - 112)}`,
-  `M0 ${f(CY - 84)} C 26 ${f(CY - 84)}, 46 ${f(CY - 80)}, 70 ${f(CY - 76)}`,
-  `M690 ${f(CY - 50)} C 708 ${f(CY - 46)}, 724 ${f(CY - 40)}, 740 ${f(CY - 36)}`,
-  `M690 ${f(CY - 18)} C 708 ${f(CY - 16)}, 724 ${f(CY - 12)}, 740 ${f(CY - 10)}`,
+  `M0 ${ty(70)} C ${tx(-30)} ${ty(70)}, ${tx(-18)} ${ty(80)}, ${tx(2)} ${ty(86)}`,
+  `M0 ${ty(154)} C ${tx(-30)} ${ty(154)}, ${tx(-18)} ${ty(144)}, ${tx(2)} ${ty(138)}`,
+  `M${tx(528)} ${ty(72)} L${tx(566)} ${ty(52)}`,
+  `M${tx(531)} ${ty(94)} L${tx(569)} ${ty(74)}`,
 ];
 ---
 
@@ -126,107 +84,56 @@ const flows = [
   stroke-linecap="round"
   stroke-linejoin="round"
 >
-  <title id="hero-ill-title">Section drawing of a single-spool axial gas turbine: fan, eight-stage compressor, annular combustor, two-stage turbine and exhaust nozzle.</title>
+  <title id="hero-ill-title">Section view of a gas turbine engine CAD model: bellmouth inlet, multi-stage axial compressor, combustor with turbine stages, and an angled exhaust.</title>
 
   <defs>
     <clipPath id="clip-axis"><rect data-ill="axis-clip" x="0" y="0" width="0" height={H} /></clipPath>
     <clipPath id="clip-flow"><rect data-ill="flow-clip" x="0" y="0" width="0" height={H} /></clipPath>
-    <radialGradient id="flame">
-      <stop offset="0" stop-color="#FBBF24" stop-opacity="0.45" />
-      <stop offset="0.55" stop-color="#F59E0B" stop-opacity="0.16" />
-      <stop offset="1" stop-color="#F59E0B" stop-opacity="0" />
-    </radialGradient>
   </defs>
 
   <!-- Centreline (dash-dot) -->
   <g clip-path="url(#clip-axis)">
-    <path d={`M26 ${CY} L714 ${CY}`} stroke="#64748B" stroke-width="1" stroke-dasharray="16 5 2 5" />
+    <path d={`M${OX - 24} ${CY} L${tx(540)} ${CY}`} stroke="#64748B" stroke-width="1" stroke-dasharray="16 5 2 5" />
   </g>
 
-  <!-- Lower half: outline only -->
-  <g data-ill-group="outline" stroke="#475569" stroke-width="1.1">
-    <path data-ill="outline" d={polyline(casing, -1)} />
-    <path data-ill="outline" d={polyline(hub, -1)} />
-    <path data-ill="outline" d={`M60 ${f(CY - 150)} L60 ${f(CY + 150)}`} />
-    <path data-ill="outline" d={`M690 ${f(CY - 72)} L690 ${f(CY + 72)}`} />
-  </g>
-
-  <!-- Upper half: section -->
-  <g stroke="#CBD5E1" stroke-width="1.5">
-    <path data-ill="profile" d={polyline(casing, 1)} />
-    <path data-ill="profile" d={polyline(hub, 1)} />
-  </g>
-
-  <!-- Combustor flame tube, injector and dilution holes -->
-  <ellipse data-ill="label" cx="400" cy={f(CY - 90)} rx="44" ry="22" fill="url(#flame)" stroke="none" />
-  <g stroke="#CBD5E1" stroke-width="1.2">
-    <rect data-ill="internal" x={comb.x0} y={combY0} width={comb.x1 - comb.x0} height={combY1 - combY0} rx="7" />
-    <path data-ill="internal" d={`M346 ${f(CY - 90)} L${comb.x0} ${f(CY - 90)}`} />
-    <circle data-ill="internal" cx={comb.x0 + 1} cy={f(CY - 90)} r="3.2" />
+  <!-- Traced section: housings and long profiles, internals, blades -->
+  <g stroke="#CBD5E1" stroke-width="1.25">
+    {strokes.filter((s) => s.role === 'profile').map((s) => <path data-ill="profile" d={s.d} />)}
   </g>
   <g stroke="#94A3B8" stroke-width="1">
-    {combHoles.map((x) => <circle data-ill="internal" cx={x} cy={combY0} r="2" />)}
-    {combHoles.map((x) => <circle data-ill="internal" cx={x + 10} cy={combY1} r="2" />)}
+    {strokes.filter((s) => s.role === 'internal').map((s) => <path data-ill="internal" d={s.d} />)}
   </g>
-
-  <!-- Shaft and bearings -->
-  <g stroke="#94A3B8" stroke-width="1.1">
-    <path data-ill="internal" d={`M${shaft.x0} ${f(CY - shaft.r)} L${shaft.x1} ${f(CY - shaft.r)}`} />
-    <path data-ill="internal" d={`M${shaft.x0} ${f(CY + shaft.r)} L${shaft.x1} ${f(CY + shaft.r)}`} />
-    {bearings.map((x) => (
-      <>
-        <rect data-ill="internal" x={x - 6} y={f(CY - shaft.r - 14)} width="12" height="12" />
-        <path data-ill="internal" d={`M${x - 6} ${f(CY - shaft.r - 14)} L${x + 6} ${f(CY - shaft.r - 2)} M${x + 6} ${f(CY - shaft.r - 14)} L${x - 6} ${f(CY - shaft.r - 2)}`} />
-      </>
-    ))}
-  </g>
-
-  <!-- Blade rows -->
-  <g>
-    {blades.map((b) => (
-      <path
-        data-ill="blade"
-        d={bladePath(b)}
-        stroke={b.kind === 'rotor' ? '#60A5FA' : '#94A3B8'}
-        stroke-width={b.w}
-      />
-    ))}
+  <g stroke="#60A5FA" stroke-width="1.2">
+    {strokes.filter((s) => s.role === 'blade').map((s) => <path data-ill="blade" d={s.d} />)}
   </g>
 
   <!-- Streamlines (dashed, clip-revealed) -->
   <g clip-path="url(#clip-flow)" stroke="#60A5FA" stroke-opacity="0.55" stroke-width="1" stroke-dasharray="5 4">
-    {flows.map((d) => <path d={d} />)}
+    {flows.map((p) => <path d={p} />)}
   </g>
 
-  <!-- Dimensions: section extents (top), overall length and stations (bottom), inlet radius (left) -->
+  <!-- Dimensions -->
   <g stroke="#64748B" stroke-width="1">
     {sections.map((s) => (
       <>
-        <path data-ill="dim" d={ext(s.x1, CY - interp(casing, s.x1) - 8, topDimY + 6)} />
-        <path data-ill="dim" d={ext(s.x2, CY - interp(casing, s.x2) - 8, topDimY + 6)} />
-        <path data-ill="dim" d={hdim(s.x1, s.x2, topDimY)} />
+        <path data-ill="dim" d={ext(tx(s.x1), ty(s.top) - 8, topDimY + 6)} />
+        <path data-ill="dim" d={ext(tx(s.x2), ty(s.top) - 8, topDimY + 6)} />
+        <path data-ill="dim" d={hdim(tx(s.x1), tx(s.x2), topDimY)} />
       </>
     ))}
-    <path data-ill="dim" d={ext(60, CY + 156, botDimY + 6)} />
-    <path data-ill="dim" d={ext(690, CY + 80, botDimY + 6)} />
-    <path data-ill="dim" d={hdim(60, 690, botDimY)} />
-    <path data-ill="dim" d={`M${rDimX} ${CY} L${rDimX} ${f(CY - 150)} ${tick(rDimX, CY)} ${tick(rDimX, CY - 150)}`} />
-    <path data-ill="dim" d={`M${rDimX - 4} ${f(CY - 150)} L58 ${f(CY - 150)}`} />
-    {stations.map((s) => <path data-ill="dim" d={`M${s.x} ${CY - 5} L${s.x} ${CY + 5}`} />)}
+    <path data-ill="dim" d={ext(tx(0), ty(section.height) + 6, botDimY + 6)} />
+    <path data-ill="dim" d={ext(tx(532), ty(section.height) + 6, botDimY + 6)} />
+    <path data-ill="dim" d={hdim(tx(0), tx(532), botDimY)} />
+    <path data-ill="dim" d={`M${rDimX} ${CY} L${rDimX} ${inletTop} ${tick(rDimX, CY)} ${tick(rDimX, inletTop)}`} />
+    <path data-ill="dim" d={`M${rDimX - 4} ${inletTop} L${tx(0) - 4} ${inletTop}`} />
   </g>
 
   <!-- Labels -->
-  <g data-ill-group="labels">
+  <g>
     {sections.map((s) => (
-      <text data-ill="label" x={(s.x1 + s.x2) / 2} y={topDimY - 7} text-anchor="middle">{s.label}</text>
+      <text data-ill="label" x={(tx(s.x1) + tx(s.x2)) / 2} y={topDimY - 7} text-anchor="middle">{s.label}</text>
     ))}
-    <text data-ill="label" x="375" y={botDimY + 16} text-anchor="middle">L</text>
-    <text data-ill="label" x={rDimX - 8} y={CY - 72} text-anchor="end">r</text>
-    {stations.map((s) => (
-      <text data-ill="label" class="ill-caption" x={s.x} y={CY + 20} text-anchor="middle">{s.n}</text>
-    ))}
-    <text data-ill="label" class="ill-caption" x="356" y={f(CY - 134)} text-anchor="end">fuel</text>
-    <text data-ill="label" class="ill-caption" x="150" y={f(CY - shaft.r - 20)} text-anchor="middle">brg</text>
-    <text data-ill="label" class="ill-caption" x="600" y={f(CY - shaft.r - 20)} text-anchor="middle">brg</text>
+    <text data-ill="label" x={(tx(0) + tx(532)) / 2} y={botDimY + 16} text-anchor="middle">L</text>
+    <text data-ill="label" x={rDimX - 8} y={(CY + inletTop) / 2 + 4} text-anchor="end">r</text>
   </g>
 </svg>
