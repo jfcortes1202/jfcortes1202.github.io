@@ -137,7 +137,7 @@ try {
       await page.screenshot({ path: join(OUT, `home-${w}-${theme}-full.png`), fullPage: true });
       report.screenshots.push(`home-${w}-${theme}`);
       if (w === 1280) {
-        for (const [slug, name] of [['bat-wing-fsi', 'research'], ['robotic-arm', 'arm'], ['otv', 'otv'], ['truss', 'truss'], ['phone-stand', 'stand'], ['i-beam', 'ibeam'], ['geothermal', 'geo'], ['cad-coursework', 'coursework']]) {
+        for (const [slug, name] of [['bat-wing-fsi', 'research'], ['robotic-arm', 'arm'], ['otv', 'otv'], ['truss', 'truss'], ['phone-stand', 'stand'], ['i-beam', 'ibeam'], ['geothermal', 'geo'], ['cad-coursework', 'coursework'], ['prosthetic-hand', 'prosthetics']]) {
           await page.goto(BASE + `/projects/${slug}/`, { waitUntil: 'networkidle' });
           const t2 = await page.evaluate(() => document.body.scrollHeight);
           await page.mouse.move(w / 2, h / 2);
@@ -163,7 +163,7 @@ try {
     report.failedRequests = [];
     report.brokenImages = [];
     page.on('response', (r) => { if (r.status() >= 400 && !r.url().endsWith('/404')) report.failedRequests.push(`${r.status()} ${r.url().replace(BASE, '')} (on ${page.url().replace(BASE, '')})`); });
-    for (const path of ['/', '/cv/', '/projects/bat-wing-fsi/', '/projects/robotic-arm/', '/projects/phone-stand/', '/projects/truss/', '/projects/otv/', '/projects/i-beam/', '/projects/geothermal/', '/projects/cad-coursework/']) {
+    for (const path of ['/', '/cv/', '/projects/bat-wing-fsi/', '/projects/robotic-arm/', '/projects/phone-stand/', '/projects/truss/', '/projects/otv/', '/projects/i-beam/', '/projects/geothermal/', '/projects/cad-coursework/', '/projects/prosthetic-hand/']) {
       await page.goto(BASE + path, { waitUntil: 'networkidle' });
       // Force every lazy image and every video poster/metadata to load
       await page.evaluate(async () => {

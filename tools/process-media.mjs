@@ -256,6 +256,10 @@ const jobs = {
     ];
     for (const [name, page, rank] of figs) await image(pdfImage(doc, page, rank), P(`i-beam/${name}.webp`), { canvas: [1200, 900], trim: true });
     await copyPdf(`${BEAM}/Final Design Report - The Beam Team - Team 6 ENES220.pdf`, join(PUB, 'docs/i-beam/final-design-report.pdf'));
+    // Load-test video: any video file Juan drops into the I-beam folder.
+    const testVid = readdirSync(BEAM).find((f) => /\.(mp4|mov|m4v|avi)$/i.test(f));
+    if (testVid) await video(`${BEAM}/${testVid}`, P('i-beam/load-test.mp4'), { width: 720, crf: 26, poster: 0.5 });
+    else log('  (no I-beam test video in media yet)');
   },
 
   async geothermal() {
@@ -267,7 +271,7 @@ const jobs = {
 
   async truss() {
     const pptx = `${TRUSS}/Truss Projects.pptx`;
-    for (const [name, file] of [['team', 'image14.jpg'], ['finished', 'image15.jpg'], ['testing', 'image16.jpg']]) {
+    for (const [name, file] of [['finished', 'image15.jpg'], ['testing', 'image16.jpg']]) { // team photo left out at Juan's request
       await image(zipEntry(pptx, `ppt/media/${file}`), P(`truss/${name}.webp`), { width: 1200 });
     }
     const dwgs = [['assembly', 'Truss Assembly Drawing'], ['horizontal-members', 'Horizontal Members Drawing'], ['vertical-members', 'Vertical Members Drawing'], ['diagonal-members', 'Diagonal Members Drawing'], ['gussets', 'Gussets Drawing']];
@@ -312,8 +316,8 @@ const jobs = {
       dl.push({ key, name: name === 'BOM' ? 'Exploded view and bill of materials' : name === 'Isometric View' ? 'Assembly, four views' : name });
     }
     manifest['@arm-drawings'] = dl;
-    // Motion study animation: the arm sits in the middle third of a wide, mostly empty frame.
-    await video(`${TEAM}/Section 0301 - Team 5.mp4`, P('robotic-arm/animation.mp4'), { crop: '760:712:580:0', width: 760, crf: 24, poster: 0.85 });
+    // Motion study: crop to the arm's full swing (measured across all frames: x 947–1422, y 152–564) plus margin.
+    await video(`${TEAM}/Section 0301 - Team 5.mp4`, P('robotic-arm/animation.mp4'), { crop: '620:560:875:78', width: 620, crf: 22, poster: 0.85 });
   },
 
   async stand() {
@@ -325,6 +329,10 @@ const jobs = {
     await image(pdfImage(doc, 5, 1), P('phone-stand/printed-side.webp'), { width: 900 });
     await image(pdfImage(doc, 6, 0), P('phone-stand/printed-hand-1.webp'), { width: 900 });
     await image(pdfImage(doc, 6, 1), P('phone-stand/printed-hand-2.webp'), { width: 900 });
+    // In use, holding Juan's phone. Only shots where the screen is off or not visible
+    // (the others show a video with people on screen).
+    await image(pdfImage(doc, 9, 1), P('phone-stand/with-phone-landscape.webp'), { width: 900, trim: true });
+    await image(pdfImage(doc, 10, 1), P('phone-stand/with-phone-portrait.webp'), { width: 900 });
   },
 
   /**
@@ -378,6 +386,32 @@ const jobs = {
     await image(pdfImage(hw7, 5), P('coursework/fea/hw7-piston-7075-t6.webp'), { width: 1400 });
     await image(await pdfRender(hw7, 3, 3, [0.07, 0.06, 0.84, 0.545]), P('coursework/fea/hw7-convergence-table.webp'), { width: 1400, trim: true });
     log(`  coursework exports: ${found} found, ${missing} still pending`);
+  },
+
+  /**
+   * Every page of each report/deck as WebP (for in-page reading) plus a 120 px thumbnail.
+   * Lists go to the manifest as '@report-<id>'. The PDFs stay downloadable.
+   */
+  async reports() {
+    const sets = [
+      ['i-beam', `${BEAM}/Final Design Report - The Beam Team - Team 6 ENES220.pdf`, 2.0],
+      ['geothermal', `${GEO}/Deliverables/Final Report - Team 4 ENES232.pdf`, 2.0],
+      ['otv', `${OTV}/Final Design Briefs ENES100.pdf`, 2.0],
+      ['truss', `${TRUSS}/Truss Analysis Group 9 0104.pdf`, 2.0],
+      ['research-deck', `${R}/Juan_Cortes_Final_Research_Presentation.pdf`, 3.0],
+    ];
+    for (const [id, src, scale] of sets) {
+      const doc = openPdf(src);
+      const list = [];
+      for (let i = 1; i <= doc.countPages(); i++) {
+        const png = await pdfRender(doc, i, scale);
+        const n = String(i).padStart(2, '0');
+        const key = await image(png, P(`reports/${id}/p${n}.webp`), { width: id === 'research-deck' ? 1360 : 1100, quality: 78 });
+        const thumb = await image(png, P(`reports/${id}/p${n}-thumb.webp`), { width: 120, quality: 70 });
+        list.push({ key, thumb, page: i });
+      }
+      manifest[`@report-${id}`] = list;
+    }
   },
 
   /** Rebuild width/height/poster entries for everything already in public/ (no re-encoding). */

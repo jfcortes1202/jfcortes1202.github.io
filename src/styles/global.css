@@ -636,6 +636,15 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .timeline-item p { font-size: var(--text-base); color: var(--text-secondary); }
 .timeline-item ul { color: var(--text-secondary); font-size: var(--text-sm); margin-bottom: var(--space-4); }
 .timeline-item .chips { margin-top: var(--space-2); }
+.timeline-item__link {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+/* Portrait clips inside a two-column media pair: keep them compact and right-aligned */
+.media-pair .figure--portrait { max-width: 280px; justify-self: end; }
+@media (max-width: 560px) { .media-pair .figure--portrait { justify-self: start; } }
 
 /* ---------- Project tiles ---------- */
 .project-grid {
@@ -854,6 +863,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .figure__meta { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary); white-space: nowrap; }
 .figure--portrait { max-width: 340px; }
+.figure--compact { max-width: 620px; }
 
 .carousel { margin: var(--space-4) 0 var(--space-8); }
 .carousel__viewport {
@@ -866,6 +876,8 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   overflow: hidden;
 }
 .carousel--paper .carousel__viewport { background: var(--paper); }
+.carousel--tall .carousel__viewport { max-height: none; }
+.carousel__thumb { flex-shrink: 0; }
 .carousel__track {
   list-style: none;
   padding: 0;
@@ -975,8 +987,49 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .media-pair { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--space-5); align-items: start; margin: var(--space-6) 0; }
 .downloads--doc { margin: var(--space-6) 0; }
 
+/* Uniform video frame: every clip shows in the same 16:9 box, letterboxed on the sheet */
+.figure--frame video { aspect-ratio: 16 / 9; object-fit: contain; }
+
+/* Research page: presentation block */
+.presentation h2 { margin-bottom: var(--space-5); }
+.presentation__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--space-8);
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+.presentation__intro .lead { font-family: var(--font-display); font-weight: 700; color: var(--text-heading); margin-bottom: var(--space-3); }
+@media (max-width: 760px) { .presentation__intro { grid-template-columns: 1fr; } }
+
+/* Research page: numbered simulation gallery */
+.sim-gallery {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-6);
+  counter-reset: none;
+}
+.sim-gallery li { margin: 0; position: relative; }
+.sim-gallery__step {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--slate-700);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--space-2);
+  pointer-events: none;
+}
+.sim-gallery figcaption { min-height: 2.6em; }
+@media (max-width: 640px) { .sim-gallery { grid-template-columns: 1fr; } }
+
 /* Prosthetics test clip inside the experience timeline */
-.timeline-item .figure--portrait { margin: var(--space-2) 0 var(--space-4); max-width: 240px; }
 
 /* Wide page sections for media-heavy detail pages */
 .container--media { max-width: 960px; margin: 0 auto; padding: 0 var(--space-4); }

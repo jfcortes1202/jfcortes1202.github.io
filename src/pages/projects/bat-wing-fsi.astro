@@ -4,6 +4,7 @@ import ProjectHeader from '../../components/ProjectHeader.astro';
 import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
 import Figure from '../../components/Figure.astro';
 import Video from '../../components/Video.astro';
+import ReportViewer from '../../components/ReportViewer.astro';
 
 // Simulation clips in the order of the study: 2D → 3D sheet → bat wing → realistic injuries.
 // Captions restate what each slide of the presentation shows; no results beyond the site text.
@@ -127,31 +128,41 @@ const gallery = [
       </div>
     </div>
 
-    <div class="container--media">
-      <h2 style="margin-top:var(--space-12);">Simulation gallery</h2>
-      <p class="text-secondary">The stages of the study in order, from a 2D filament to a bat wing with realistic injuries.</p>
-      <div class="media-grid">
-        {gallery.map((g) => (
-          <Video src={`/media/research/video/${g.src}.mp4`} label={g.label} caption={g.caption} paper />
-        ))}
-      </div>
-    </div>
-
-    <div class="container prose">
-      <div data-reveal>
-        <h2>Presentation</h2>
-        <div class="media-pair">
-          <Figure src="/media/research/utsi-presentation.webp" alt="Juan at a podium presenting the title slide, 'Aerodynamics and Energy Expenditure of Injured Bat Flight', to an audience at UTSI" caption="Presenting the work at UTSI" />
-          <div>
-            <p>The 22-slide deck covers the formulation, each simulation stage, the energy model, and the parametric studies.</p>
-            <div class="downloads">
-              <a href="/cv/bat-flight-presentation.pdf" class="btn btn--primary" download>Download slides (PDF, 1.2 MB)</a>
-              <a href="/cv/bat-flight-presentation.pdf" class="btn btn--outline" target="_blank" rel="noopener">Open in browser</a>
-            </div>
+    <!-- Presentation first: the deck is the summary of the work; the clips below expand on it. -->
+    <div class="container--media presentation">
+      <h2>Presentation</h2>
+      <div class="presentation__intro">
+        <Figure src="/media/research/utsi-presentation.webp" alt="Juan at a podium presenting the title slide, 'Aerodynamics and Energy Expenditure of Injured Bat Flight', to an audience at UTSI" caption="Presenting the work at UTSI" />
+        <div>
+          <p class="lead">Aerodynamics and Energy Expenditure of Injured Bat Flight</p>
+          <p>
+            The 22-slide deck I presented at UTSI covers the formulation, each simulation stage
+            from a 2D filament to realistic injuries, the energy-expenditure model, and the
+            parametric studies. Browse every slide below, or download it.
+          </p>
+          <div class="downloads">
+            <a href="/cv/bat-flight-presentation.pdf" class="btn btn--primary" download>Download slides (PDF, 1.2 MB)</a>
+            <a href="#report-research-deck" class="btn btn--outline">Browse the slides ↓</a>
           </div>
         </div>
       </div>
+      <ReportViewer id="research-deck" title="Research presentation" pdf="/cv/bat-flight-presentation.pdf" size="1.2 MB" slides />
+    </div>
 
+    <div class="container--media">
+      <h2 style="margin-top:var(--space-16);">Simulation gallery</h2>
+      <p class="text-secondary">The stages of the study in order, from a 2D filament to a bat wing with realistic injuries.</p>
+      <ol class="sim-gallery">
+        {gallery.map((g, i) => (
+          <li>
+            <Video src={`/media/research/video/${g.src}.mp4`} label={g.label} caption={g.caption} paper class="figure--frame" />
+            <span class="sim-gallery__step" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="container prose">
       <div data-reveal>
         <h2>Tools</h2>
         <ul class="chips">

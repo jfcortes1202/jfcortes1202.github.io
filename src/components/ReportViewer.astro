@@ -1,0 +1,26 @@
+---
+/**
+ * Read a report in the page: every page as a carousel slide (with page thumbnails),
+ * plus the original PDF to download or open. Pages come from the `reports` job.
+ */
+import Carousel from './Carousel.astro';
+import { reportSlides } from '../lib/media';
+
+interface Props {
+  id: string;          // report set id, e.g. 'i-beam'
+  title: string;       // e.g. 'Final design report'
+  pdf: string;         // public path of the PDF
+  size: string;        // human-readable file size, e.g. '4.2 MB'
+  slides?: boolean;    // a 16:9 slide deck instead of letter-size pages
+}
+const { id, title, pdf, size, slides: deck = false } = Astro.props;
+const pages = reportSlides(id, title);
+---
+
+<div class:list={['report', { 'report--deck': deck }]}>
+  <Carousel id={`report-${id}`} label={`${title}, ${pages.length} pages`} slides={pages} thumbs tall={!deck} ratio={deck ? '16 / 9' : '8.5 / 11'} />
+  <div class="downloads">
+    <a href={pdf} class="btn btn--outline" download>Download PDF ({size})</a>
+    <a href={pdf} class="btn btn--outline" target="_blank" rel="noopener">Open in a new tab</a>
+  </div>
+</div>

@@ -2,6 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectHeader from '../../components/ProjectHeader.astro';
 import Carousel from '../../components/Carousel.astro';
+import ReportViewer from '../../components/ReportViewer.astro';
+import Video from '../../components/Video.astro';
+import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
+import { hasMedia } from '../../lib/media';
 
 const figures = [
   { src: '/media/i-beam/cross-section.webp', caption: 'Final cross-section (inches)', alt: 'Dimensioned cross-section of the asymmetric I-beam: 1.5 in top flange, 1.0 in bottom flange, 0.3125 in web, 2.5 in web height' },
@@ -53,11 +57,14 @@ const figures = [
           20% of each other. The team built the beam and tested it to failure.
         </p>
 
+        <h2>Load test</h2>
+        {hasMedia('/media/i-beam/load-test.mp4')
+          ? <Video src="/media/i-beam/load-test.mp4" label="The I-beam loaded to failure in the test frame" caption="Load test to failure" />
+          : <MediaPlaceholder kind="Video" label="Beam load test — Juan will supply" ratio="16 / 9" />}
+
         <h2>Report</h2>
         <p class="text-secondary">Derivations, optimization, deflection analysis, and test results.</p>
-        <div class="downloads downloads--doc">
-          <a href="/docs/i-beam/final-design-report.pdf" class="btn btn--outline" download>Final design report (PDF, 4.2 MB)</a>
-        </div>
+        <ReportViewer id="i-beam" title="Final design report" pdf="/docs/i-beam/final-design-report.pdf" size="4.2 MB" />
 
         <h2>Tools</h2>
         <ul class="chips">

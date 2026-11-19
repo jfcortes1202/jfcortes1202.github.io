@@ -4,6 +4,7 @@ import ProjectHeader from '../../components/ProjectHeader.astro';
 import Figure from '../../components/Figure.astro';
 import Video from '../../components/Video.astro';
 import Carousel from '../../components/Carousel.astro';
+import ReportViewer from '../../components/ReportViewer.astro';
 
 const detection = [
   { src: '/media/otv/magnet-detection-1.webp', caption: 'Coil sizing: constraints and sketch of the Faraday-induction solenoid', alt: 'Design review slide listing the magnet, puck, servo and coil constraints next to a sketch of the solenoid around the puck' },
@@ -59,9 +60,7 @@ const detection = [
 
       <h2>Report</h2>
       <p class="text-secondary">The team's final design briefs: prototype construction, mission design, propulsion modeling, and electronics.</p>
-      <div class="downloads downloads--doc">
-        <a href="/docs/otv/final-design-briefs.pdf" class="btn btn--outline" download>Final design briefs (PDF, 6.5 MB)</a>
-      </div>
+      <ReportViewer id="otv" title="Final design briefs" pdf="/docs/otv/final-design-briefs.pdf" size="6.5 MB" />
 
       <h2>Tools</h2>
       <ul class="chips">

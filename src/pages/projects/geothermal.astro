@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectHeader from '../../components/ProjectHeader.astro';
 import Carousel from '../../components/Carousel.astro';
+import ReportViewer from '../../components/ReportViewer.astro';
 
 const figures = [
   { src: '/media/geothermal/cycle-summer.webp', caption: 'System diagram, summer operation', alt: 'Schematic of the heat pump in summer mode: compressor, hot-water heater, condenser, throttle and evaporator with numbered states, connected to the underground loop' },
@@ -55,9 +56,7 @@ const figures = [
 
         <h2>Report</h2>
         <p class="text-secondary">Refrigerant selection, cycle design, state tables, entropy and parametric studies.</p>
-        <div class="downloads downloads--doc">
-          <a href="/docs/geothermal/final-report.pdf" class="btn btn--outline" download>Final design report (PDF, 1.8 MB)</a>
-        </div>
+        <ReportViewer id="geothermal" title="Final design report" pdf="/docs/geothermal/final-report.pdf" size="1.8 MB" />
 
         <h2>Tools</h2>
         <ul class="chips">

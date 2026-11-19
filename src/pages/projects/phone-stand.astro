@@ -9,6 +9,8 @@ const model = [
   { src: '/media/phone-stand/render-front.webp', caption: 'Front render', alt: 'Front render of the phone stand showing the triangular truss pattern and rows of hexagonal holes' },
 ];
 const printed = [
+  { src: '/media/phone-stand/with-phone-portrait.webp', caption: 'Holding a phone upright', alt: 'Side view of the black PLA stand holding a phone upright on a table' },
+  { src: '/media/phone-stand/with-phone-landscape.webp', caption: 'Holding a phone in landscape', alt: 'The stand holding a phone sideways in landscape orientation, charging cable attached' },
   { src: '/media/phone-stand/printed-front.webp', caption: 'Printed in black PLA, front', alt: 'The printed black PLA stand on a wooden table, seen from the front' },
   { src: '/media/phone-stand/printed-side.webp', caption: 'Side view', alt: 'The printed stand from the side, showing the angle between base and back' },
   { src: '/media/phone-stand/printed-hand-1.webp', caption: 'In hand, for scale', alt: 'The printed stand resting on an open hand' },
@@ -48,8 +50,8 @@ const printed = [
     </div>
 
     <div class="container--media">
-      <h2>Printed part</h2>
-      <Carousel id="stand-printed" label="Photos of the printed phone stand" slides={printed} paper={false} ratio="3 / 4" />
+      <h2>Printed and in use</h2>
+      <Carousel id="stand-printed" label="Photos of the printed phone stand" slides={printed} paper={false} ratio="3 / 4" thumbs />
     </div>
 
     <div class="container prose">

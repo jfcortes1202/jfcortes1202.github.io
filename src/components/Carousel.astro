@@ -16,14 +16,15 @@ interface Props {
   paper?: boolean;        // white sheet behind each slide (renders, drawings)
   thumbs?: boolean;
   ratio?: string;         // CSS aspect-ratio of the viewport
+  tall?: boolean;         // no height cap (report pages need their full height to be readable)
 }
-const { id, label, slides, paper = true, thumbs = false, ratio = '4 / 3' } = Astro.props;
+const { id, label, slides, paper = true, thumbs = false, ratio = '4 / 3', tall = false } = Astro.props;
 // Placeholder slides (export not supplied yet) skip the manifest lookup.
 const items = slides.map((s, i) => ({ ...s, ...(s.placeholder ? {} : media(s.src)), i }));
 const total = items.length;
 ---
 
-<section class:list={['carousel', { 'carousel--paper': paper }]} id={id} aria-roledescription="carousel" aria-label={label} data-carousel>
+<section class:list={['carousel', { 'carousel--paper': paper, 'carousel--tall': tall }]} id={id} aria-roledescription="carousel" aria-label={label} data-carousel>
   <div class="carousel__viewport" style={`aspect-ratio:${ratio};`}>
     <ul class="carousel__track" tabindex="0" aria-label={`${label}, ${total} slides. Use the arrow keys to move between them.`}>
       {items.map((s) => (
@@ -64,7 +65,7 @@ const total = items.length;
           <button type="button" class="carousel__thumb" data-goto={s.i} aria-label={`Show ${s.caption}`} aria-current={s.i === 0 ? 'true' : undefined}>
             {s.placeholder
               ? <span class="carousel__thumb-ph" aria-hidden="true">{s.caption.split(' · ')[0]}</span>
-              : <img src={s.src} alt="" width={s.w} height={s.h} loading="lazy" decoding="async" />}
+              : <img src={s.thumb ?? s.src} alt="" width={s.w} height={s.h} loading="lazy" decoding="async" />}
           </button>
         </li>
       ))}

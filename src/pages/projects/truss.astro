@@ -2,11 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectHeader from '../../components/ProjectHeader.astro';
 import Carousel from '../../components/Carousel.astro';
+import ReportViewer from '../../components/ReportViewer.astro';
 
 const photos = [
   { src: '/media/truss/finished.webp', caption: 'The finished truss, joints labeled A–L', alt: 'The wooden Howe truss lying flat, with colored glue dots at the joints and letter labels on each gusset' },
   { src: '/media/truss/testing.webp', caption: 'In the load frame', alt: 'The truss mounted in a materials testing machine before loading' },
-  { src: '/media/truss/team.webp', caption: 'Team 9 with the tested truss', alt: 'Three team members in the lab holding up the truss after testing' },
 ];
 const drawings = [
   { src: '/media/truss/drawing-assembly.webp', caption: 'Truss assembly', alt: 'Assembly drawing of the Howe truss with front, top, side and isometric views' },
@@ -54,9 +54,8 @@ const drawings = [
         220 lb, well below the predicted load. Gluing the gussets was the main difficulty
         during the build, and we redesigned them partway through.
       </p>
-      <div class="downloads downloads--doc">
-        <a href="/docs/truss/truss-analysis.pdf" class="btn btn--outline" download>Hand calculations (PDF, 4.2 MB)</a>
-      </div>
+      <h2>Hand calculations</h2>
+      <ReportViewer id="truss" title="Truss analysis" pdf="/docs/truss/truss-analysis.pdf" size="4.2 MB" />
     </div>
 
     <div class="container--media">

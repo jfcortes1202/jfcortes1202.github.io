@@ -219,6 +219,556 @@
    "name": "Gripper mount"
   }
  ],
+ "@report-geothermal": [
+  {
+   "key": "/media/reports/geothermal/p01.webp",
+   "thumb": "/media/reports/geothermal/p01-thumb.webp",
+   "page": 1
+  },
+  {
+   "key": "/media/reports/geothermal/p02.webp",
+   "thumb": "/media/reports/geothermal/p02-thumb.webp",
+   "page": 2
+  },
+  {
+   "key": "/media/reports/geothermal/p03.webp",
+   "thumb": "/media/reports/geothermal/p03-thumb.webp",
+   "page": 3
+  },
+  {
+   "key": "/media/reports/geothermal/p04.webp",
+   "thumb": "/media/reports/geothermal/p04-thumb.webp",
+   "page": 4
+  },
+  {
+   "key": "/media/reports/geothermal/p05.webp",
+   "thumb": "/media/reports/geothermal/p05-thumb.webp",
+   "page": 5
+  },
+  {
+   "key": "/media/reports/geothermal/p06.webp",
+   "thumb": "/media/reports/geothermal/p06-thumb.webp",
+   "page": 6
+  },
+  {
+   "key": "/media/reports/geothermal/p07.webp",
+   "thumb": "/media/reports/geothermal/p07-thumb.webp",
+   "page": 7
+  },
+  {
+   "key": "/media/reports/geothermal/p08.webp",
+   "thumb": "/media/reports/geothermal/p08-thumb.webp",
+   "page": 8
+  },
+  {
+   "key": "/media/reports/geothermal/p09.webp",
+   "thumb": "/media/reports/geothermal/p09-thumb.webp",
+   "page": 9
+  },
+  {
+   "key": "/media/reports/geothermal/p10.webp",
+   "thumb": "/media/reports/geothermal/p10-thumb.webp",
+   "page": 10
+  },
+  {
+   "key": "/media/reports/geothermal/p11.webp",
+   "thumb": "/media/reports/geothermal/p11-thumb.webp",
+   "page": 11
+  },
+  {
+   "key": "/media/reports/geothermal/p12.webp",
+   "thumb": "/media/reports/geothermal/p12-thumb.webp",
+   "page": 12
+  },
+  {
+   "key": "/media/reports/geothermal/p13.webp",
+   "thumb": "/media/reports/geothermal/p13-thumb.webp",
+   "page": 13
+  },
+  {
+   "key": "/media/reports/geothermal/p14.webp",
+   "thumb": "/media/reports/geothermal/p14-thumb.webp",
+   "page": 14
+  },
+  {
+   "key": "/media/reports/geothermal/p15.webp",
+   "thumb": "/media/reports/geothermal/p15-thumb.webp",
+   "page": 15
+  },
+  {
+   "key": "/media/reports/geothermal/p16.webp",
+   "thumb": "/media/reports/geothermal/p16-thumb.webp",
+   "page": 16
+  },
+  {
+   "key": "/media/reports/geothermal/p17.webp",
+   "thumb": "/media/reports/geothermal/p17-thumb.webp",
+   "page": 17
+  },
+  {
+   "key": "/media/reports/geothermal/p18.webp",
+   "thumb": "/media/reports/geothermal/p18-thumb.webp",
+   "page": 18
+  },
+  {
+   "key": "/media/reports/geothermal/p19.webp",
+   "thumb": "/media/reports/geothermal/p19-thumb.webp",
+   "page": 19
+  },
+  {
+   "key": "/media/reports/geothermal/p20.webp",
+   "thumb": "/media/reports/geothermal/p20-thumb.webp",
+   "page": 20
+  },
+  {
+   "key": "/media/reports/geothermal/p21.webp",
+   "thumb": "/media/reports/geothermal/p21-thumb.webp",
+   "page": 21
+  },
+  {
+   "key": "/media/reports/geothermal/p22.webp",
+   "thumb": "/media/reports/geothermal/p22-thumb.webp",
+   "page": 22
+  },
+  {
+   "key": "/media/reports/geothermal/p23.webp",
+   "thumb": "/media/reports/geothermal/p23-thumb.webp",
+   "page": 23
+  },
+  {
+   "key": "/media/reports/geothermal/p24.webp",
+   "thumb": "/media/reports/geothermal/p24-thumb.webp",
+   "page": 24
+  },
+  {
+   "key": "/media/reports/geothermal/p25.webp",
+   "thumb": "/media/reports/geothermal/p25-thumb.webp",
+   "page": 25
+  },
+  {
+   "key": "/media/reports/geothermal/p26.webp",
+   "thumb": "/media/reports/geothermal/p26-thumb.webp",
+   "page": 26
+  },
+  {
+   "key": "/media/reports/geothermal/p27.webp",
+   "thumb": "/media/reports/geothermal/p27-thumb.webp",
+   "page": 27
+  },
+  {
+   "key": "/media/reports/geothermal/p28.webp",
+   "thumb": "/media/reports/geothermal/p28-thumb.webp",
+   "page": 28
+  },
+  {
+   "key": "/media/reports/geothermal/p29.webp",
+   "thumb": "/media/reports/geothermal/p29-thumb.webp",
+   "page": 29
+  },
+  {
+   "key": "/media/reports/geothermal/p30.webp",
+   "thumb": "/media/reports/geothermal/p30-thumb.webp",
+   "page": 30
+  }
+ ],
+ "@report-i-beam": [
+  {
+   "key": "/media/reports/i-beam/p01.webp",
+   "thumb": "/media/reports/i-beam/p01-thumb.webp",
+   "page": 1
+  },
+  {
+   "key": "/media/reports/i-beam/p02.webp",
+   "thumb": "/media/reports/i-beam/p02-thumb.webp",
+   "page": 2
+  },
+  {
+   "key": "/media/reports/i-beam/p03.webp",
+   "thumb": "/media/reports/i-beam/p03-thumb.webp",
+   "page": 3
+  },
+  {
+   "key": "/media/reports/i-beam/p04.webp",
+   "thumb": "/media/reports/i-beam/p04-thumb.webp",
+   "page": 4
+  },
+  {
+   "key": "/media/reports/i-beam/p05.webp",
+   "thumb": "/media/reports/i-beam/p05-thumb.webp",
+   "page": 5
+  },
+  {
+   "key": "/media/reports/i-beam/p06.webp",
+   "thumb": "/media/reports/i-beam/p06-thumb.webp",
+   "page": 6
+  },
+  {
+   "key": "/media/reports/i-beam/p07.webp",
+   "thumb": "/media/reports/i-beam/p07-thumb.webp",
+   "page": 7
+  },
+  {
+   "key": "/media/reports/i-beam/p08.webp",
+   "thumb": "/media/reports/i-beam/p08-thumb.webp",
+   "page": 8
+  },
+  {
+   "key": "/media/reports/i-beam/p09.webp",
+   "thumb": "/media/reports/i-beam/p09-thumb.webp",
+   "page": 9
+  },
+  {
+   "key": "/media/reports/i-beam/p10.webp",
+   "thumb": "/media/reports/i-beam/p10-thumb.webp",
+   "page": 10
+  },
+  {
+   "key": "/media/reports/i-beam/p11.webp",
+   "thumb": "/media/reports/i-beam/p11-thumb.webp",
+   "page": 11
+  },
+  {
+   "key": "/media/reports/i-beam/p12.webp",
+   "thumb": "/media/reports/i-beam/p12-thumb.webp",
+   "page": 12
+  },
+  {
+   "key": "/media/reports/i-beam/p13.webp",
+   "thumb": "/media/reports/i-beam/p13-thumb.webp",
+   "page": 13
+  },
+  {
+   "key": "/media/reports/i-beam/p14.webp",
+   "thumb": "/media/reports/i-beam/p14-thumb.webp",
+   "page": 14
+  },
+  {
+   "key": "/media/reports/i-beam/p15.webp",
+   "thumb": "/media/reports/i-beam/p15-thumb.webp",
+   "page": 15
+  },
+  {
+   "key": "/media/reports/i-beam/p16.webp",
+   "thumb": "/media/reports/i-beam/p16-thumb.webp",
+   "page": 16
+  },
+  {
+   "key": "/media/reports/i-beam/p17.webp",
+   "thumb": "/media/reports/i-beam/p17-thumb.webp",
+   "page": 17
+  },
+  {
+   "key": "/media/reports/i-beam/p18.webp",
+   "thumb": "/media/reports/i-beam/p18-thumb.webp",
+   "page": 18
+  },
+  {
+   "key": "/media/reports/i-beam/p19.webp",
+   "thumb": "/media/reports/i-beam/p19-thumb.webp",
+   "page": 19
+  },
+  {
+   "key": "/media/reports/i-beam/p20.webp",
+   "thumb": "/media/reports/i-beam/p20-thumb.webp",
+   "page": 20
+  }
+ ],
+ "@report-otv": [
+  {
+   "key": "/media/reports/otv/p01.webp",
+   "thumb": "/media/reports/otv/p01-thumb.webp",
+   "page": 1
+  },
+  {
+   "key": "/media/reports/otv/p02.webp",
+   "thumb": "/media/reports/otv/p02-thumb.webp",
+   "page": 2
+  },
+  {
+   "key": "/media/reports/otv/p03.webp",
+   "thumb": "/media/reports/otv/p03-thumb.webp",
+   "page": 3
+  },
+  {
+   "key": "/media/reports/otv/p04.webp",
+   "thumb": "/media/reports/otv/p04-thumb.webp",
+   "page": 4
+  },
+  {
+   "key": "/media/reports/otv/p05.webp",
+   "thumb": "/media/reports/otv/p05-thumb.webp",
+   "page": 5
+  },
+  {
+   "key": "/media/reports/otv/p06.webp",
+   "thumb": "/media/reports/otv/p06-thumb.webp",
+   "page": 6
+  },
+  {
+   "key": "/media/reports/otv/p07.webp",
+   "thumb": "/media/reports/otv/p07-thumb.webp",
+   "page": 7
+  },
+  {
+   "key": "/media/reports/otv/p08.webp",
+   "thumb": "/media/reports/otv/p08-thumb.webp",
+   "page": 8
+  },
+  {
+   "key": "/media/reports/otv/p09.webp",
+   "thumb": "/media/reports/otv/p09-thumb.webp",
+   "page": 9
+  },
+  {
+   "key": "/media/reports/otv/p10.webp",
+   "thumb": "/media/reports/otv/p10-thumb.webp",
+   "page": 10
+  },
+  {
+   "key": "/media/reports/otv/p11.webp",
+   "thumb": "/media/reports/otv/p11-thumb.webp",
+   "page": 11
+  },
+  {
+   "key": "/media/reports/otv/p12.webp",
+   "thumb": "/media/reports/otv/p12-thumb.webp",
+   "page": 12
+  },
+  {
+   "key": "/media/reports/otv/p13.webp",
+   "thumb": "/media/reports/otv/p13-thumb.webp",
+   "page": 13
+  },
+  {
+   "key": "/media/reports/otv/p14.webp",
+   "thumb": "/media/reports/otv/p14-thumb.webp",
+   "page": 14
+  },
+  {
+   "key": "/media/reports/otv/p15.webp",
+   "thumb": "/media/reports/otv/p15-thumb.webp",
+   "page": 15
+  },
+  {
+   "key": "/media/reports/otv/p16.webp",
+   "thumb": "/media/reports/otv/p16-thumb.webp",
+   "page": 16
+  },
+  {
+   "key": "/media/reports/otv/p17.webp",
+   "thumb": "/media/reports/otv/p17-thumb.webp",
+   "page": 17
+  },
+  {
+   "key": "/media/reports/otv/p18.webp",
+   "thumb": "/media/reports/otv/p18-thumb.webp",
+   "page": 18
+  },
+  {
+   "key": "/media/reports/otv/p19.webp",
+   "thumb": "/media/reports/otv/p19-thumb.webp",
+   "page": 19
+  },
+  {
+   "key": "/media/reports/otv/p20.webp",
+   "thumb": "/media/reports/otv/p20-thumb.webp",
+   "page": 20
+  },
+  {
+   "key": "/media/reports/otv/p21.webp",
+   "thumb": "/media/reports/otv/p21-thumb.webp",
+   "page": 21
+  },
+  {
+   "key": "/media/reports/otv/p22.webp",
+   "thumb": "/media/reports/otv/p22-thumb.webp",
+   "page": 22
+  },
+  {
+   "key": "/media/reports/otv/p23.webp",
+   "thumb": "/media/reports/otv/p23-thumb.webp",
+   "page": 23
+  },
+  {
+   "key": "/media/reports/otv/p24.webp",
+   "thumb": "/media/reports/otv/p24-thumb.webp",
+   "page": 24
+  },
+  {
+   "key": "/media/reports/otv/p25.webp",
+   "thumb": "/media/reports/otv/p25-thumb.webp",
+   "page": 25
+  },
+  {
+   "key": "/media/reports/otv/p26.webp",
+   "thumb": "/media/reports/otv/p26-thumb.webp",
+   "page": 26
+  },
+  {
+   "key": "/media/reports/otv/p27.webp",
+   "thumb": "/media/reports/otv/p27-thumb.webp",
+   "page": 27
+  },
+  {
+   "key": "/media/reports/otv/p28.webp",
+   "thumb": "/media/reports/otv/p28-thumb.webp",
+   "page": 28
+  }
+ ],
+ "@report-research-deck": [
+  {
+   "key": "/media/reports/research-deck/p01.webp",
+   "thumb": "/media/reports/research-deck/p01-thumb.webp",
+   "page": 1
+  },
+  {
+   "key": "/media/reports/research-deck/p02.webp",
+   "thumb": "/media/reports/research-deck/p02-thumb.webp",
+   "page": 2
+  },
+  {
+   "key": "/media/reports/research-deck/p03.webp",
+   "thumb": "/media/reports/research-deck/p03-thumb.webp",
+   "page": 3
+  },
+  {
+   "key": "/media/reports/research-deck/p04.webp",
+   "thumb": "/media/reports/research-deck/p04-thumb.webp",
+   "page": 4
+  },
+  {
+   "key": "/media/reports/research-deck/p05.webp",
+   "thumb": "/media/reports/research-deck/p05-thumb.webp",
+   "page": 5
+  },
+  {
+   "key": "/media/reports/research-deck/p06.webp",
+   "thumb": "/media/reports/research-deck/p06-thumb.webp",
+   "page": 6
+  },
+  {
+   "key": "/media/reports/research-deck/p07.webp",
+   "thumb": "/media/reports/research-deck/p07-thumb.webp",
+   "page": 7
+  },
+  {
+   "key": "/media/reports/research-deck/p08.webp",
+   "thumb": "/media/reports/research-deck/p08-thumb.webp",
+   "page": 8
+  },
+  {
+   "key": "/media/reports/research-deck/p09.webp",
+   "thumb": "/media/reports/research-deck/p09-thumb.webp",
+   "page": 9
+  },
+  {
+   "key": "/media/reports/research-deck/p10.webp",
+   "thumb": "/media/reports/research-deck/p10-thumb.webp",
+   "page": 10
+  },
+  {
+   "key": "/media/reports/research-deck/p11.webp",
+   "thumb": "/media/reports/research-deck/p11-thumb.webp",
+   "page": 11
+  },
+  {
+   "key": "/media/reports/research-deck/p12.webp",
+   "thumb": "/media/reports/research-deck/p12-thumb.webp",
+   "page": 12
+  },
+  {
+   "key": "/media/reports/research-deck/p13.webp",
+   "thumb": "/media/reports/research-deck/p13-thumb.webp",
+   "page": 13
+  },
+  {
+   "key": "/media/reports/research-deck/p14.webp",
+   "thumb": "/media/reports/research-deck/p14-thumb.webp",
+   "page": 14
+  },
+  {
+   "key": "/media/reports/research-deck/p15.webp",
+   "thumb": "/media/reports/research-deck/p15-thumb.webp",
+   "page": 15
+  },
+  {
+   "key": "/media/reports/research-deck/p16.webp",
+   "thumb": "/media/reports/research-deck/p16-thumb.webp",
+   "page": 16
+  },
+  {
+   "key": "/media/reports/research-deck/p17.webp",
+   "thumb": "/media/reports/research-deck/p17-thumb.webp",
+   "page": 17
+  },
+  {
+   "key": "/media/reports/research-deck/p18.webp",
+   "thumb": "/media/reports/research-deck/p18-thumb.webp",
+   "page": 18
+  },
+  {
+   "key": "/media/reports/research-deck/p19.webp",
+   "thumb": "/media/reports/research-deck/p19-thumb.webp",
+   "page": 19
+  },
+  {
+   "key": "/media/reports/research-deck/p20.webp",
+   "thumb": "/media/reports/research-deck/p20-thumb.webp",
+   "page": 20
+  },
+  {
+   "key": "/media/reports/research-deck/p21.webp",
+   "thumb": "/media/reports/research-deck/p21-thumb.webp",
+   "page": 21
+  },
+  {
+   "key": "/media/reports/research-deck/p22.webp",
+   "thumb": "/media/reports/research-deck/p22-thumb.webp",
+   "page": 22
+  }
+ ],
+ "@report-truss": [
+  {
+   "key": "/media/reports/truss/p01.webp",
+   "thumb": "/media/reports/truss/p01-thumb.webp",
+   "page": 1
+  },
+  {
+   "key": "/media/reports/truss/p02.webp",
+   "thumb": "/media/reports/truss/p02-thumb.webp",
+   "page": 2
+  },
+  {
+   "key": "/media/reports/truss/p03.webp",
+   "thumb": "/media/reports/truss/p03-thumb.webp",
+   "page": 3
+  },
+  {
+   "key": "/media/reports/truss/p04.webp",
+   "thumb": "/media/reports/truss/p04-thumb.webp",
+   "page": 4
+  },
+  {
+   "key": "/media/reports/truss/p05.webp",
+   "thumb": "/media/reports/truss/p05-thumb.webp",
+   "page": 5
+  },
+  {
+   "key": "/media/reports/truss/p06.webp",
+   "thumb": "/media/reports/truss/p06-thumb.webp",
+   "page": 6
+  },
+  {
+   "key": "/media/reports/truss/p07.webp",
+   "thumb": "/media/reports/truss/p07-thumb.webp",
+   "page": 7
+  },
+  {
+   "key": "/media/reports/truss/p08.webp",
+   "thumb": "/media/reports/truss/p08-thumb.webp",
+   "page": 8
+  }
+ ],
  "/cv/bat-flight-presentation.pdf": {},
  "/cv/cv-full.pdf": {},
  "/cv/resume.pdf": {},
@@ -344,6 +894,14 @@
   "w": 1200,
   "h": 900
  },
+ "/media/phone-stand/with-phone-landscape.webp": {
+  "w": 900,
+  "h": 1600
+ },
+ "/media/phone-stand/with-phone-portrait.webp": {
+  "w": 721,
+  "h": 960
+ },
  "/media/prosthetics/hand-test.mp4": {
   "w": 720,
   "h": 1280,
@@ -353,6 +911,870 @@
  "/media/prosthetics/hand-test.webp": {
   "w": 720,
   "h": 1280
+ },
+ "/media/reports/geothermal/p01-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p01.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p02-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p02.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p03-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p03.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p04-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p04.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p05-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p05.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p06-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p06.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p07-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p07.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p08-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p08.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p09-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p09.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p10-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p10.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p11-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p11.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p12-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p12.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p13-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p13.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p14-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p14.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p15-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p15.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p16-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p16.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p17-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p17.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p18-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p18.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p19-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p19.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p20-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p20.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p21-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p21.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p22-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p22.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p23-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p23.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p24-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p24.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p25-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p25.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p26-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p26.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p27-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p27.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p28-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p28.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p29-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p29.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/geothermal/p30-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/geothermal/p30.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p01-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p01.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p02-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p02.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p03-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p03.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p04-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p04.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p05-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p05.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p06-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p06.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p07-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p07.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p08-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p08.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p09-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p09.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p10-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p10.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p11-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p11.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p12-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p12.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p13-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p13.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p14-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p14.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p15-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p15.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p16-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p16.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p17-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p17.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p18-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p18.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p19-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p19.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/i-beam/p20-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/i-beam/p20.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p01-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p01.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p02-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p02.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p03-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p03.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p04-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p04.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p05-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p05.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p06-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p06.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p07-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p07.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p08-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p08.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p09-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p09.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p10-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p10.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p11-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p11.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p12-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p12.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p13-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p13.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p14-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p14.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p15-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p15.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p16-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p16.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p17-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p17.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p18-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p18.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p19-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p19.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p20-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p20.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p21-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p21.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p22-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p22.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p23-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p23.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p24-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p24.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p25-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p25.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p26-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p26.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p27-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p27.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/otv/p28-thumb.webp": {
+  "w": 120,
+  "h": 155
+ },
+ "/media/reports/otv/p28.webp": {
+  "w": 1100,
+  "h": 1424
+ },
+ "/media/reports/research-deck/p01-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p01.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p02-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p02.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p03-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p03.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p04-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p04.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p05-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p05.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p06-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p06.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p07-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p07.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p08-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p08.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p09-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p09.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p10-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p10.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p11-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p11.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p12-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p12.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p13-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p13.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p14-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p14.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p15-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p15.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p16-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p16.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p17-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p17.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p18-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p18.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p19-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p19.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p20-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p20.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p21-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p21.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/research-deck/p22-thumb.webp": {
+  "w": 120,
+  "h": 68
+ },
+ "/media/reports/research-deck/p22.webp": {
+  "w": 1360,
+  "h": 765
+ },
+ "/media/reports/truss/p01-thumb.webp": {
+  "w": 120,
+  "h": 156
+ },
+ "/media/reports/truss/p01.webp": {
+  "w": 1100,
+  "h": 1426
+ },
+ "/media/reports/truss/p02-thumb.webp": {
+  "w": 120,
+  "h": 156
+ },
+ "/media/reports/truss/p02.webp": {
+  "w": 1100,
+  "h": 1426
+ },
+ "/media/reports/truss/p03-thumb.webp": {
+  "w": 120,
+  "h": 156
+ },
+ "/media/reports/truss/p03.webp": {
+  "w": 1100,
+  "h": 1426
+ },
+ "/media/reports/truss/p04-thumb.webp": {
+  "w": 120,
+  "h": 156
+ },
+ "/media/reports/truss/p04.webp": {
+  "w": 1100,
+  "h": 1426
+ },
+ "/media/reports/truss/p05-thumb.webp": {
+  "w": 120,
+  "h": 156
+ },
+ "/media/reports/truss/p05.webp": {
+  "w": 1100,
+  "h": 1426
+ },
+ "/media/reports/truss/p06-thumb.webp": {
+  "w": 120,
+  "h": 156
+ },
+ "/media/reports/truss/p06.webp": {
+  "w": 1100,
+  "h": 1426
+ },
+ "/media/reports/truss/p07-thumb.webp": {
+  "w": 120,
+  "h": 156
+ },
+ "/media/reports/truss/p07.webp": {
+  "w": 1100,
+  "h": 1426
+ },
+ "/media/reports/truss/p08-thumb.webp": {
+  "w": 120,
+  "h": 156
+ },
+ "/media/reports/truss/p08.webp": {
+  "w": 1100,
+  "h": 1426
  },
  "/media/research/bat-wing-mesh.webp": {
   "w": 1200,
@@ -463,14 +1885,14 @@
   "h": 932
  },
  "/media/robotic-arm/animation.mp4": {
-  "w": 760,
-  "h": 712,
+  "w": 620,
+  "h": 560,
   "poster": "/media/robotic-arm/animation.webp",
   "duration": 6.1
  },
  "/media/robotic-arm/animation.webp": {
-  "w": 760,
-  "h": 712
+  "w": 620,
+  "h": 560
  },
  "/media/robotic-arm/assembly/assembly.webp": {
   "w": 1200,
@@ -725,10 +2147,6 @@
   "h": 480
  },
  "/media/truss/finished.webp": {
-  "w": 1200,
-  "h": 799
- },
- "/media/truss/team.webp": {
   "w": 1200,
   "h": 799
  },
