@@ -33,6 +33,11 @@ const figures = [
 
   <section class="section">
     <div class="container--media">
+      {hasMedia('/media/i-beam/load-test.mp4')
+        ? <Video src="/media/i-beam/load-test.mp4" label="The pine I-beam in a universal testing machine, loaded at mid-span until the top flange cracks and the beam twists" caption="Load test to failure in the universal testing machine" />
+        : <MediaPlaceholder kind="Video" label="Beam load test" ratio="16 / 9" />}
+
+      <h2 style="margin-top:var(--space-12);">Figures</h2>
       <Carousel id="beam-figures" label="I-beam figures" slides={figures} thumbs />
     </div>
 
@@ -56,11 +61,6 @@ const figures = [
           dimensions and searched for a geometry where the three failure loads fell within
           20% of each other. The team built the beam and tested it to failure.
         </p>
-
-        <h2>Load test</h2>
-        {hasMedia('/media/i-beam/load-test.mp4')
-          ? <Video src="/media/i-beam/load-test.mp4" label="The I-beam loaded to failure in the test frame" caption="Load test to failure" />
-          : <MediaPlaceholder kind="Video" label="Beam load test — Juan will supply" ratio="16 / 9" />}
 
         <h2>Report</h2>
         <p class="text-secondary">Derivations, optimization, deflection analysis, and test results.</p>

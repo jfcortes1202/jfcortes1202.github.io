@@ -257,8 +257,8 @@ const jobs = {
     for (const [name, page, rank] of figs) await image(pdfImage(doc, page, rank), P(`i-beam/${name}.webp`), { canvas: [1200, 900], trim: true });
     await copyPdf(`${BEAM}/Final Design Report - The Beam Team - Team 6 ENES220.pdf`, join(PUB, 'docs/i-beam/final-design-report.pdf'));
     // Load-test video: any video file Juan drops into the I-beam folder.
-    const testVid = readdirSync(BEAM).find((f) => /\.(mp4|mov|m4v|avi)$/i.test(f));
-    if (testVid) await video(`${BEAM}/${testVid}`, P('i-beam/load-test.mp4'), { width: 720, crf: 26, poster: 0.5 });
+    const testVid = [`${BEAM}/Deliverables/Media/Test Video.mp4`, ...readdirSync(BEAM).filter((f) => /\.(mp4|mov|m4v|avi)$/i.test(f)).map((f) => `${BEAM}/${f}`)].find((f) => existsSync(f));
+    if (testVid) await video(testVid, P('i-beam/load-test.mp4'), { width: 960, crf: 28, poster: 0.5 });
     else log('  (no I-beam test video in media yet)');
   },
 
