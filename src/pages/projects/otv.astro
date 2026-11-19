@@ -1,7 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectHeader from '../../components/ProjectHeader.astro';
-import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
+import Figure from '../../components/Figure.astro';
+import Video from '../../components/Video.astro';
+import Carousel from '../../components/Carousel.astro';
+
+const detection = [
+  { src: '/media/otv/magnet-detection-1.webp', caption: 'Coil sizing: constraints and sketch of the Faraday-induction solenoid', alt: 'Design review slide listing the magnet, puck, servo and coil constraints next to a sketch of the solenoid around the puck' },
+  { src: '/media/otv/magnet-detection-2.webp', caption: 'Induced-voltage estimate across the stick’s travel speed', alt: 'Design review slide estimating the induced voltage from the coil’s flux linkage at the rack-and-pinion speed' },
+];
 ---
 
 <BaseLayout title="Over-Terrain Vehicle" description="Magnetic-puck detection subsystem for an over-terrain vehicle, ENES100 Introduction to Engineering Design.">
@@ -18,9 +25,14 @@ import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
   />
 
   <section class="section">
-    <div class="container prose">
-      <MediaPlaceholder kind="Photo" label="The vehicle, or the detection subsystem on the breadboard" ratio="16 / 9" />
+    <div class="container--media">
+      <div class="media-pair">
+        <Figure src="/media/otv/prototype-cad.webp" alt="CAD render of the vehicle: plexiglass chassis on four wooden legs, wheels at each leg, and the mission mechanism through the centre" caption="Final prototype, CAD" paper eager />
+        <Video src="/media/otv/test-run.mp4" label="The vehicle driving across the competition arena past wooden obstacles" caption="Test run in the arena" class="figure--portrait" />
+      </div>
+    </div>
 
+    <div class="container prose">
       <div data-reveal>
         <h2>Problem</h2>
         <p>
@@ -33,19 +45,28 @@ import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
           Hall-effect sensor as the more practical option. I co-wired the Arduino electronics
           and wrote the detection threshold logic.
         </p>
-
-        <h2>Media</h2>
-        <p class="text-secondary">Photos and diagrams will be added here.</p>
-        <div class="gallery">
-          <MediaPlaceholder kind="Figure" label="Coil model / sensor schematic" />
-          <MediaPlaceholder kind="Photo" label="Team and vehicle" />
-        </div>
-
-        <h2>Tools</h2>
-        <ul class="chips">
-          {['Arduino', 'Hall-effect sensor', 'Electronics', 'Breadboarding'].map((t) => <li><span class="chip">{t}</span></li>)}
-        </ul>
       </div>
+    </div>
+
+    <div class="container--media">
+      <h2>Detection design review</h2>
+      <Carousel id="otv-detection" label="Magnetism detection design review slides" slides={detection} ratio="16 / 9" />
+    </div>
+
+    <div class="container prose">
+      <h2>Team</h2>
+      <Figure src="/media/otv/team.webp" alt="The ENES100 team posing in a human pyramid in the engineering lab" caption="The team in the ENES100 lab" />
+
+      <h2>Report</h2>
+      <p class="text-secondary">The team's final design briefs: prototype construction, mission design, propulsion modeling, and electronics.</p>
+      <div class="downloads downloads--doc">
+        <a href="/docs/otv/final-design-briefs.pdf" class="btn btn--outline" download>Final design briefs (PDF, 6.5 MB)</a>
+      </div>
+
+      <h2>Tools</h2>
+      <ul class="chips">
+        {['Arduino', 'Hall-effect sensor', 'Electronics', 'Breadboarding'].map((t) => <li><span class="chip">{t}</span></li>)}
+      </ul>
 
       <div class="page-foot">
         <a href="/#projects" class="btn btn--outline">← All projects</a>

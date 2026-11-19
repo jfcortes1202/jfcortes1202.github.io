@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+import Carousel from '../../components/Carousel.astro';
+import Video from '../../components/Video.astro';
+import { mediaList } from '../../lib/media';
+
+const assembly = [
+  { src: '/media/robotic-arm/assembly/assembly.webp', caption: 'Full assembly', alt: 'Isometric render of the robotic arm: curved arm links and gripper above a square frame of extrusions' },
+  { src: '/media/robotic-arm/assembly/exploded.webp', caption: 'Exploded view', alt: 'Exploded view of the robotic arm with every part separated along its assembly direction' },
+  { src: '/media/robotic-arm/assembly/base-subassembly.webp', caption: 'Base sub-assembly', alt: 'Base sub-assembly: square frame of extrusions with corner fasteners and a cross plate carrying the motor mount' },
+  { src: '/media/robotic-arm/assembly/gripper-subassembly.webp', caption: 'Gripper sub-assembly', alt: 'Gripper sub-assembly: servo and motor holders above a two-finger gripper' },
+];
+const parts = mediaList('@arm-parts').map((p) => ({ src: p.key, caption: p.name, alt: `Isometric render of the ${p.name.toLowerCase()}` }));
+const drawings = mediaList('@arm-drawings').map((d) => ({ src: d.key, caption: d.name, alt: `Engineering drawing: ${d.name.toLowerCase()}, with dimensioned orthographic and isometric views` }));
+---
+
+<BaseLayout title="Articulated Robotic Arm" description="A 26-part articulated robotic arm modeled in SolidWorks for ENME272: assembly, part drawings, motion study, and static FEA.">
+  <ProjectHeader
+    kicker="Course project · ENME272 — Introduction to Computer Aided Design"
+    title="Articulated robotic arm"
+    lead="A 26-part alloy-steel robotic arm modeled in SolidWorks, from individual parts to a moving assembly."
+    facts={[
+      { k: 'Course', v: 'ENME272 — Introduction to Computer Aided Design' },
+      { k: 'Team', v: '3 members' },
+      { k: 'Tool', v: 'SolidWorks' },
+      { k: 'Date', v: 'December 2025' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="container--media">
+      <h2>Assembly</h2>
+      <p class="text-secondary">
+        Built in three stages — the base, the hand, and the connection through the arm — with
+        linear and rotational motion in mind from the start.
+      </p>
+      <Carousel id="arm-assembly" label="Robotic arm assembly views" slides={assembly} />
+
+      <h2>Parts</h2>
+      <p class="text-secondary">All 26 distinct parts, in alloy steel. Use the arrows, swipe, or pick a thumbnail.</p>
+      <Carousel id="arm-parts" label="Robotic arm parts" slides={parts} thumbs />
+
+      <h2>Drawings</h2>
+      <p class="text-secondary">Dimensioned drawings for every part, plus the assembly views and the exploded view with the bill of materials.</p>
+      <Carousel id="arm-drawings" label="Robotic arm drawings" slides={drawings} thumbs ratio="11 / 8.5" />
+    </div>
+
+    <div class="container prose">
+      <h2>Motion study</h2>
+      <p>
+        The animation uses standard mates (concentric, fixed, coincident) plus a slot
+        mechanical mate.
+      </p>
+      <Video src="/media/robotic-arm/animation.mp4" label="SolidWorks animation of the robotic arm swinging its curved link and opening the gripper" caption="SolidWorks motion study" paper class="figure--portrait" />
+
+      <h2>Static FEA</h2>
+      <p>
+        We ran a static study on the structural support — von Mises stress and displacement.
+        The maximum displacement was 0.0033 mm, against a 6.0 mm cross-base height.
+      </p>
+
+      <h2>New feature: draft</h2>
+      <p>
+        The project's new feature was draft, which tapers selected faces by a set angle — the
+        kind of feature that lets a molded part release from its mold. It appears on the bolt
+        and on the second cross-base motor mount.
+      </p>
+
+      <h2>Tools</h2>
+      <ul class="chips">
+        {['SolidWorks', 'Assemblies & mates', 'Motion study', 'Static FEA', 'Engineering drawings', 'BOM'].map((t) => <li><span class="chip">{t}</span></li>)}
+      </ul>
+
+      <div class="page-foot">
+        <a href="/#projects" class="btn btn--outline">← All projects</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

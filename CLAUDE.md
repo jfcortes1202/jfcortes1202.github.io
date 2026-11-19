@@ -19,6 +19,7 @@ npm run dev        # local dev server (http://localhost:4321)
 npm run build      # static build to dist/
 npm run preview    # serve dist/ locally
 npm run qa         # build + Playwright screenshots/checks into qa/ (dev-only)
+node tools/process-media.mjs [job]   # media/ → public/media, public/docs (see below)
 ```
 
 Deploy: push to `main`. The workflow builds with Node 22 and publishes `dist/`.
@@ -36,9 +37,14 @@ Deploy: push to `main`. The workflow builds with Node 22 and publishes `dist/`.
 src/
   layouts/BaseLayout.astro     page shell: head/meta, nav, footer, theme toggle, motion bootstrap
   components/
-    HeroIllustration.astro     procedurally generated SVG gas-turbine cross-section (hero)
-    MediaPlaceholder.astro     labeled placeholder frame for images/video/PDFs not yet supplied
+    HeroIllustration.astro     SVG gas-turbine section (traced contours, src/data/engine-section.json)
+    Figure.astro               <img> with width/height from the media manifest, lazy by default
+    Video.astro                content video: poster, controls, preload="metadata", no autoplay
+    Carousel.astro             scroll-snap carousel: arrows, ← → keys, counter, caption, thumbnails
+    MediaPlaceholder.astro     labeled placeholder frame for media not yet supplied
     ProjectHeader.astro        header block shared by project detail pages
+  data/media.json              generated manifest: every processed file's width/height/poster
+  lib/media.ts                 manifest lookup (throws at build time if a file is missing)
   scripts/
     motion.ts                  anime.js: hero timeline, scroll reveals, timeline rail
   pages/
@@ -46,12 +52,31 @@ src/
                                projects → skills → education → contact)
     cv.astro                   download page for resume / full CV
     404.astro
-    projects/*.astro           detail pages: bat-wing-fsi, i-beam, geothermal, otv
+    projects/*.astro           detail pages: bat-wing-fsi, robotic-arm, i-beam, geothermal, otv,
+                               phone-stand, truss
   styles/global.css            design tokens + all component styles
 public/
-  cv/*.pdf                     resume.pdf, cv-full.pdf, bat-flight-presentation.pdf
-  images/                      placeholder.png (OG image), later: headshot, project media
+  cv/*.pdf                     resume.pdf, cv-full.pdf (placeholders), bat-flight-presentation.pdf
+  docs/<project>/*.pdf         project reports
+  media/<section>/...          processed images (WebP) and videos (H.264 MP4 + WebP poster)
+  images/og.png                1200×630 social preview (qa/og.mjs renders it from the hero)
+media/                         Juan's raw source files — gitignored, never published directly
+tools/process-media.mjs        the pipeline from media/ to public/
 ```
+
+## Media pipeline
+
+`node tools/process-media.mjs` processes everything; pass a job name (`about`, `research`,
+`researchdeck`, `prosthetics`, `otv`, `ibeam`, `geothermal`, `truss`, `arm`, `stand`, `site`) to
+redo one, or `scan` to rebuild `src/data/media.json` from `public/` without re-encoding.
+- Images → WebP q82, sized for their slot, metadata stripped. CAD renders/plots are trimmed and
+  padded onto a white 4:3 sheet so carousels line up.
+- Videos → H.264 (square pixels, yuv420p, +faststart), **audio removed**, WebP poster frame.
+- The research deck embeds its videos, so it is rebuilt from page renders (83 MB → 1.2 MB).
+- CAD: part renders/drawings come from the team's PDFs; SolidWorks .SLDDRW files carry a preview
+  PNG that the script extracts (used for the truss drawings).
+- Every page media reference goes through `media()`; a missing file fails the build.
+- Playwright's bundled Chromium has no H.264, so `qa/video-check.mjs` verifies playback in Edge.
 
 ## Design tokens (see `src/styles/global.css`)
 
@@ -72,6 +97,8 @@ Rules:
   required — without it Astro scopes the CSS and nothing applies.
 - Cards are for links (project tiles) and the skill categories only. Do not wrap arbitrary
   content in cards.
+- Renders, drawings, plots and simulation frames sit on `--paper` (white; slate-100 in dark
+  theme) so they read as drawing sheets in both themes.
 - All motion must respect `prefers-reduced-motion`; the page must look complete with JS off.
 
 ## Content rules
@@ -87,3 +114,6 @@ Rules:
 5. No "Built with …" credits, no vanity stat bars, no hobbies section, no contact form.
 6. Missing media gets a clearly labeled `MediaPlaceholder` and an entry in the placeholder list
    in the final report. Resume/CV links must never 404 (placeholder PDFs exist in `public/cv`).
+7. Never publish: homework or exam work, course handout PDFs, other people's images, clips
+   where teammates are on webcam/recorded audio, or files showing private information.
+8. The hero turbine is traced from a tutorial-built CAD model; never caption it as Juan's design.

@@ -1,0 +1,39 @@
+---
+/**
+ * Content video: shows controls, never autoplays, fetches only metadata until
+ * played. All published clips have their audio track removed, so `muted` is
+ * set to keep browsers from showing a volume control that does nothing.
+ */
+import { media } from '../lib/media';
+
+interface Props {
+  src: string;
+  label: string;       // accessible name: what the clip shows
+  caption?: string;
+  paper?: boolean;     // white frame (simulation renders sit on white)
+  class?: string;
+}
+const { src, label, caption, paper = false, class: className = '' } = Astro.props;
+const { w, h, poster, duration } = media(src);
+const length = duration ? `${Math.round(duration)} s` : '';
+---
+
+<figure class:list={['figure', 'figure--video', { 'figure--paper': paper }, className]}>
+  <video
+    src={src}
+    poster={poster}
+    width={w}
+    height={h}
+    controls
+    muted
+    playsinline
+    preload="metadata"
+    aria-label={label}
+  ></video>
+  {caption && (
+    <figcaption>
+      {caption}
+      {length && <span class="figure__meta">{length}</span>}
+    </figcaption>
+  )}
+</figure>

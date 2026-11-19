@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+import Carousel from '../../components/Carousel.astro';
+import Figure from '../../components/Figure.astro';
+
+const model = [
+  { src: '/media/phone-stand/render-iso.webp', caption: 'Isometric render', alt: 'SolidWorks render of the phone stand: perforated base plate and triangular truss back' },
+  { src: '/media/phone-stand/render-front.webp', caption: 'Front render', alt: 'Front render of the phone stand showing the triangular truss pattern and rows of hexagonal holes' },
+];
+const printed = [
+  { src: '/media/phone-stand/printed-front.webp', caption: 'Printed in black PLA, front', alt: 'The printed black PLA stand on a wooden table, seen from the front' },
+  { src: '/media/phone-stand/printed-side.webp', caption: 'Side view', alt: 'The printed stand from the side, showing the angle between base and back' },
+  { src: '/media/phone-stand/printed-hand-1.webp', caption: 'In hand, for scale', alt: 'The printed stand resting on an open hand' },
+  { src: '/media/phone-stand/printed-hand-2.webp', caption: 'In hand, side', alt: 'The printed stand held in a hand, seen from the side' },
+];
+---
+
+<BaseLayout title="3D-Printed Phone Stand" description="A lightweight PLA phone stand designed in SolidWorks, checked with static FEA, and 3D-printed, for ENME272.">
+  <ProjectHeader
+    kicker="Individual project · ENME272 — Introduction to Computer Aided Design"
+    title="3D-printed phone stand"
+    lead="A lightweight PLA phone stand: designed in SolidWorks, checked with static FEA, and printed."
+    facts={[
+      { k: 'Course', v: 'ENME272 — Introduction to Computer Aided Design' },
+      { k: 'Type', v: 'Individual project' },
+      { k: 'Material', v: 'PLA, 2.5 mm wall throughout' },
+      { k: 'Mass', v: '17.09 g' },
+    ]}
+  />
+
+  <section class="section">
+    <div class="container--media">
+      <h2>Model</h2>
+      <Carousel id="stand-model" label="Phone stand CAD renders" slides={model} />
+    </div>
+
+    <div class="container prose">
+      <h2>Drawing</h2>
+      <Figure src="/media/phone-stand/drawing.webp" alt="Engineering drawing of the stand with front, side and section A–A views, dimensions, mass and centre of mass" caption="Drawing with section A–A; mass 17.09 g" paper />
+
+      <h2>FEA</h2>
+      <p>
+        A static study in SolidWorks Simulation shows the stand stays well within the material:
+        the peak von Mises stress is 1.694 MPa, against a PLA yield strength of roughly
+        26–53 MPa, and the maximum deflection is 0.133 mm.
+      </p>
+    </div>
+
+    <div class="container--media">
+      <h2>Printed part</h2>
+      <Carousel id="stand-printed" label="Photos of the printed phone stand" slides={printed} paper={false} ratio="3 / 4" />
+    </div>
+
+    <div class="container prose">
+      <h2>Reflection</h2>
+      <p>
+        The stand behaved as expected: it holds a phone in several orientations and doesn't
+        bend under firm pressure on either surface. A thicker base would add margin, though
+        the thin one works fine in practice.
+      </p>
+
+      <h2>Tools</h2>
+      <ul class="chips">
+        {['SolidWorks', 'SolidWorks Simulation', 'Static FEA', '3D printing', 'PLA'].map((t) => <li><span class="chip">{t}</span></li>)}
+      </ul>
+
+      <div class="page-foot">
+        <a href="/#projects" class="btn btn--outline">← All projects</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -2,6 +2,22 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectHeader from '../../components/ProjectHeader.astro';
 import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
+import Figure from '../../components/Figure.astro';
+import Video from '../../components/Video.astro';
+
+// Simulation clips in the order of the study: 2D → 3D sheet → bat wing → realistic injuries.
+// Captions restate what each slide of the presentation shows; no results beyond the site text.
+const gallery = [
+  { src: '2d-flows', caption: '2D: slender filament in uniform flow (x-velocity)', label: 'Two-dimensional simulation of a slender filament flapping in a uniform flow, coloured by x-velocity' },
+  { src: 'vorticity-re100-over-re1000', caption: '2D vorticity at Re = 100 (top) and Re = 1000 (bottom)', label: 'Two stacked 2D simulations comparing vorticity at Reynolds number 100 and 1000; the lower one sheds a periodic vortex street' },
+  { src: 'flat-sheet', caption: '3D flat sheet in a channel flow, Re = 1000', label: 'Three-dimensional flat sheet oscillating in a channel flow, with velocity isosurfaces developing behind it' },
+  { src: 'punctured-sheet', caption: 'Punctured sheet, hole radius 0.25, Re = 1000', label: 'Three-dimensional sheet with a circular hole oscillating in a channel flow, with velocity isosurfaces in its wake' },
+  { src: 'punctured-sheet-vorticity', caption: 'Vorticity vectors on the punctured sheet', label: 'Vorticity vectors on the mesh of the punctured sheet, concentrated along the outer edge and around the hole' },
+  { src: 'bat-wing-overview', caption: 'Bat-wing mesh with vorticity-magnitude contours, Re = 100', label: 'Triangulated bat-wing mesh with vorticity-magnitude contours concentrated along its edges' },
+  { src: 'punctured-bat-wing', caption: 'Bat wing with an idealized perforation (r = 0.10), Re = 100', label: 'Flapping bat-wing mesh with a circular hole, with vorticity vectors around the edges and the hole' },
+  { src: 'kinematics-mesh-and-wingtip', caption: 'Improved kinematics: bending wave plus flapping stroke, with the wingtip trajectory', label: 'Flapping bat-wing mesh beside a plot tracing the wingtip along an elliptical path' },
+  { src: 'realistic-perforations', caption: 'Irregular, realistic perforations, Re = 1000', label: 'Bat-wing mesh with several irregular holes, flapping in the flow' },
+];
 ---
 
 <BaseLayout title="Computational FSI Simulation of Bat Flight" description="Fluid-structure interaction simulation of bat flight with membrane perforations, at the University of Tennessee Space Institute.">
@@ -20,9 +36,16 @@ import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
   />
 
   <section class="section">
-    <div class="container prose">
-      <MediaPlaceholder kind="Video / GIF" label="Hero simulation — 3D flapping bat wing with membrane perforations" ratio="16 / 9" />
+    <div class="container--media">
+      <Video
+        src="/media/research/video/injury-severity-2x2.mp4"
+        label="Four bat-wing simulations side by side: an intact wing, holes of radius 0.10 and 0.15, and realistic irregular perforations, each with velocity isosurfaces in its wake"
+        caption="Injury severity comparison: intact wing, holes of r = 0.10 and r = 0.15, and realistic perforations (Re = 1000)"
+        paper
+      />
+    </div>
 
+    <div class="container prose">
       <div data-reveal>
         <h2>Why injured bat flight</h2>
         <p>
@@ -71,7 +94,7 @@ import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
           extracted the wing-boundary coordinates directly from a bat photograph and used
           them to construct the computational mesh.
         </p>
-        <MediaPlaceholder kind="Figure" label="Mesh — wing geometry extracted from photograph" ratio="16 / 9" />
+        <Figure src="/media/research/bat-wing-mesh.webp" alt="Triangulated surface mesh of a bat wing, with the scalloped trailing edge between the finger bones" caption="Bat-wing surface mesh" paper />
 
         <h3>Numerics</h3>
         <p>
@@ -102,17 +125,30 @@ import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
           Implementing the elastic side of two-way FSI coupling and validating the approach.
         </p>
       </div>
+    </div>
 
+    <div class="container--media">
+      <h2 style="margin-top:var(--space-12);">Simulation gallery</h2>
+      <p class="text-secondary">The stages of the study in order, from a 2D filament to a bat wing with realistic injuries.</p>
+      <div class="media-grid">
+        {gallery.map((g) => (
+          <Video src={`/media/research/video/${g.src}.mp4`} label={g.label} caption={g.caption} paper />
+        ))}
+      </div>
+    </div>
+
+    <div class="container prose">
       <div data-reveal>
-        <h2>Simulation gallery</h2>
-        <p class="text-secondary">Videos, plots and the presentation will go here as they're ready.</p>
-        <div class="gallery">
-          <MediaPlaceholder kind="Video" label="Flow field around the flapping wing" />
-          <MediaPlaceholder kind="Figure" label="Pressure contours" />
-          <MediaPlaceholder kind="Figure" label="Mesh detail at a perforation" />
-        </div>
-        <div style="margin-top:var(--space-6);">
-          <a href="/cv/bat-flight-presentation.pdf" class="btn btn--outline" download>Download presentation (PDF) ↓</a>
+        <h2>Presentation</h2>
+        <div class="media-pair">
+          <Figure src="/media/research/utsi-presentation.webp" alt="Juan at a podium presenting the title slide, 'Aerodynamics and Energy Expenditure of Injured Bat Flight', to an audience at UTSI" caption="Presenting the work at UTSI" />
+          <div>
+            <p>The 22-slide deck covers the formulation, each simulation stage, the energy model, and the parametric studies.</p>
+            <div class="downloads">
+              <a href="/cv/bat-flight-presentation.pdf" class="btn btn--primary" download>Download slides (PDF, 1.2 MB)</a>
+              <a href="/cv/bat-flight-presentation.pdf" class="btn btn--outline" target="_blank" rel="noopener">Open in browser</a>
+            </div>
+          </div>
         </div>
       </div>
 

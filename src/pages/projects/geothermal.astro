@@ -1,7 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectHeader from '../../components/ProjectHeader.astro';
-import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
+import Carousel from '../../components/Carousel.astro';
+
+const figures = [
+  { src: '/media/geothermal/cycle-summer.webp', caption: 'System diagram, summer operation', alt: 'Schematic of the heat pump in summer mode: compressor, hot-water heater, condenser, throttle and evaporator with numbered states, connected to the underground loop' },
+  { src: '/media/geothermal/cycle-winter.webp', caption: 'System diagram, winter operation', alt: 'Schematic of the heat pump in winter mode, with the condenser and evaporator roles reversed' },
+  { src: '/media/geothermal/ts-summer.webp', caption: 'T-s diagram, R-32, summer', alt: 'Temperature–entropy diagram of the R-32 cycle in summer operation, with state points 1 to 5 on the saturation dome' },
+  { src: '/media/geothermal/ts-winter.webp', caption: 'T-s diagram, R-32, winter', alt: 'Temperature–entropy diagram of the R-32 cycle in winter operation' },
+];
 ---
 
 <BaseLayout title="Geothermal Heat Pump Design" description="Thermodynamic modeling of a year-round geothermal heat pump cycle in EES for a 12.3 kW load.">
@@ -18,9 +25,11 @@ import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
   />
 
   <section class="section">
-    <div class="container prose">
-      <MediaPlaceholder kind="Figure" label="Cycle diagram or T-s / P-h plot from EES" ratio="16 / 9" />
+    <div class="container--media">
+      <Carousel id="geo-figures" label="Geothermal heat pump figures" slides={figures} thumbs />
+    </div>
 
+    <div class="container prose">
       <div data-reveal>
         <h2>Problem</h2>
         <p>
@@ -43,9 +52,11 @@ import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
           <li>Cooling COP: 1.83</li>
           <li>Design load: 12.3 kW</li>
         </ul>
-        <div class="gallery">
-          <MediaPlaceholder kind="PDF" label="Project report" />
-          <MediaPlaceholder kind="Figure" label="Refrigerant comparison" />
+
+        <h2>Report</h2>
+        <p class="text-secondary">Refrigerant selection, cycle design, state tables, entropy and parametric studies.</p>
+        <div class="downloads downloads--doc">
+          <a href="/docs/geothermal/final-report.pdf" class="btn btn--outline" download>Final design report (PDF, 1.8 MB)</a>
         </div>
 
         <h2>Tools</h2>

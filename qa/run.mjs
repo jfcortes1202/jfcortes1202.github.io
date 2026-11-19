@@ -137,14 +137,16 @@ try {
       await page.screenshot({ path: join(OUT, `home-${w}-${theme}-full.png`), fullPage: true });
       report.screenshots.push(`home-${w}-${theme}`);
       if (w === 1280) {
-        await page.goto(BASE + '/projects/bat-wing-fsi/', { waitUntil: 'networkidle' });
-        const t2 = await page.evaluate(() => document.body.scrollHeight);
-        await page.mouse.move(w / 2, h / 2);
-        for (let y = 0; y < t2; y += 300) { await page.mouse.wheel(0, 300); await page.waitForTimeout(100); }
-        await page.waitForTimeout(1500);
-        await page.evaluate(() => window.scrollTo(0, 0));
-        await page.waitForTimeout(1200);
-        await page.screenshot({ path: join(OUT, `research-${w}-${theme}-full.png`), fullPage: true });
+        for (const [slug, name] of [['bat-wing-fsi', 'research'], ['robotic-arm', 'arm'], ['otv', 'otv'], ['truss', 'truss'], ['phone-stand', 'stand'], ['i-beam', 'ibeam'], ['geothermal', 'geo']]) {
+          await page.goto(BASE + `/projects/${slug}/`, { waitUntil: 'networkidle' });
+          const t2 = await page.evaluate(() => document.body.scrollHeight);
+          await page.mouse.move(w / 2, h / 2);
+          for (let y = 0; y < t2; y += 300) { await page.mouse.wheel(0, 300); await page.waitForTimeout(100); }
+          await page.waitForTimeout(1500);
+          await page.evaluate(() => window.scrollTo(0, 0));
+          await page.waitForTimeout(1200);
+          await page.screenshot({ path: join(OUT, `${name}-${w}-${theme}-full.png`), fullPage: true });
+        }
         await page.goto(BASE + '/cv/', { waitUntil: 'networkidle' });
         await page.screenshot({ path: join(OUT, `cv-${w}-${theme}.png`) });
         await page.goto(BASE + '/404', { waitUntil: 'networkidle' });
@@ -152,6 +154,58 @@ try {
       }
       await ctx.close();
     }
+  }
+
+  // Every page: no failed requests (images, videos, posters, scripts) and every <img> decodes.
+  {
+    const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 }, colorScheme: 'dark', reducedMotion: 'reduce' });
+    const page = await ctx.newPage();
+    report.failedRequests = [];
+    report.brokenImages = [];
+    page.on('response', (r) => { if (r.status() >= 400 && !r.url().endsWith('/404')) report.failedRequests.push(`${r.status()} ${r.url().replace(BASE, '')} (on ${page.url().replace(BASE, '')})`); });
+    for (const path of ['/', '/cv/', '/projects/bat-wing-fsi/', '/projects/robotic-arm/', '/projects/phone-stand/', '/projects/truss/', '/projects/otv/', '/projects/i-beam/', '/projects/geothermal/']) {
+      await page.goto(BASE + path, { waitUntil: 'networkidle' });
+      // Force every lazy image and every video poster/metadata to load
+      await page.evaluate(async () => {
+        document.querySelectorAll('img[loading="lazy"]').forEach((i) => (i.loading = 'eager'));
+        await new Promise((r) => setTimeout(r, 1500));
+      });
+      await page.waitForLoadState('networkidle');
+      const bad = await page.$$eval('img', (imgs) => imgs.filter((i) => !i.complete || i.naturalWidth === 0).map((i) => i.getAttribute('src')));
+      bad.forEach((s) => report.brokenImages.push(`${s} (on ${path})`));
+      const missingAlt = await page.$$eval('img', (imgs) => imgs.filter((i) => !i.hasAttribute('alt')).map((i) => i.getAttribute('src')));
+      missingAlt.forEach((s) => report.brokenImages.push(`NO ALT ${s} (on ${path})`));
+      const missingDims = await page.$$eval('main img, main video', (els) => els.filter((e) => !e.getAttribute('width') || !e.getAttribute('height')).map((e) => e.getAttribute('src')));
+      missingDims.forEach((s) => report.brokenImages.push(`NO WIDTH/HEIGHT ${s} (on ${path})`));
+      const videos = await page.$$eval('video', (vs) => vs.map((v) => ({ src: v.getAttribute('src'), poster: !!v.getAttribute('poster'), controls: v.controls, autoplay: v.autoplay, preload: v.preload })));
+      videos.filter((v) => !v.poster || !v.controls || v.autoplay || v.preload !== 'metadata').forEach((v) => report.brokenImages.push(`VIDEO ATTRS ${JSON.stringify(v)} (on ${path})`));
+    }
+    // A video actually plays: seek and read a frame
+    await page.goto(BASE + '/projects/bat-wing-fsi/', { waitUntil: 'networkidle' });
+    report.videoPlays = await page.evaluate(async () => {
+      const v = document.querySelector('video');
+      v.preload = 'auto';
+      await v.play().catch(() => {});
+      await new Promise((r) => setTimeout(r, 1500));
+      return { t: v.currentTime.toFixed(2), w: v.videoWidth, h: v.videoHeight, err: v.error?.code ?? null };
+    });
+    // Carousel: next button + keyboard advance the counter
+    await page.goto(BASE + '/projects/robotic-arm/', { waitUntil: 'networkidle' });
+    const c = page.locator('#arm-parts');
+    await c.scrollIntoViewIfNeeded();
+    await c.locator('[data-next]').click();
+    await page.waitForTimeout(700);
+    const afterClick = await c.locator('[data-index]').textContent();
+    await c.locator('.carousel__track').focus();
+    await page.keyboard.press('ArrowRight');
+    await page.waitForTimeout(700);
+    const afterKey = await c.locator('[data-index]').textContent();
+    await c.locator('[data-goto="20"]').click();
+    await page.waitForTimeout(900);
+    const afterThumb = await c.locator('[data-index]').textContent();
+    report.carousel = { afterClick, afterKey, afterThumb, caption: await c.locator('[data-caption-out]').textContent() };
+    await c.screenshot({ path: join(OUT, 'carousel-arm-parts.png') });
+    await ctx.close();
   }
 
   // Reduced motion: page must be complete at rest without waiting
@@ -215,6 +269,10 @@ report.contrast = report.contrast.filter((c) => { const k = `${c.theme}|${c.sel}
 console.log('PAGES:', report.pages.join(' '));
 console.log('SCREENSHOTS:', report.screenshots.join(' '));
 console.log('BROKEN LINKS:', report.broken.length ? JSON.stringify(report.broken, null, 1) : 'none');
+console.log('FAILED REQUESTS:', report.failedRequests.length ? '\n  ' + [...new Set(report.failedRequests)].join('\n  ') : 'none');
+console.log('IMAGE/VIDEO ISSUES:', report.brokenImages.length ? '\n  ' + report.brokenImages.join('\n  ') : 'none');
+console.log('VIDEO PLAYBACK:', JSON.stringify(report.videoPlays));
+console.log('CAROUSEL (expect 2, 3, 21):', JSON.stringify(report.carousel));
 console.log('REDUCED-MOTION HIDDEN ELEMENTS:', report.reducedMotionHidden);
 console.log('TAB ORDER:'); report.tab.forEach((t, i) => console.log(`  ${i + 1}. ${t}`));
 console.log('CONTRAST FAILURES:', report.contrast.length ? '' : 'none');

@@ -1,0 +1,723 @@
+{
+ "@arm-drawings": [
+  {
+   "key": "/media/robotic-arm/drawings/isometric-view.webp",
+   "name": "Assembly, four views"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/bom.webp",
+   "name": "Exploded view and bill of materials"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/arch.webp",
+   "name": "Arch"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/arm-connector-long.webp",
+   "name": "Arm Connector Long"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/arm-connector-short.webp",
+   "name": "Arm Connector Short"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/bolt.webp",
+   "name": "Bolt"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/clip.webp",
+   "name": "Clip"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/cross-base.webp",
+   "name": "Cross Base"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/cross-base-motor.webp",
+   "name": "Cross Base Motor"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/cross-base-motor-2.webp",
+   "name": "Cross Base Motor 2"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/external-support-long.webp",
+   "name": "External Support Long"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/external-support-straight.webp",
+   "name": "External Support Straight"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/extrusion-horizontal-400.webp",
+   "name": "Extrusion Horizontal 400"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/extrusion-horizontal-450.webp",
+   "name": "Extrusion Horizontal 450"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/extrusion-vertical.webp",
+   "name": "Extrusion Vertical"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/fastener-and-servo-holder.webp",
+   "name": "Fastener and Servo Holder"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/fasteners.webp",
+   "name": "Fasteners"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/gear.webp",
+   "name": "Gear"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/gripper-arm.webp",
+   "name": "Gripper Arm"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/gripper-mount.webp",
+   "name": "Gripper Mount"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/inner-middle-bar.webp",
+   "name": "Inner Middle Bar"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/lego-hand-support.webp",
+   "name": "Lego Hand Support"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/middle-bar.webp",
+   "name": "Middle Bar"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/motor.webp",
+   "name": "Motor"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/motor-holder.webp",
+   "name": "Motor Holder"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/screw-for-gear.webp",
+   "name": "Screw for Gear"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/servo.webp",
+   "name": "Servo"
+  },
+  {
+   "key": "/media/robotic-arm/drawings/servo-pin.webp",
+   "name": "Servo Pin"
+  }
+ ],
+ "@arm-parts": [
+  {
+   "key": "/media/robotic-arm/parts/01-bolt.webp",
+   "name": "Bolt"
+  },
+  {
+   "key": "/media/robotic-arm/parts/02-clip.webp",
+   "name": "Clip"
+  },
+  {
+   "key": "/media/robotic-arm/parts/03-cross-base-motor.webp",
+   "name": "Cross base motor"
+  },
+  {
+   "key": "/media/robotic-arm/parts/04-cross-base.webp",
+   "name": "Cross base"
+  },
+  {
+   "key": "/media/robotic-arm/parts/05-extrusion-horizontal-400-mm.webp",
+   "name": "Extrusion, horizontal 400 mm"
+  },
+  {
+   "key": "/media/robotic-arm/parts/06-extrusion-horizontal-450-mm.webp",
+   "name": "Extrusion, horizontal 450 mm"
+  },
+  {
+   "key": "/media/robotic-arm/parts/07-extrusion-vertical.webp",
+   "name": "Extrusion, vertical"
+  },
+  {
+   "key": "/media/robotic-arm/parts/08-fasteners.webp",
+   "name": "Fasteners"
+  },
+  {
+   "key": "/media/robotic-arm/parts/09-gear.webp",
+   "name": "Gear"
+  },
+  {
+   "key": "/media/robotic-arm/parts/10-gripper-arm.webp",
+   "name": "Gripper arm"
+  },
+  {
+   "key": "/media/robotic-arm/parts/11-lego-hand-support.webp",
+   "name": "Lego hand support"
+  },
+  {
+   "key": "/media/robotic-arm/parts/12-motor.webp",
+   "name": "Motor"
+  },
+  {
+   "key": "/media/robotic-arm/parts/13-screw-for-gear.webp",
+   "name": "Screw for gear"
+  },
+  {
+   "key": "/media/robotic-arm/parts/14-servo-pin.webp",
+   "name": "Servo pin"
+  },
+  {
+   "key": "/media/robotic-arm/parts/15-servo.webp",
+   "name": "Servo"
+  },
+  {
+   "key": "/media/robotic-arm/parts/16-arch.webp",
+   "name": "Arch"
+  },
+  {
+   "key": "/media/robotic-arm/parts/17-arm-connector-long.webp",
+   "name": "Arm connector, long"
+  },
+  {
+   "key": "/media/robotic-arm/parts/18-arm-connector-short.webp",
+   "name": "Arm connector, short"
+  },
+  {
+   "key": "/media/robotic-arm/parts/19-cross-base-motor-2.webp",
+   "name": "Cross base motor 2"
+  },
+  {
+   "key": "/media/robotic-arm/parts/20-external-support-long.webp",
+   "name": "External support, long"
+  },
+  {
+   "key": "/media/robotic-arm/parts/21-external-support-straight.webp",
+   "name": "External support, straight"
+  },
+  {
+   "key": "/media/robotic-arm/parts/22-inner-middle-bar.webp",
+   "name": "Inner middle bar"
+  },
+  {
+   "key": "/media/robotic-arm/parts/23-middle-bar.webp",
+   "name": "Middle bar"
+  },
+  {
+   "key": "/media/robotic-arm/parts/24-fastener-and-servo-holder.webp",
+   "name": "Fastener and servo holder"
+  },
+  {
+   "key": "/media/robotic-arm/parts/25-motor-holder.webp",
+   "name": "Motor holder"
+  },
+  {
+   "key": "/media/robotic-arm/parts/26-gripper-mount.webp",
+   "name": "Gripper mount"
+  }
+ ],
+ "/cv/bat-flight-presentation.pdf": {},
+ "/cv/cv-full.pdf": {},
+ "/cv/resume.pdf": {},
+ "/docs/geothermal/final-report.pdf": {},
+ "/docs/i-beam/final-design-report.pdf": {},
+ "/docs/otv/final-design-briefs.pdf": {},
+ "/docs/truss/truss-analysis.pdf": {},
+ "/media/about/headshot.webp": {
+  "w": 400,
+  "h": 400
+ },
+ "/media/geothermal/cycle-summer.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/geothermal/cycle-winter.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/geothermal/ts-summer.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/geothermal/ts-winter.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/i-beam/after-test-section.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/i-beam/after-test.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/i-beam/bending-moment.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/i-beam/cross-section.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/i-beam/deflection.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/i-beam/drawing.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/i-beam/shear-force.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/otv/magnet-detection-1.webp": {
+  "w": 1400,
+  "h": 788
+ },
+ "/media/otv/magnet-detection-2.webp": {
+  "w": 1400,
+  "h": 788
+ },
+ "/media/otv/prototype-cad.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/otv/team.webp": {
+  "w": 1200,
+  "h": 901
+ },
+ "/media/otv/test-run.mp4": {
+  "w": 720,
+  "h": 1280,
+  "poster": "/media/otv/test-run.webp",
+  "duration": 53.2
+ },
+ "/media/otv/test-run.webp": {
+  "w": 720,
+  "h": 1280
+ },
+ "/media/phone-stand/drawing.webp": {
+  "w": 1064,
+  "h": 823
+ },
+ "/media/phone-stand/printed-front.webp": {
+  "w": 768,
+  "h": 1024
+ },
+ "/media/phone-stand/printed-hand-1.webp": {
+  "w": 768,
+  "h": 1024
+ },
+ "/media/phone-stand/printed-hand-2.webp": {
+  "w": 768,
+  "h": 1024
+ },
+ "/media/phone-stand/printed-side.webp": {
+  "w": 768,
+  "h": 1024
+ },
+ "/media/phone-stand/render-front.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/phone-stand/render-iso.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/prosthetics/hand-test.mp4": {
+  "w": 720,
+  "h": 1280,
+  "poster": "/media/prosthetics/hand-test.webp",
+  "duration": 86.6
+ },
+ "/media/prosthetics/hand-test.webp": {
+  "w": 720,
+  "h": 1280
+ },
+ "/media/research/bat-wing-mesh.webp": {
+  "w": 1200,
+  "h": 528
+ },
+ "/media/research/utsi-presentation.webp": {
+  "w": 800,
+  "h": 800
+ },
+ "/media/research/video/2d-flows.mp4": {
+  "w": 1280,
+  "h": 596,
+  "poster": "/media/research/video/2d-flows.webp",
+  "duration": 15
+ },
+ "/media/research/video/2d-flows.webp": {
+  "w": 1280,
+  "h": 596
+ },
+ "/media/research/video/bat-wing-overview.mp4": {
+  "w": 1280,
+  "h": 756,
+  "poster": "/media/research/video/bat-wing-overview.webp",
+  "duration": 6.1
+ },
+ "/media/research/video/bat-wing-overview.webp": {
+  "w": 1280,
+  "h": 756
+ },
+ "/media/research/video/flat-sheet.mp4": {
+  "w": 1280,
+  "h": 596,
+  "poster": "/media/research/video/flat-sheet.webp",
+  "duration": 15.2
+ },
+ "/media/research/video/flat-sheet.webp": {
+  "w": 1280,
+  "h": 596
+ },
+ "/media/research/video/injury-severity-2x2.mp4": {
+  "w": 1920,
+  "h": 894,
+  "poster": "/media/research/video/injury-severity-2x2.webp",
+  "duration": 15.2
+ },
+ "/media/research/video/injury-severity-2x2.webp": {
+  "w": 1920,
+  "h": 894
+ },
+ "/media/research/video/kinematics-mesh-and-wingtip.mp4": {
+  "w": 1600,
+  "h": 462,
+  "poster": "/media/research/video/kinematics-mesh-and-wingtip.webp",
+  "duration": 15.1
+ },
+ "/media/research/video/kinematics-mesh-and-wingtip.webp": {
+  "w": 1600,
+  "h": 462
+ },
+ "/media/research/video/punctured-bat-wing.mp4": {
+  "w": 1100,
+  "h": 512,
+  "poster": "/media/research/video/punctured-bat-wing.webp",
+  "duration": 15.1
+ },
+ "/media/research/video/punctured-bat-wing.webp": {
+  "w": 1100,
+  "h": 512
+ },
+ "/media/research/video/punctured-sheet-vorticity.mp4": {
+  "w": 960,
+  "h": 568,
+  "poster": "/media/research/video/punctured-sheet-vorticity.webp",
+  "duration": 50
+ },
+ "/media/research/video/punctured-sheet-vorticity.webp": {
+  "w": 960,
+  "h": 568
+ },
+ "/media/research/video/punctured-sheet.mp4": {
+  "w": 1280,
+  "h": 596,
+  "poster": "/media/research/video/punctured-sheet.webp",
+  "duration": 14.4
+ },
+ "/media/research/video/punctured-sheet.webp": {
+  "w": 1280,
+  "h": 596
+ },
+ "/media/research/video/realistic-perforations.mp4": {
+  "w": 1280,
+  "h": 596,
+  "poster": "/media/research/video/realistic-perforations.webp",
+  "duration": 12.3
+ },
+ "/media/research/video/realistic-perforations.webp": {
+  "w": 1280,
+  "h": 596
+ },
+ "/media/research/video/vorticity-re100-over-re1000.mp4": {
+  "w": 1000,
+  "h": 932,
+  "poster": "/media/research/video/vorticity-re100-over-re1000.webp",
+  "duration": 15.1
+ },
+ "/media/research/video/vorticity-re100-over-re1000.webp": {
+  "w": 1000,
+  "h": 932
+ },
+ "/media/robotic-arm/animation.mp4": {
+  "w": 760,
+  "h": 712,
+  "poster": "/media/robotic-arm/animation.webp",
+  "duration": 6.1
+ },
+ "/media/robotic-arm/animation.webp": {
+  "w": 760,
+  "h": 712
+ },
+ "/media/robotic-arm/assembly/assembly.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/assembly/base-subassembly.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/assembly/exploded.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/assembly/gripper-subassembly.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/drawings/arch.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/arm-connector-long.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/arm-connector-short.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/bolt.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/bom.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/clip.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/cross-base-motor-2.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/cross-base-motor.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/cross-base.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/external-support-long.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/external-support-straight.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/extrusion-horizontal-400.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/extrusion-horizontal-450.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/extrusion-vertical.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/fastener-and-servo-holder.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/fasteners.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/gear.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/gripper-arm.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/gripper-mount.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/inner-middle-bar.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/isometric-view.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/lego-hand-support.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/middle-bar.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/motor-holder.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/motor.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/screw-for-gear.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/servo-pin.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/drawings/servo.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/robotic-arm/parts/01-bolt.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/02-clip.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/03-cross-base-motor.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/04-cross-base.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/05-extrusion-horizontal-400-mm.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/06-extrusion-horizontal-450-mm.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/07-extrusion-vertical.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/08-fasteners.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/09-gear.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/10-gripper-arm.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/11-lego-hand-support.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/12-motor.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/13-screw-for-gear.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/14-servo-pin.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/15-servo.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/16-arch.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/17-arm-connector-long.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/18-arm-connector-short.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/19-cross-base-motor-2.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/20-external-support-long.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/21-external-support-straight.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/22-inner-middle-bar.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/23-middle-bar.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/24-fastener-and-servo-holder.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/25-motor-holder.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/robotic-arm/parts/26-gripper-mount.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/truss/drawing-assembly.webp": {
+  "w": 640,
+  "h": 480
+ },
+ "/media/truss/drawing-diagonal-members.webp": {
+  "w": 640,
+  "h": 480
+ },
+ "/media/truss/drawing-gussets.webp": {
+  "w": 640,
+  "h": 480
+ },
+ "/media/truss/drawing-horizontal-members.webp": {
+  "w": 640,
+  "h": 480
+ },
+ "/media/truss/drawing-vertical-members.webp": {
+  "w": 640,
+  "h": 480
+ },
+ "/media/truss/finished.webp": {
+  "w": 1200,
+  "h": 799
+ },
+ "/media/truss/team.webp": {
+  "w": 1200,
+  "h": 799
+ },
+ "/media/truss/testing.webp": {
+  "w": 1200,
+  "h": 799
+ }
+}

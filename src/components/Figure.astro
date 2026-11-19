@@ -1,0 +1,29 @@
+---
+import { media } from '../lib/media';
+
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  eager?: boolean;     // above the fold: load immediately
+  paper?: boolean;     // white "drawing sheet" frame for CAD renders, plots, drawings
+  class?: string;
+  sizes?: string;
+}
+const { src, alt, caption, eager = false, paper = false, class: className = '', sizes } = Astro.props;
+const { w, h } = media(src);
+---
+
+<figure class:list={['figure', { 'figure--paper': paper }, className]}>
+  <img
+    src={src}
+    alt={alt}
+    width={w}
+    height={h}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    sizes={sizes}
+    fetchpriority={eager ? 'high' : undefined}
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

@@ -9,7 +9,7 @@ const site = "https://jfcortes1202.github.io";
 const {
   title,
   description = "Juan Cortés — Mechanical Engineering and Physics at the University of Maryland. Computational fluid-structure interaction research, mechanical design, and engineering projects.",
-  ogImage = "/images/placeholder.png",
+  ogImage = "/images/og.png",
 } = Astro.props;
 const year = new Date().getFullYear();
 const canonical = new URL(Astro.url.pathname, site).href;
@@ -36,6 +36,7 @@ const navLinks = [
   <link rel="canonical" href={canonical} />
   <link rel="sitemap" href="/sitemap-index.xml" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />

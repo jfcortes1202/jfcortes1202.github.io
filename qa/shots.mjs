@@ -21,7 +21,7 @@ const theme = process.argv[2] || 'dark';
 const selectors = process.argv.slice(3);
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1280, height: 800 }, colorScheme: theme, reducedMotion: 'reduce' });
-await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+await page.goto(BASE + '/' + (process.env.PAGE || ''), { waitUntil: 'networkidle' });
 await page.waitForTimeout(400);
 await page.screenshot({ path: join(OUT, `shot-hero-${theme}.png`) });
 for (const [i, sel] of selectors.entries()) {

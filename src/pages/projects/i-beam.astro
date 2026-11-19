@@ -1,7 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectHeader from '../../components/ProjectHeader.astro';
-import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
+import Carousel from '../../components/Carousel.astro';
+
+const figures = [
+  { src: '/media/i-beam/cross-section.webp', caption: 'Final cross-section (inches)', alt: 'Dimensioned cross-section of the asymmetric I-beam: 1.5 in top flange, 1.0 in bottom flange, 0.3125 in web, 2.5 in web height' },
+  { src: '/media/i-beam/drawing.webp', caption: 'Beam assembly drawing', alt: 'Engineering drawing of the beam with top, front and cross-section views' },
+  { src: '/media/i-beam/shear-force.webp', caption: 'Shear force diagram', alt: 'Shear force diagram along the 20 in span, stepping from positive to negative at the 12 in load point' },
+  { src: '/media/i-beam/bending-moment.webp', caption: 'Bending moment diagram', alt: 'Triangular bending moment diagram peaking at the 12 in load point' },
+  { src: '/media/i-beam/deflection.webp', caption: 'Deflection curve (singularity functions)', alt: 'Beam deflection curve with the maximum deflection marked near 10.6 in from the left support' },
+  { src: '/media/i-beam/after-test.webp', caption: 'The beam after testing', alt: 'The pine I-beam after load testing, with the top flange split' },
+  { src: '/media/i-beam/after-test-section.webp', caption: 'Cross-section after testing', alt: 'End view of the tested beam standing on a table, showing the twisted web' },
+];
 ---
 
 <BaseLayout title="Wooden I-Beam Optimization" description="Stress analysis and optimization of an asymmetric wooden I-beam for ENES220, Mechanics of Materials.">
@@ -18,9 +28,11 @@ import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
   />
 
   <section class="section">
-    <div class="container prose">
-      <MediaPlaceholder kind="Photo / Figure" label="I-beam cross-section or the built beam under test" ratio="16 / 9" />
+    <div class="container--media">
+      <Carousel id="beam-figures" label="I-beam figures" slides={figures} thumbs />
+    </div>
 
+    <div class="container prose">
       <div data-reveal>
         <h2>Problem</h2>
         <p>
@@ -41,11 +53,10 @@ import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
           20% of each other. The team built the beam and tested it to failure.
         </p>
 
-        <h2>Report and results</h2>
-        <p class="text-secondary">Report, derivations and test data will be added here.</p>
-        <div class="gallery">
-          <MediaPlaceholder kind="PDF" label="Project report" />
-          <MediaPlaceholder kind="Figure" label="Failure-load balance plot" />
+        <h2>Report</h2>
+        <p class="text-secondary">Derivations, optimization, deflection analysis, and test results.</p>
+        <div class="downloads downloads--doc">
+          <a href="/docs/i-beam/final-design-report.pdf" class="btn btn--outline" download>Final design report (PDF, 4.2 MB)</a>
         </div>
 
         <h2>Tools</h2>
