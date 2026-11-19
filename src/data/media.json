@@ -837,14 +837,14 @@
   "h": 900
  },
  "/media/i-beam/load-test.mp4": {
-  "w": 960,
-  "h": 1706,
+  "w": 540,
+  "h": 960,
   "poster": "/media/i-beam/load-test.webp",
   "duration": 127.7
  },
  "/media/i-beam/load-test.webp": {
-  "w": 960,
-  "h": 1706
+  "w": 540,
+  "h": 960
  },
  "/media/i-beam/shear-force.webp": {
   "w": 1200,

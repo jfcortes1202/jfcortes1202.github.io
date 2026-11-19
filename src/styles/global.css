@@ -644,6 +644,9 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 /* Portrait clips inside a two-column media pair: keep them compact and right-aligned */
 .media-pair .figure--portrait { max-width: 280px; justify-self: end; }
+.media-pair--video { grid-template-columns: minmax(0, 1fr) 320px; align-items: center; }
+.media-pair--video .figure--portrait { max-width: 320px; }
+.media-pair--video > div:first-child { align-self: center; }
 @media (max-width: 560px) { .media-pair .figure--portrait { justify-self: start; } }
 
 /* ---------- Project tiles ---------- */

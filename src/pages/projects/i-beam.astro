@@ -33,9 +33,19 @@ const figures = [
 
   <section class="section">
     <div class="container--media">
-      {hasMedia('/media/i-beam/load-test.mp4')
-        ? <Video src="/media/i-beam/load-test.mp4" label="The pine I-beam in a universal testing machine, loaded at mid-span until the top flange cracks and the beam twists" caption="Load test to failure in the universal testing machine" />
-        : <MediaPlaceholder kind="Video" label="Beam load test" ratio="16 / 9" />}
+      <div class="media-pair media-pair--video">
+        <div>
+          <h2 style="margin-top:0;">Load test</h2>
+          <p>
+            The team's beam in the universal testing machine, loaded at a single point until
+            failure. The full test results and the comparison with our predictions are in the
+            report below.
+          </p>
+        </div>
+        {hasMedia('/media/i-beam/load-test.mp4')
+          ? <Video src="/media/i-beam/load-test.mp4" label="The pine I-beam in a universal testing machine, loaded until the top flange cracks and the beam twists" caption="Load test to failure" class="figure--portrait" />
+          : <MediaPlaceholder kind="Video" label="Beam load test" ratio="9 / 16" />}
+      </div>
 
       <h2 style="margin-top:var(--space-12);">Figures</h2>
       <Carousel id="beam-figures" label="I-beam figures" slides={figures} thumbs />
