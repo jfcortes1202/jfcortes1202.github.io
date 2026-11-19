@@ -15,7 +15,10 @@ export function media(src: string): MediaInfo {
   return info;
 }
 
-export interface Slide { src: string; caption: string; alt?: string }
+export const hasMedia = (src: string) => src in data;
+
+/** A carousel slide. With `placeholder`, the slide renders a labeled frame instead of `src`. */
+export interface Slide { src: string; caption: string; alt?: string; placeholder?: { kind: string; label: string } }
 
 /** Lists the processor builds for multi-item CAD sets (e.g. '@arm-parts'). */
 export function mediaList(key: string): { key: string; name: string }[] {

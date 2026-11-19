@@ -78,6 +78,14 @@ redo one, or `scan` to rebuild `src/data/media.json` from `public/` without re-e
 - Every page media reference goes through `media()`; a missing file fails the build.
 - Playwright's bundled Chromium has no H.264, so `qa/video-check.mjs` verifies playback in Edge.
 
+### CAD coursework page (`/projects/cad-coursework`)
+- Piece list lives in `src/data/coursework.json` (41 parts/assemblies, 45 drawings, FEA shots).
+- Juan drops exports into `media/CAD exports/<folder>/<exact name>.jpg|.png|.pdf`
+  (each folder has a `_FILES-NEEDED.txt`); `node tools/process-media.mjs coursework` processes them.
+- Any piece without an export renders as a labeled "Export pending" slide (Carousel `placeholder`).
+- Never publish exam prompts, assignment instructions, rubrics, or files showing other students'
+  names; check drawing title blocks before publishing.
+
 ## Design tokens (see `src/styles/global.css`)
 
 - Dark base `--slate-950: #0B1120`; neutrals are the slate scale 50–950.

@@ -327,6 +327,59 @@ const jobs = {
     await image(pdfImage(doc, 6, 1), P('phone-stand/printed-hand-2.webp'), { width: 900 });
   },
 
+  /**
+   * ENME272 coursework. Reads the piece list from src/data/coursework.json and looks in
+   * `media/CAD exports/<folder>/` for `<name>.jpg|.jpeg|.png|.tif` (isometric image),
+   * `<name>.pdf` (drawing, first page) and `<name>.mp4|.avi|.mov` (motion study).
+   * Missing exports are skipped; the page shows a placeholder for them.
+   * Homework 7's FEA screenshots come straight from Homework_7.pdf (page 1, the prompt, is skipped).
+   */
+  async coursework() {
+    const EXP = `${M}/CAD exports`;
+    const data = JSON.parse(readFileSync('src/data/coursework.json', 'utf8'));
+    const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const find = (folder, name, exts) => exts.map((e) => `${EXP}/${folder}/${name}.${e}`).find((p) => existsSync(p))
+      ?? exts.map((e) => `${EXP}/${folder}/${name}.${e.toUpperCase()}`).find((p) => existsSync(p));
+    const IMG = ['png', 'jpg', 'jpeg', 'tif', 'tiff', 'webp'];
+    let found = 0, missing = 0;
+    const iso = async (folder, name) => {
+      const src = find(folder, name, IMG);
+      if (!src) { missing++; return; }
+      found++;
+      await image(src, P(`coursework/${slug(folder)}/${slug(name)}.webp`), { canvas: [1200, 900], trim: true, pad: 0.1 });
+    };
+    const drawing = async (folder, name) => {
+      const src = find(folder, name, ['pdf']);
+      if (!src) { missing++; return; }
+      found++;
+      await image(await pdfRender(openPdf(src), 1, 2.6), P(`coursework/${slug(folder)}/${slug(name)}-drawing.webp`), { width: 1600 });
+    };
+    for (const g of data.groups) {
+      for (const p of g.pieces) {
+        await iso(p.folder, p.name);
+        if (p.drawing) await drawing(p.folder, p.name);
+      }
+      for (const d of g.extraDrawings ?? []) await drawing(d.folder, d.name);
+      if (g.animation) {
+        const src = find(g.animation.folder, g.animation.name, ['mp4', 'avi', 'mov']);
+        if (src) await video(src, P(`coursework/${slug(g.animation.folder)}/${slug(g.animation.name)}.mp4`), { width: 1000, crf: 25, poster: 0.5 });
+      }
+    }
+    for (const f of data.fea) {
+      const src = find(f.folder, f.name, IMG);
+      if (!src) { missing++; continue; }
+      found++;
+      await image(src, P(`coursework/fea/${slug(f.folder)}-${slug(f.name)}.webp`), { width: 1400 });
+    }
+    // Homework 7: SolidWorks Simulation screenshots (pp. 2, 4, 5) and the convergence table (p. 3).
+    const hw7 = openPdf(`${CAD}/Homeworks/Homework_7.pdf`);
+    await image(pdfImage(hw7, 2), P('coursework/fea/hw7-beam-displacement.webp'), { width: 1400 });
+    await image(pdfImage(hw7, 4), P('coursework/fea/hw7-piston-1060-alloy.webp'), { width: 1400 });
+    await image(pdfImage(hw7, 5), P('coursework/fea/hw7-piston-7075-t6.webp'), { width: 1400 });
+    await image(await pdfRender(hw7, 3, 3, [0.07, 0.06, 0.84, 0.545]), P('coursework/fea/hw7-convergence-table.webp'), { width: 1400, trim: true });
+    log(`  coursework exports: ${found} found, ${missing} still pending`);
+  },
+
   /** Rebuild width/height/poster entries for everything already in public/ (no re-encoding). */
   async scan() {
     const walk = (d) => (existsSync(d) ? readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(join(d, e.name)) : [join(d, e.name)])) : []);

@@ -1,0 +1,98 @@
+---
+/**
+ * ENME272 coursework gallery. Pieces, drawings and FEA shots come from
+ * src/data/coursework.json via src/lib/coursework.ts; anything not exported yet
+ * renders as a labeled placeholder slide. To fill one in: add the export to
+ * media/CAD exports/<folder>/<name>.(jpg|png|pdf), run
+ * `node tools/process-media.mjs coursework`, rebuild.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+import Carousel from '../../components/Carousel.astro';
+import { groups, fea, counts } from '../../lib/coursework';
+import Video from '../../components/Video.astro';
+import type { Slide } from '../../lib/media';
+
+// Homework 7 FEA: Juan's own SolidWorks Simulation screenshots (the assignment prompt is not shown).
+const hw7: Slide[] = [
+  { src: '/media/coursework/fea/hw7-beam-displacement.webp', caption: 'Homework 7 · Cantilever beam, static displacement: max deflection 4.355 × 10⁻³ in', alt: 'SolidWorks Simulation displacement plot of a rectangular beam, coloured from blue at the fixed end to red at the free end' },
+  { src: '/media/coursework/fea/hw7-convergence-table.webp', caption: 'Homework 7 · Mesh study: FEA vs. beam theory for coarse and fine meshes (L2 error 5.5 × 10⁻⁴ and 3.7 × 10⁻⁴)', alt: 'Table comparing true and simulated deflections at 5, 10 and 15 in lengths for coarse and fine meshes, with L2 norm errors' },
+  { src: '/media/coursework/fea/hw7-piston-1060-alloy.webp', caption: 'Homework 7 · Piston in 1060 alloy: max von Mises 7.37 MPa vs. yield 27.6 MPa', alt: 'Von Mises stress plot on a piston with load arrows on the crown, stresses well below yield' },
+  { src: '/media/coursework/fea/hw7-piston-7075-t6.webp', caption: 'Homework 7 · Piston in 7075-T6 aluminum at 50 kN (safety factor 5): stress stays below yield', alt: 'Von Mises stress plot on the same piston in 7075-T6 aluminum under a 50 kN load' },
+];
+const feaSlides = [...hw7, ...fea];
+const pieceCount = counts.pieces;
+---
+
+<BaseLayout title="CAD Coursework" description="Parts, assemblies, engineering drawings and FEA from ENME272, Introduction to Computer Aided Design.">
+  <ProjectHeader
+    kicker="Coursework · ENME272 — Introduction to Computer Aided Design"
+    title="CAD coursework"
+    lead="Parts, assemblies, engineering drawings and FEA studies from the semester, modeled in SolidWorks and, for one assignment, Autodesk Inventor."
+    facts={[
+      { k: 'Course', v: 'ENME272 — Introduction to Computer Aided Design' },
+      { k: 'Term', v: 'Fall 2025' },
+      { k: 'Tools', v: 'SolidWorks, SolidWorks Simulation, Autodesk Inventor' },
+      { k: 'Scope', v: `${pieceCount} parts and assemblies, ${counts.drawings} drawings` },
+    ]}
+  />
+
+  <section class="section">
+    <div class="container--wide">
+      <p class="text-secondary">
+        The team and individual projects from this course have their own pages:
+        the <a href="/projects/robotic-arm">articulated robotic arm</a> and the
+        <a href="/projects/phone-stand">3D-printed phone stand</a>.
+      </p>
+
+      {groups.map((g) => (
+        <section class="cw-group" aria-labelledby={`cw-${g.id}`}>
+          <h2 id={`cw-${g.id}`}>{g.title}</h2>
+          <p class="text-secondary">{g.blurb}</p>
+          <div class="cw-pair">
+            <div>
+              <h3 class="cw-sub">Parts and assemblies</h3>
+              <Carousel id={`cw-${g.id}-parts`} label={`${g.title}: parts and assemblies`} slides={g.parts} thumbs={g.parts.length > 3} ratio="11 / 8.5" />
+            </div>
+            <div>
+              <h3 class="cw-sub">Drawings</h3>
+              <Carousel id={`cw-${g.id}-drawings`} label={`${g.title}: drawings`} slides={g.drawings} thumbs={g.drawings.length > 3} ratio="11 / 8.5" />
+            </div>
+          </div>
+          {g.animation && (
+            <Video src={g.animation} label={`${g.title} motion study`} caption="Motion study" paper class="figure--portrait" />
+          )}
+        </section>
+      ))}
+
+      <section class="cw-group" aria-labelledby="cw-fea">
+        <h2 id="cw-fea">FEA studies</h2>
+        <p class="text-secondary">
+          Static and thermal studies in SolidWorks Simulation, including a mesh-convergence check
+          of a cantilever beam against beam theory.
+        </p>
+        <Carousel id="cw-fea-slides" label="FEA studies" slides={feaSlides} thumbs ratio="16 / 9" />
+      </section>
+
+      <div class="page-foot">
+        <a href="/#projects" class="btn btn--outline">← All projects</a>
+        <a href="/projects/robotic-arm" class="btn btn--outline">Robotic arm project</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cw-group { margin-top: var(--space-16); }
+  .cw-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
+  .cw-pair :global(.carousel) { margin-bottom: 0; }
+  @media (max-width: 900px) { .cw-pair { grid-template-columns: 1fr; } }
+  .cw-group:first-of-type { margin-top: var(--space-10); }
+  .cw-group h2 { margin-bottom: var(--space-2); }
+  .cw-sub {
+    font-size: var(--text-base);
+    margin: var(--space-6) 0 0;
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+</style>

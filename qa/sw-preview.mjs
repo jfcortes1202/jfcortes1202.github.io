@@ -22,7 +22,7 @@ function* candidatePngs(buf) {
   }
   for (let i = 0; i < buf.length - 2; i++) {
     let out;
-    try { out = inflateRawSync(buf.subarray(i, i + 4_000_000), { finishFlush: constants.Z_SYNC_FLUSH }); } catch { continue; }
+    try { out = inflateRawSync(buf.subarray(i, i + 400_000), { finishFlush: constants.Z_SYNC_FLUSH }); } catch { continue; }
     if (out.length > 1000 && out.subarray(0, 8).equals(SIG)) {
       const end = out.indexOf(IEND);
       if (end !== -1) yield out.subarray(0, end + 8);

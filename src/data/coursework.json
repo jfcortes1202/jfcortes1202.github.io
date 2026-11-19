@@ -1,0 +1,129 @@
+{
+  "_readme": "Every ENME272 coursework piece shown on /projects/cad-coursework. `folder` is the subfolder of media/CAD exports/ and `name` is the exact file name (without extension) the pipeline looks for: <name>.jpg|.jpeg|.png|.tif for the isometric image, <name>.pdf for the drawing. Run `node tools/process-media.mjs coursework` after adding exports.",
+  "groups": [
+    {
+      "id": "fundamentals",
+      "title": "Part modeling fundamentals",
+      "blurb": "Extrudes, revolves, and early parts from Homeworks 2 and 3.",
+      "pieces": [
+        { "folder": "HW2", "name": "Extrude", "kind": "part", "drawing": true },
+        { "folder": "HW2", "name": "Revolve", "kind": "part", "drawing": true },
+        { "folder": "HW2", "name": "Right Trapezoid", "kind": "part", "drawing": true },
+        { "folder": "HW2", "name": "Valve", "kind": "part", "drawing": true },
+        { "folder": "HW3", "name": "Connector", "kind": "part", "drawing": true },
+        { "folder": "HW3", "name": "LEGO", "kind": "part", "drawing": true },
+        { "folder": "HW3", "name": "Mounting Brake", "kind": "part", "drawing": true },
+        { "folder": "HW3", "name": "Support Block", "kind": "part", "drawing": true }
+      ]
+    },
+    {
+      "id": "lofts",
+      "title": "Lofts and complex features",
+      "blurb": "Loft-based and multi-feature parts from Homework 5.",
+      "pieces": [
+        { "folder": "HW5", "name": "Basic Loft", "kind": "part", "drawing": true },
+        { "folder": "HW5", "name": "Advanced Loft", "kind": "part", "drawing": true },
+        { "folder": "HW5", "name": "Engine Cylinder", "kind": "part", "drawing": true },
+        { "folder": "HW5", "name": "Hammer", "kind": "part", "drawing": true },
+        { "folder": "HW5", "name": "Pipe", "kind": "part", "drawing": true },
+        { "folder": "HW5", "name": "Robot Head", "kind": "part", "drawing": true }
+      ]
+    },
+    {
+      "id": "bearing",
+      "title": "Ball bearing",
+      "blurb": "Five parts modeled in Homework 4 and assembled in Homework 6.",
+      "pieces": [
+        { "folder": "HW6 - Bearing", "name": "Bearing", "kind": "assembly", "drawing": false },
+        { "folder": "HW4", "name": "Ball", "kind": "part", "drawing": true },
+        { "folder": "HW4", "name": "Cage", "kind": "part", "drawing": true },
+        { "folder": "HW4", "name": "Inner Ring", "kind": "part", "drawing": true },
+        { "folder": "HW4", "name": "Outer Ring", "kind": "part", "drawing": true },
+        { "folder": "HW4", "name": "Rivet", "kind": "part", "drawing": true }
+      ],
+      "extraDrawings": [
+        { "folder": "HW6 - Bearing", "name": "Bearing Assembly" },
+        { "folder": "HW6 - Bearing", "name": "Bearing Exploded View" }
+      ]
+    },
+    {
+      "id": "robot",
+      "title": "Robot: open-ended design",
+      "blurb": "An open-ended part and assembly design from Homework 6.",
+      "pieces": [
+        { "folder": "HW6 - Robot", "name": "Robot Assembly", "kind": "assembly", "drawing": false },
+        { "folder": "HW6 - Robot", "name": "Robot Head", "kind": "part", "drawing": true },
+        { "folder": "HW6 - Robot", "name": "Robot Body", "kind": "part", "drawing": true },
+        { "folder": "HW6 - Robot", "name": "Robot Arm", "kind": "part", "drawing": true },
+        { "folder": "HW6 - Robot", "name": "Robot Leg", "kind": "part", "drawing": true },
+        { "folder": "HW6 - Robot", "name": "Robot Backpack", "kind": "part", "drawing": true }
+      ],
+      "extraDrawings": [
+        { "folder": "HW6 - Robot", "name": "Robot Assembly Drawing" },
+        { "folder": "HW6 - Robot", "name": "Robot Assembly Exploded View Drawing" }
+      ]
+    },
+    {
+      "id": "crank-slider",
+      "title": "Crank-slider mechanism",
+      "blurb": "Three parts and a motion study from Homework 9.",
+      "pieces": [
+        { "folder": "HW9", "name": "Animation Assembly", "kind": "assembly", "drawing": false },
+        { "folder": "HW9", "name": "Base", "kind": "part", "drawing": true },
+        { "folder": "HW9", "name": "Crank Arm", "kind": "part", "drawing": true },
+        { "folder": "HW9", "name": "Slider", "kind": "part", "drawing": true }
+      ],
+      "animation": { "folder": "HW9", "name": "Animation Assembly" }
+    },
+    {
+      "id": "joint",
+      "title": "Joint assembly in Inventor",
+      "blurb": "Homework 10, modeled in Autodesk Inventor: eye end, fork end, and pin.",
+      "pieces": [
+        { "folder": "HW10", "name": "Joint Assembly", "kind": "assembly", "drawing": true },
+        { "folder": "HW10", "name": "Eye End", "kind": "part", "drawing": true },
+        { "folder": "HW10", "name": "Fork End", "kind": "part", "drawing": true },
+        { "folder": "HW10", "name": "Pin", "kind": "part", "drawing": true }
+      ],
+      "extraDrawings": [
+        { "folder": "HW10", "name": "Joint Assembly Exploded View" }
+      ],
+      "animation": { "folder": "HW10", "name": "Joint Assembly" }
+    },
+    {
+      "id": "rocket",
+      "title": "Rocket assembly",
+      "blurb": "Four parts, an assembly with section view, and a BOM, from the Exam 1 practice set.",
+      "pieces": [
+        { "folder": "Exam 1 Practice", "name": "Rocket Assembly", "kind": "assembly", "drawing": true },
+        { "folder": "Exam 1 Practice", "name": "Nose Cone", "kind": "part", "drawing": true },
+        { "folder": "Exam 1 Practice", "name": "Engine Bay", "kind": "part", "drawing": true },
+        { "folder": "Exam 1 Practice", "name": "Engine", "kind": "part", "drawing": true },
+        { "folder": "Exam 1 Practice", "name": "Fin", "kind": "part", "drawing": true }
+      ],
+      "extraDrawings": [
+        { "folder": "Exam 1 Practice", "name": "Rocket BOM" }
+      ]
+    },
+    {
+      "id": "exams",
+      "title": "Exam parts",
+      "blurb": "The main valve from Exam 1 and the pipe assembly from Exam 2.",
+      "pieces": [
+        { "folder": "Exam 1", "name": "Main Valve", "kind": "part", "drawing": true },
+        { "folder": "Exam 2", "name": "Pipe Assembly", "kind": "assembly", "drawing": false }
+      ],
+      "extraDrawings": [
+        { "folder": "Exam 2", "name": "Pipe Assembly Drawing" },
+        { "folder": "Exam 2", "name": "Pipe Assembly Exploded View Drawing" }
+      ]
+    }
+  ],
+  "fea": [
+    { "folder": "HW8", "name": "Thermal Load 1", "caption": "Thermal study, load case 1" },
+    { "folder": "HW8", "name": "Thermal Load 2", "caption": "Thermal study, load case 2" },
+    { "folder": "HW8", "name": "Thermal Load 3", "caption": "Thermal study, load case 3" },
+    { "folder": "Exam 2", "name": "von Mises", "caption": "Exam 2 main part: von Mises stress" },
+    { "folder": "Exam 2", "name": "Displacement", "caption": "Exam 2 main part: displacement" }
+  ]
+}

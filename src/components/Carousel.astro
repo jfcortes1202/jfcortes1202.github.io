@@ -18,7 +18,8 @@ interface Props {
   ratio?: string;         // CSS aspect-ratio of the viewport
 }
 const { id, label, slides, paper = true, thumbs = false, ratio = '4 / 3' } = Astro.props;
-const items = slides.map((s, i) => ({ ...s, ...media(s.src), i }));
+// Placeholder slides (export not supplied yet) skip the manifest lookup.
+const items = slides.map((s, i) => ({ ...s, ...(s.placeholder ? {} : media(s.src)), i }));
 const total = items.length;
 ---
 
@@ -27,7 +28,15 @@ const total = items.length;
     <ul class="carousel__track" tabindex="0" aria-label={`${label}, ${total} slides. Use the arrow keys to move between them.`}>
       {items.map((s) => (
         <li class="carousel__slide" role="group" aria-roledescription="slide" aria-label={`${s.i + 1} of ${total}: ${s.caption}`} data-caption={s.caption}>
-          <img src={s.src} alt={s.alt ?? s.caption} width={s.w} height={s.h} loading={s.i === 0 ? 'eager' : 'lazy'} decoding="async" />
+          {s.placeholder ? (
+            <div class="carousel__placeholder" role="img" aria-label={`${s.placeholder.kind} placeholder: ${s.placeholder.label}`}>
+              <span class="placeholder__kind">{s.placeholder.kind}</span>
+              <span class="carousel__placeholder-name">{s.caption.split(' · ')[0]}</span>
+              <span class="carousel__placeholder-note">Export pending</span>
+            </div>
+          ) : (
+            <img src={s.src} alt={s.alt ?? s.caption} width={s.w} height={s.h} loading={s.i === 0 ? 'eager' : 'lazy'} decoding="async" />
+          )}
         </li>
       ))}
     </ul>
@@ -53,7 +62,9 @@ const total = items.length;
       {items.map((s) => (
         <li>
           <button type="button" class="carousel__thumb" data-goto={s.i} aria-label={`Show ${s.caption}`} aria-current={s.i === 0 ? 'true' : undefined}>
-            <img src={s.src} alt="" width={s.w} height={s.h} loading="lazy" decoding="async" />
+            {s.placeholder
+              ? <span class="carousel__thumb-ph" aria-hidden="true">{s.caption.split(' · ')[0]}</span>
+              : <img src={s.src} alt="" width={s.w} height={s.h} loading="lazy" decoding="async" />}
           </button>
         </li>
       ))}
