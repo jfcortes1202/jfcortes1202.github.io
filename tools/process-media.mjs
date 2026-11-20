@@ -58,6 +58,7 @@ async function image(input, out, o = {}) {
     const [x0, y0, x1, y1] = o.crop;
     img = sharp(await img.extract({ left: Math.round(x0 * m.width), top: Math.round(y0 * m.height), width: Math.round((x1 - x0) * m.width), height: Math.round((y1 - y0) * m.height) }).toBuffer());
   }
+  if (o.swBackground) img = sharp(await whitenGradient(await img.toBuffer()));
   if (o.trim) {
     img = sharp(await img.flatten({ background: '#ffffff' }).trim({ background: '#ffffff', threshold: 12 }).toBuffer());
   }
@@ -74,6 +75,37 @@ async function image(input, out, o = {}) {
   const key = await record(out, o.alt ? { alt: o.alt } : {});
   log('  img', key, kb(out));
   return key;
+}
+
+/**
+ * SolidWorks screenshots sit on a vertical gradient background. Model each row's background
+ * from its outer 3% columns, then fade pixels near that colour to white (soft edge, so
+ * light-grey parts keep their dark outlines and shading).
+ */
+async function whitenGradient(buf) {
+  // Flood-fill from the border through smoothly varying, light pixels: that is the
+  // SolidWorks gradient (including its soft glow). "Shaded With Edges" outlines stop it.
+  const { data, info } = await sharp(buf).flatten({ background: '#ffffff' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { width: W, height: H } = info;
+  const bgMask = new Uint8Array(W * H);
+  const lum = (i) => (data[i * 3] + data[i * 3 + 1] + data[i * 3 + 2]) / 3;
+  const near = (a, b) => Math.abs(data[a * 3] - data[b * 3]) + Math.abs(data[a * 3 + 1] - data[b * 3 + 1]) + Math.abs(data[a * 3 + 2] - data[b * 3 + 2]) <= 9;
+  const stack = [];
+  for (let x = 0; x < W; x++) stack.push(x, (H - 1) * W + x);
+  for (let y = 0; y < H; y++) stack.push(y * W, y * W + W - 1);
+  for (const i of stack) bgMask[i] = 1;
+  while (stack.length) {
+    const i = stack.pop();
+    const x = i % W, y = (i / W) | 0;
+    for (const j of [x > 0 ? i - 1 : -1, x < W - 1 ? i + 1 : -1, y > 0 ? i - W : -1, y < H - 1 ? i + W : -1]) {
+      if (j < 0 || bgMask[j] || lum(j) < 170 || !near(i, j)) continue;
+      bgMask[j] = 1;
+      stack.push(j);
+    }
+  }
+  const out = Buffer.from(data);
+  for (let i = 0; i < W * H; i++) if (bgMask[i]) out[i * 3] = out[i * 3 + 1] = out[i * 3 + 2] = 255;
+  return sharp(out, { raw: { width: W, height: H, channels: 3 } }).png().toBuffer();
 }
 
 // ---------- Video ---------------------------------------------------------
@@ -324,7 +356,9 @@ const jobs = {
     const doc = openPdf(`${CAD}/Individual Design Project/Individual Design Project .pdf`);
     await image(pdfImage(doc, 1, 0), P('phone-stand/render-iso.webp'), { canvas: [1200, 900], trim: true });
     await image(pdfImage(doc, 1, 1), P('phone-stand/render-front.webp'), { canvas: [1200, 900], trim: true });
-    await image(pdfImage(doc, 3, 0), P('phone-stand/drawing.webp'), { width: 1400 });
+    // Drawing: Juan's own PDF export (vector, sharp); fall back to the image in the deck.
+    const holderPdf = `${CAD}/Individual Design Project/Holder.pdf`;
+    await image(existsSync(holderPdf) ? await pdfRender(openPdf(holderPdf), 1, 2.6) : pdfImage(doc, 3, 0), P('phone-stand/drawing.webp'), { width: 1600 });
     await image(pdfImage(doc, 5, 0), P('phone-stand/printed-front.webp'), { width: 900 });
     await image(pdfImage(doc, 5, 1), P('phone-stand/printed-side.webp'), { width: 900 });
     await image(pdfImage(doc, 6, 0), P('phone-stand/printed-hand-1.webp'), { width: 900 });
@@ -336,9 +370,10 @@ const jobs = {
   },
 
   /**
-   * ENME272 coursework. Reads the piece list from src/data/coursework.json and looks in
-   * `media/CAD exports/<folder>/` for `<name>.jpg|.jpeg|.png|.tif` (isometric image),
-   * `<name>.pdf` (drawing, first page) and `<name>.mp4|.avi|.mov` (motion study).
+   * ENME272 coursework. Reads the piece list from src/data/coursework.json and finds each
+   * export either in `media/CAD exports/<folder>/` or next to its SolidWorks source in the
+   * course folder (where Juan saved them): `<name>.jpg|.png|…` = isometric image,
+   * `<name>.pdf` or `<name> Drawing.pdf` = drawing, `<name>.mp4|.avi|.mov` = motion study.
    * Missing exports are skipped; the page shows a placeholder for them.
    * Homework 7's FEA screenshots come straight from Homework_7.pdf (page 1, the prompt, is skipped).
    */
@@ -346,18 +381,33 @@ const jobs = {
     const EXP = `${M}/CAD exports`;
     const data = JSON.parse(readFileSync('src/data/coursework.json', 'utf8'));
     const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    const find = (folder, name, exts) => exts.map((e) => `${EXP}/${folder}/${name}.${e}`).find((p) => existsSync(p))
-      ?? exts.map((e) => `${EXP}/${folder}/${name}.${e.toUpperCase()}`).find((p) => existsSync(p));
+    // Course folder holding each assignment's sources (and Juan's exports beside them).
+    const SRC = {
+      HW2: 'Homeworks/Homework 2 Files', HW3: 'Homeworks/Homework 3', HW4: 'Homeworks/Homework 4',
+      HW5: 'Homeworks/Homework 5', 'HW6 - Bearing': 'Homeworks/Homework 6/Bearing',
+      'HW6 - Robot': 'Homeworks/Homework 6/Open Ended Design - Robot Assembly and Parts',
+      HW8: 'Homeworks/Homework 8', HW9: 'Homeworks/Homework 9', HW10: 'Homeworks/Homework 10',
+      'Exam 1 Practice': 'Exams/EXAM 1 PRACTICE', 'Exam 1': 'Exams/Exam 1 - Juan Cortés',
+    };
+    const ALIAS = { 'Robot Backpack': ['Robot Packpack'] }; // file names as saved
+    const walk = (d) => (existsSync(d) ? readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? (e.name === 'OldVersions' ? [] : walk(join(d, e.name))) : [join(d, e.name)])) : []);
+    const index = Object.fromEntries(Object.entries(SRC).map(([k, d]) => [k, walk(`${CAD}/${d}`)]));
+    const find = (folder, name, exts, { drawing = false } = {}) => {
+      const names = [name, ...(ALIAS[name] ?? [])].flatMap((n) => (drawing ? [n, `${n} Drawing`] : [n]));
+      const want = new Set(names.flatMap((n) => exts.map((e) => `${n}.${e}`.toLowerCase())));
+      const inExports = names.flatMap((n) => exts.map((e) => `${EXP}/${folder}/${n}.${e}`)).find((p) => existsSync(p));
+      return inExports ?? (index[folder] ?? []).find((p) => want.has(p.split(/[\\/]/).pop().toLowerCase()));
+    };
     const IMG = ['png', 'jpg', 'jpeg', 'tif', 'tiff', 'webp'];
     let found = 0, missing = 0;
     const iso = async (folder, name) => {
       const src = find(folder, name, IMG);
       if (!src) { missing++; return; }
       found++;
-      await image(src, P(`coursework/${slug(folder)}/${slug(name)}.webp`), { canvas: [1200, 900], trim: true, pad: 0.1 });
+      await image(src, P(`coursework/${slug(folder)}/${slug(name)}.webp`), { canvas: [1200, 900], trim: true, pad: 0.08, swBackground: true });
     };
     const drawing = async (folder, name) => {
-      const src = find(folder, name, ['pdf']);
+      const src = find(folder, name, ['pdf'], { drawing: true });
       if (!src) { missing++; return; }
       found++;
       await image(await pdfRender(openPdf(src), 1, 2.6), P(`coursework/${slug(folder)}/${slug(name)}-drawing.webp`), { width: 1600 });

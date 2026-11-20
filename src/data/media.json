@@ -780,6 +780,58 @@
   "w": 400,
   "h": 400
  },
+ "/media/coursework/exam-1-practice/engine-bay-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/exam-1-practice/engine-bay.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/exam-1-practice/engine-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/exam-1-practice/engine.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/exam-1-practice/fin-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/exam-1-practice/fin.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/exam-1-practice/nose-cone-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/exam-1-practice/nose-cone.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/exam-1-practice/rocket-assembly-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/exam-1-practice/rocket-assembly.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/exam-1-practice/rocket-bom-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/exam-1/main-valve-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/exam-1/main-valve.webp": {
+  "w": 1200,
+  "h": 900
+ },
  "/media/coursework/fea/hw7-beam-displacement.webp": {
   "w": 1400,
   "h": 787
@@ -795,6 +847,258 @@
  "/media/coursework/fea/hw7-piston-7075-t6.webp": {
   "w": 1400,
   "h": 787
+ },
+ "/media/coursework/hw2/extrude-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw2/extrude.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw2/revolve-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw2/revolve.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw2/right-trapezoid-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw2/right-trapezoid.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw2/valve-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw2/valve.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw3/connector-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw3/connector.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw3/lego-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw3/lego.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw3/mounting-brake-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw3/mounting-brake.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw3/support-block-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw3/support-block.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw4/ball-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw4/ball.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw4/cage-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw4/cage.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw4/inner-ring-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw4/inner-ring.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw4/outer-ring-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw4/outer-ring.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw4/rivet-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw4/rivet.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw5/advanced-loft-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw5/advanced-loft.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw5/basic-loft-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw5/basic-loft.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw5/engine-cylinder-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw5/engine-cylinder.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw5/hammer-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw5/hammer.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw5/pipe-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw5/pipe.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw5/robot-head-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw5/robot-head.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw6-bearing/bearing-assembly-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw6-bearing/bearing-exploded-view-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw6-bearing/bearing.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw6-robot/robot-arm-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw6-robot/robot-arm.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw6-robot/robot-assembly.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw6-robot/robot-backpack-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw6-robot/robot-backpack.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw6-robot/robot-body-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw6-robot/robot-body.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw6-robot/robot-head-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw6-robot/robot-head.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw6-robot/robot-leg-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw6-robot/robot-leg.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw8/fastener-and-servo-holder-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw8/fastener-and-servo-holder.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw8/motor-holder-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw8/motor-holder.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw9/animation-assembly.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw9/base-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw9/base.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw9/crank-arm-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw9/crank-arm.webp": {
+  "w": 1200,
+  "h": 900
+ },
+ "/media/coursework/hw9/slider-drawing.webp": {
+  "w": 1600,
+  "h": 1237
+ },
+ "/media/coursework/hw9/slider.webp": {
+  "w": 1200,
+  "h": 900
  },
  "/media/geothermal/cycle-summer.webp": {
   "w": 1200,
@@ -877,8 +1181,8 @@
   "h": 1280
  },
  "/media/phone-stand/drawing.webp": {
-  "w": 1064,
-  "h": 823
+  "w": 1600,
+  "h": 1237
  },
  "/media/phone-stand/printed-front.webp": {
   "w": 768,
