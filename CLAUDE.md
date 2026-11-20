@@ -79,7 +79,7 @@ redo one, or `scan` to rebuild `src/data/media.json` from `public/` without re-e
 - Playwright's bundled Chromium has no H.264, so `qa/video-check.mjs` verifies playback in Edge.
 
 ### CAD coursework page (`/projects/cad-coursework`)
-- Piece list lives in `src/data/coursework.json` (38 parts/assemblies, 40 drawings, FEA shots; Exam 2 and HW10 excluded at Juan's request).
+- Piece list lives in `src/data/coursework.json` (37 parts/assemblies, 38 drawings, HW7 FEA; Exam 2, HW10, the HW6 robot assembly and HW8 thermal FEA excluded at Juan's request).
 - Exports are found in `media/CAD exports/<folder>/` or next to the SolidWorks source in
   the ENME272 folder (where Juan saved them); SolidWorks' gradient background is flood-filled to white; `node tools/process-media.mjs coursework` processes them.
 - Any piece without an export renders as a labeled "Export pending" slide (Carousel `placeholder`).

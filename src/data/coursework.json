@@ -155,14 +155,8 @@
     {
       "id": "robot",
       "title": "Robot: open-ended design",
-      "blurb": "An open-ended part and assembly design from Homework 6.",
+      "blurb": "Five parts from an open-ended design in Homework 6.",
       "pieces": [
-        {
-          "folder": "HW6 - Robot",
-          "name": "Robot Assembly",
-          "kind": "assembly",
-          "drawing": false
-        },
         {
           "folder": "HW6 - Robot",
           "name": "Robot Head",
@@ -192,16 +186,6 @@
           "name": "Robot Backpack",
           "kind": "part",
           "drawing": true
-        }
-      ],
-      "extraDrawings": [
-        {
-          "folder": "HW6 - Robot",
-          "name": "Robot Assembly Drawing"
-        },
-        {
-          "folder": "HW6 - Robot",
-          "name": "Robot Assembly Exploded View Drawing"
         }
       ]
     },
@@ -316,21 +300,5 @@
       ]
     }
   ],
-  "fea": [
-    {
-      "folder": "HW8",
-      "name": "Thermal Load 1",
-      "caption": "Thermal study, load case 1"
-    },
-    {
-      "folder": "HW8",
-      "name": "Thermal Load 2",
-      "caption": "Thermal study, load case 2"
-    },
-    {
-      "folder": "HW8",
-      "name": "Thermal Load 3",
-      "caption": "Thermal study, load case 3"
-    }
-  ]
+  "fea": []
 }
