@@ -41,8 +41,8 @@ const pieceCount = counts.pieces;
     <div class="container--wide">
       <p class="text-secondary">
         The team and individual projects from this course have their own pages:
-        the <a href="/projects/robotic-arm">articulated robotic arm</a> and the
-        <a href="/projects/phone-stand">3D-printed phone stand</a>.
+        the <a href="/projects/robotic-arm">articulated robotic arm</a> and{' '}
+        the <a href="/projects/phone-stand">3D-printed phone stand</a>.
       </p>
 
       {groups.map((g) => (
@@ -51,8 +51,8 @@ const pieceCount = counts.pieces;
           <p class="text-secondary">{g.blurb}</p>
           <div class="cw-pair">
             <div>
-              <h3 class="cw-sub">Parts and assemblies</h3>
-              <Carousel id={`cw-${g.id}-parts`} label={`${g.title}: parts and assemblies`} slides={g.parts} thumbs={g.parts.length > 3} ratio="11 / 8.5" />
+              <h3 class="cw-sub">{g.pieces.some((p) => p.kind === 'assembly') ? 'Parts and assembly' : 'Parts'}</h3>
+              <Carousel id={`cw-${g.id}-parts`} label={`${g.title}: ${g.pieces.some((p) => p.kind === 'assembly') ? 'parts and assembly' : 'parts'}`} slides={g.parts} thumbs={g.parts.length > 3} ratio="11 / 8.5" />
             </div>
             <div>
               <h3 class="cw-sub">Drawings</h3>
