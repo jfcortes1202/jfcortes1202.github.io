@@ -2,18 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Resume & CV" description="Download Juan Cortés' one-page resume or full academic CV.">
+<BaseLayout title="Resume" description="Download Juan Cortés' one-page resume.">
   <header class="page-head" style="border-bottom:none;">
     <div class="container">
       <a href="/" class="page-head__back">← Home</a>
       <p class="page-head__kicker">Downloads</p>
-      <h1>Resume &amp; CV</h1>
-      <p class="lead">The one-page resume is for applications; the full CV has the complete academic record.</p>
+      <h1>Resume</h1>
+      <p class="lead">One page: education, experience, projects, and skills.</p>
       <div class="downloads" style="margin-top:var(--space-8);">
         <a href="/cv/resume.pdf" class="btn btn--primary" download>Resume (1 page) ↓</a>
-        <a href="/cv/cv-full.pdf" class="btn btn--outline" download>Full CV ↓</a>
+        <!-- Full CV hidden until one exists: <a href="/cv/cv-full.pdf" class="btn btn--outline" download>Full CV ↓</a> -->
       </div>
-      <p class="meta" style="margin-top:var(--space-6);">Everything in the CV is also on the <a href="/">main page</a>.</p>
+      <p class="meta" style="margin-top:var(--space-6);">Everything in the resume is also on the <a href="/">main page</a>.</p>
     </div>
   </header>
 </BaseLayout>

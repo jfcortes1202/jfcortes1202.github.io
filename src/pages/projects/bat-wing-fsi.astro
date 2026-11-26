@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectHeader from '../../components/ProjectHeader.astro';
-import MediaPlaceholder from '../../components/MediaPlaceholder.astro';
 import Figure from '../../components/Figure.astro';
 import Video from '../../components/Video.astro';
 import ReportViewer from '../../components/ReportViewer.astro';
@@ -29,7 +28,7 @@ const gallery = [
     backHref="/#research"
     backLabel="← Back to research"
     facts={[
-      { k: 'Role', v: 'Research intern — extended and validated an existing FSI codebase' },
+      { k: 'Role', v: 'Research intern — extended an existing FSI codebase' },
       { k: 'Advisor', v: 'Dr. Esteban Cisneros-Garibay, UTSI' },
       { k: 'Duration', v: 'June 2026 – present (remote during the semester)' },
       { k: 'Stack', v: 'Firedrake, PETSc, Python, Gmsh, VisIt, Slurm/HPC, Git' },
@@ -66,14 +65,13 @@ const gallery = [
       <div data-reveal>
         <h2>What I did</h2>
         <ul>
-          <li>Extended and validated an existing FSI codebase, progressing from a 2D flow model with a 1D filament to 3D flapping bat-wing models with membrane perforations</li>
+          <li>Extended an existing FSI codebase, progressing from a 2D flow model with a 1D filament to 3D flapping bat-wing models with membrane perforations</li>
           <li>Derived mathematical formulations and implemented them in the code</li>
           <li>Ran parametric studies</li>
           <li>Ran simulations on an HPC cluster</li>
           <li>Debugged mesh inversion in deforming geometries</li>
           <li>Fixed a one-sided traction integral to a two-sided formulation</li>
           <li>Implemented a Gaussian envelope for tip-oscillation suppression</li>
-          <li>Validated the solver against the Blasius flat-plate analytical solution</li>
           <li>Integrated an energy-expenditure model</li>
           <li>Extracted the wing boundary from a bat photograph for anatomically faithful meshes</li>
         </ul>
@@ -105,13 +103,6 @@ const gallery = [
           Gaussian envelope to suppress non-physical oscillations at the wing tip, and
           debugged mesh inversion during large membrane deformations.
         </p>
-
-        <h3>Validation</h3>
-        <p>
-          The solver was validated against the Blasius flat-plate solution, comparing
-          computed velocity profiles with theory.
-        </p>
-        <MediaPlaceholder kind="Figure" label="Validation plot — computed vs. Blasius flat-plate solution" ratio="16 / 9" />
 
         <h3>Energy expenditure</h3>
         <p>
